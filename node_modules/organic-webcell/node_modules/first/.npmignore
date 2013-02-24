@@ -1,0 +1,4 @@
+.git*
+Makefile
+test
+*.md

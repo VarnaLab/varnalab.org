@@ -1,0 +1,19 @@
+{
+  "RealtimeMongoResource": {
+    "source": "plasma/RealtimeMongoResource"
+  },
+  "PageCode": {
+    "source": "plasma/PageCode",
+    "root": "/client"
+  },
+  "PageRender": {
+    "source": "plasma/PageRender",
+    "root": "/client"
+  },
+  "LogicAction": {
+    "source": "plasma/LogicAction"
+  },
+  "ErrorHandler": {
+    "source": "plasma/ErrorHandler"
+  }
+}

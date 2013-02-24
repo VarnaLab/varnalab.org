@@ -1,0 +1,13 @@
+{
+  "remote-siblings": [
+    {
+      "name": "staging",
+      "remote": "node@178.79.148.84",
+
+      "source": "git@github.com:VarnaLab/varnalab.org.git",
+      "target": "~/varnalab.org",
+
+      "main": "varnalab.org-staging.js"
+    }
+  ]
+}

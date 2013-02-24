@@ -1,0 +1,40 @@
+{
+  "Logger": {
+    "source": "node_modules/organic-webcell/membrane/Logger",
+    "listenUncaughtExceptions": true,
+    "prefixConsoleWithTimestamps": true
+  },
+  "HttpServer": {
+    "source": "node_modules/organic-webcell/membrane/ExpressHttpServer",
+    "port": 8080,
+    "middleware": [
+      "node_modules/organic-webcell/membrane/expressMiddleware/cookieParser",
+      "node_modules/organic-webcell/membrane/expressMiddleware/allowCrossDomain",
+      { 
+        "source": "node_modules/organic-webcell/membrane/expressMiddleware/handleMongoSession", 
+        "dbname": "varnalab-sessions", 
+        "collection": "sessions",
+        "cookie_secret": "varnalab" 
+      },
+      { 
+        "source": "node_modules/organic-webcell/membrane/expressMiddleware/staticFolder", 
+        "staticDir": "public/" 
+      },
+      { 
+        "source": "node_modules/organic-webcell/membrane/expressMiddleware/staticFolder", 
+        "staticDir": "style/" 
+      },{ 
+        "source": "node_modules/organic-webcell/membrane/expressMiddleware/staticFolder", 
+        "staticDir": "uploads/" 
+      },{
+        "source": "node_modules/organic-webcell/membrane/expressMiddleware/bodyParser", 
+        "uploadDir": "uploads/",
+        "keepExtensions": true
+      }
+    ]
+  },
+  "Tissue": {
+    "source": "node_modules/organic-cells/membrane/Tissue",
+    "bindTo": "varnalab"
+  }
+}

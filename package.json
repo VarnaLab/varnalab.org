@@ -1,0 +1,33 @@
+{
+  "name": "varnalab.org",
+  "private": true,
+  "version": "0.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "organic": "0.0.10",
+    "organic-webcell": "0.2.2",
+    "organic-cells": "0.0.14",
+
+    "mongoose": "3.5.2",
+    "mongoose-createdmodified": "0.0.2",
+
+    "mongojs": "latest",
+    "coffee-script": "latest",
+    "optimist": "latest",
+    "underscore": "latest",
+    "async": "latest",
+    "moment": "latest",
+    "jade" : "latest"
+  },
+  "devDependencies": {
+    "jasmine-node": "latest",
+    "request": "latest",
+    "shelljs": "latest",
+    "backbone": "latest",
+    "jquery": "latest"
+  },
+  "license": "MIT"
+}

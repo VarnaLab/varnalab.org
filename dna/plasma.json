@@ -1,0 +1,41 @@
+{
+  "BundleCode": {
+    "source": "node_modules/organic-webcell/plasma/BundleCode",
+    "useCache": true,
+    "uglify": true,
+    "plugins": [{
+      "source": "/client-plugins/ClientConfig"
+    }]
+  },
+  "BundleStyle": {
+    "source": "node_modules/organic-webcell/plasma/BundleStyle",
+    "useCache": true
+  },
+  "RenderPage": {
+    "source": "node_modules/organic-webcell/plasma/RenderPage",
+    "useCache": true
+  },
+  "ExpressHttpActions": {
+    "source": "node_modules/organic-webcell/plasma/ExpressHttpActions",
+    "mount": "/api",
+    "cwd": {
+      "actions": "/api/actions",
+      "actionHelpers": "/api/action-helpers",
+      "models": "/api/models"
+    },
+    "mongo": {
+      "dbname": "varnalab"
+    }
+  },
+  "ExpressHttpPages": {
+    "source": "node_modules/organic-webcell/plasma/ExpressHttpPages",
+    "cwd": {
+      "pages": "/pages",
+      "pageHelpers": "/page-helpers"
+    }
+  },
+  "Self": {
+    "source": "node_modules/organic-cells/plasma/Self",
+    "tissue": "varnalab"
+  }
+}

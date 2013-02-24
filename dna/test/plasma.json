@@ -1,0 +1,7 @@
+{
+  "ExpressHttpActions": {
+    "mongo": {
+      "dbname": "varnalab-test"
+    }
+  }
+}
