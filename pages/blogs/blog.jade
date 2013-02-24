@@ -1,0 +1,19 @@
+extends ../layout
+block content
+  section
+    .section-item
+        .section-date
+          strong.date #{blog.createdDate()}
+          br
+          | #{blog.createdNameOfDay()}
+          br
+          | #{blog.createdTime()}
+        h2 #{blog.title}
+        h5.section-description Автор: #{blog.author}
+        article!= blog.content
+        .section-nav
+          a.btn.pull-left(href='#') Прочети повече
+          .share-widget.pull-left share widget here
+          br.clear
+      hr
+      br.clearfix

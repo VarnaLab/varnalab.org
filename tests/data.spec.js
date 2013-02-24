@@ -1,8 +1,15 @@
 describe("static data module", function(){
   var data = require("../_data");
   it("returns last 3 blog posts", function(next){
-    data.last3Blogs(function(blogs){
+    data.last3Blogs(function(err, blogs){
       expect(blogs.length).toBe(3);
+      next();
+    })
+  })
+  it("reads blog by name", function(next){
+    data.getBlogByName("Какво ново из лабърските среди", function(err, blog){
+      expect(blog.title).toBe("Какво ново из лабърските среди");
+      expect(blog.author).toBe("Kukov");
       next();
     })
   })
