@@ -10,7 +10,10 @@
   },
   "RenderPage": {
     "useCache": false,
-    "debug": true
+    "debug": true,
+    "jadeConfig": {
+      "pretty": true
+    }
   },
   "ExpressHttpActions": {
     "log": true,

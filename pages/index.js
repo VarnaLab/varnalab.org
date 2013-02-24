@@ -1,8 +1,11 @@
 module.exports = function(config){
   return {
     "* *": this.version,
-    "GET": function(req, res) {
-      res.sendPage();
-    }
+    "GET": [
+      this["last-3-blog-posts"],
+      function(req, res) {
+        res.sendPage();
+      }
+    ]
   }
 }

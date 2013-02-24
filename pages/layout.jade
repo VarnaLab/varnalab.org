@@ -1,0 +1,23 @@
+!!! 5
+html
+  head(prefix='og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# githubog: http://ogp.me/ns/fb/githubog#')
+    meta(http-equiv='Content-Type', content='text/html; charset=utf-8')
+    meta(name='viewport', content='width=device-width, initial-scale=1.0')
+    title VarnaLab
+    //
+       <link rel="icon" type="image/x-icon" href="/favicon.ico" /> 
+    link(href='/style.css', rel='stylesheet', type='text/css')
+  body
+    .content
+      .content-inner
+        .container
+          include ../page-partials/header
+          .row
+            .span9
+              block content
+            .span3
+              include ../page-partials/contactUsTeaser
+              include ../page-partials/membersOnlineTeaser
+              include ../page-partials/paypalButtonTeaser
+              include ../page-partials/foursquareTeaser
+          include ../page-partials/footer
