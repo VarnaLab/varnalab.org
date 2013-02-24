@@ -1,7 +1,7 @@
 {
   "Logger": {
     "source": "node_modules/organic-webcell/membrane/Logger",
-    "listenUncaughtExceptions": false,
+    "listenUncaughtExceptions": true,
     "prefixConsoleWithTimestamps": true
   },
   "HttpServer": {

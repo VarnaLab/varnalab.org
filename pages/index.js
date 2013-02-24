@@ -2,7 +2,10 @@ module.exports = function(config){
   return {
     "* *": this.version,
     "GET": [
-      this["last-3-blog-posts"],
+      this.getLast3Blogs,
+      this.blogsCount,
+      this.getUpcomingEvents,
+      this.eventsCount,
       function(req, res) {
         res.sendPage();
       }
