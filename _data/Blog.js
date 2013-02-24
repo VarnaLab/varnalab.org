@@ -18,7 +18,7 @@ Blog.prototype.populate = function(filepath, callback) {
     self.title = titleParts.shift().trim();
     self.date = titleParts.shift().trim();
     self.author = titleParts.shift().trim();
-    $html.find("h1").html(self.title);
+    $html.find("h1:first").remove();
 
     self.ingress = $html.find("p:first").html();
     $html.find("p:first").remove();
