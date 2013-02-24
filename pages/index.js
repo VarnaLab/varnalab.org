@@ -1,6 +1,11 @@
 module.exports = function(config){
   return {
-    "* *": this.version,
+    "* *": [
+      this.version,
+      this.whoisatvarnalab,
+      this.randomMember,
+      this.getFoursquareMayor
+    ], 
     "GET": [
       this.getLast3Blogs,
       this.blogsCount,

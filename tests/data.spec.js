@@ -13,4 +13,16 @@ describe("static data module", function(){
       next();
     })
   })
+  it("returns upcoming events", function(next){
+    data.upcomingEvents(function(err, events){
+      expect(events.length).toBe(3);
+      next();
+    })
+  })
+  it("returns member by name", function(next){
+    data.getMemberByName("Красимир Цонев", function(err, member){
+      expect(member.name).toBe("Красимир Цонев");
+      next();
+    })
+  })
 });

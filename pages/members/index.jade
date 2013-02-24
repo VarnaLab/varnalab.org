@@ -1,0 +1,16 @@
+extends ../layout
+
+block content
+  section
+    .row
+      - for(var i = 0; i<members.length; i++)
+        .span4
+          .section-item
+            h3
+              | #{members[i].name}
+            article
+              | !{members[i].content}
+            .section-nav
+              a.btn.pull-left(href='/members/#{members[i].name}') Прочети повече
+              .share-widget.pull-left share widget here
+              br.clear

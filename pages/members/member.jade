@@ -1,0 +1,32 @@
+extends ../layout
+
+block content
+  section
+    .section-item.member
+        h1 #{member.name}
+        hr
+        article
+          img.avatar.pull-left(src='/img/avatar.jpg', alt='avatar')
+          | !{member.content}
+          br.clear
+          hr
+          a(href='#')
+            img(src='/img/icon-fb.jpg', alt='')
+          a(href='#')
+            img(src='/img/icon-twitter.jpg', alt='')
+          a(href='#')
+            img(src='/img/icon-github.jpg', alt='')
+          a(href='#')
+            img(src='/img/icon-linkedin.jpg', alt='')
+          a(href='#')
+            img(src='/img/icon-coderbits.jpg', alt='')
+          hr
+        a.pull-right(href='/members')
+          i.icon-plus-sign
+          | Виж всички лабъри
+        .section-nav
+          a.btn.pull-left(href='#') Прочети повече
+          .share-widget.pull-left share widget here
+          br.clear
+      hr
+      br.clearfix

@@ -8,13 +8,12 @@ block content
           .section-item
             h3
               | #{blogs[i].title}
-              h3
-                h5.section-description
-                  | Публикувано на #{blogs[i].date} от
-                  a(href='#') #{blogs[i].author}
-                article
-                  | #{blogs[i].ingress} ...
-                .section-nav
-                  a.btn.pull-left(href='/blogs/#{blogs[i].title}') Прочети повече
-                  .share-widget.pull-left share widget here
-                  br.clear
+            h5.section-description
+              | Публикувано на #{blogs[i].date} от
+              a(href='#') #{blogs[i].author}
+            article
+              | #{blogs[i].ingress} ...
+            .section-nav
+              a.btn.pull-left(href='/blogs/#{blogs[i].title}') Прочети повече
+              .share-widget.pull-left share widget here
+              br.clear

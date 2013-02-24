@@ -5,6 +5,7 @@ var async = require("async");
 
 var Blog = require("./Blog");
 var Event = require("./Event");
+var Member = require("./Member");
 
 var Data = module.exports = {};
 
@@ -25,7 +26,7 @@ Data.loadMarkdownRecords = function(dir, Model, callback) {
 }
 
 Data.loadAllBlogs = function(callback) {
-  if(module.exports.blogs)
+  if(Data.blogs)
     return callback(null, Data.blogs);
 
   Data.loadMarkdownRecords(__dirname+"/blogs/**/*.md", Blog, function(err, records){
@@ -52,7 +53,7 @@ Data.getBlogByName = function(name, callback) {
 }
 
 Data.loadAllEvents = function(callback) {
-  if(module.exports.events)
+  if(Data.events)
     return callback(null, Data.events);
 
   Data.loadMarkdownRecords(__dirname+"/events/**/*.md", Event, function(err, records){
@@ -75,6 +76,26 @@ Data.getEventByName = function(name, callback) {
     if(err) return callback(err);
     callback(null, _.find(events, function(event){
       return event.title == name;
+    }));
+  });
+}
+
+Data.loadAllMembers = function(callback) {
+  if(Data.members)
+    return callback(null, Data.members);
+
+  Data.loadMarkdownRecords(__dirname+"/members/**/*.md", Member, function(err, records){
+    if(err) return callback(err);
+    Data.members = records;
+    callback(null, Data.members);
+  })
+}
+
+Data.getMemberByName = function(name, callback) {
+  Data.loadAllMembers(function(err, members){
+    if(err) return callback(err);
+    callback(null, _.find(members, function(event){
+      return event.name == name;
     }));
   });
 }
