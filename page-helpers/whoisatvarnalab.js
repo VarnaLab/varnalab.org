@@ -20,10 +20,16 @@ var Person = module.exports.Person = function(data){
 }
 
 var getOptions = {uri: "http://hq.varnalab.org/list.php", json:{}};
-request.get(getOptions, function(err, res, body){
-  if(err) return;
-  peopleOnline = _.map(body, function(item){ return new Person(item); });
-});
+
+var fetchData = function(){
+  request.get(getOptions, function(err, res, body){
+    if(err) return;
+    peopleOnline = _.map(body, function(item){ return new Person(item); });
+  });
+}
+
+setInterval(fetchData, 15*60*1000);
+fetchData();
 
 module.exports = function(req, res, next){
   req.whoisatvarnalab = peopleOnline;

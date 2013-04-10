@@ -2,15 +2,20 @@ var url = "https://api.foursquare.com/v2/venues/4fc51305e4b027e26d42a6b0?oauth_t
 var request = require("request");
 var mayor = null;
 
-request.get(url, function(err, res, body){
-  try {
-    body = JSON.parse(body);
-    var data = body.response.venue.mayor;
-    mayor = data.user.firstName+" "+data.user.lastName;
-  } catch(err) {
-    console.error(err.stack);
-  }
-})
+var fetchData = function(){
+  request.get(url, function(err, res, body){
+    try {
+      body = JSON.parse(body);
+      var data = body.response.venue.mayor;
+      mayor = data.user.firstName+" "+data.user.lastName;
+    } catch(err) {
+      console.error(err.stack);
+    }
+  })
+}
+
+setInterval(fetchData, 60*1000);
+fetchData();
 
 module.exports = function(req, res, next) {
   req.mayor = mayor;
