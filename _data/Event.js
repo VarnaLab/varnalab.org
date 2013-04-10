@@ -39,5 +39,5 @@ Event.prototype.createdNameOfDay = function(){
 }
 
 Event.prototype.createdTime = function(){
-  return moment(this.date, "YYYY-MM-DD").format("HH:mm");
+  return moment(this.date, "YYYY-MM-DD HH:mm").format("HH:mm");
 }

@@ -36,6 +36,7 @@
   },
   "Self": {
     "source": "node_modules/organic-cells/plasma/Self",
-    "tissue": "varnalab"
+    "tissue": "varnalab",
+    "surviveExceptions": true
   }
 }
