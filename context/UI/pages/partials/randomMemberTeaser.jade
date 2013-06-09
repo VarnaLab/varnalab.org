@@ -1,0 +1,24 @@
+- if(randomMember)
+  .teaser
+    strong Лабъри
+    hr
+    img.avatar.pull-left(src='/images/avatar.jpg', alt='avatar')
+    strong #{randomMember.name}
+    hr
+    | !{randomMember.content}
+    br.clear
+    hr
+    a(href='#')
+      img(src='/images/icon-fb.jpg', alt='')
+    a(href='#')
+      img(src='/images/icon-twitter.jpg', alt='')
+    a(href='#')
+      img(src='/images/icon-github.jpg', alt='')
+    a(href='#')
+      img(src='/images/icon-linkedin.jpg', alt='')
+    a(href='#')
+      img(src='/images/icon-coderbits.jpg', alt='')
+    hr
+    a(href='/members')
+      i.icon-plus-sign
+      | Виж всички лабъри

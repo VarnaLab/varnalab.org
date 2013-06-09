@@ -15,12 +15,16 @@
       "pretty": true
     }
   },
-  "ExpressHttpActions": {
-    "log": true,
-    "debug": true
+  "MountHttpHelpers": {
+    "dbname": "varnalab-dev"
   },
-  "ExpressHttpPages": {
-    "log": true,
-    "debug": true
+  "MountHttpActionRoutes": {
+    "log": true
+  },
+  "MountCodeRoutes": {
+    "log": true
+  },
+  "MountStyleRoutes": {
+    "log": true
   }
 }
