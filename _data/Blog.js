@@ -40,3 +40,8 @@ Blog.prototype.createdNameOfDay = function(){
 Blog.prototype.createdTime = function(){
   return moment(this.date, "YYYY-MM-DD").format("HH:mm");
 }
+
+// Method creates url from blog post title - no spaces and lowercased
+Blog.prototype.slugifiedUrl = function() {
+  return this.title.replace(/ /g, "-").toLowerCase();
+}

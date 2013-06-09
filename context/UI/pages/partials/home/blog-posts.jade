@@ -13,7 +13,7 @@ section
           article
             | #{blogs[0].ingress} ...
           .section-nav
-            a.btn.pull-left(href='/blogs/#{blogs[0].title}') Прочети повече
+            a.btn.pull-left(href='/blogs/#{blogs[0].slugifiedUrl()}') Прочети повече
             .share-widget.pull-left share widget here
             br.clear
   hr
@@ -30,7 +30,7 @@ section
               article
                 | #{blogs[i].ingress} ...
               .section-nav
-                a.btn.pull-left(href='/blogs/#{blogs[i].title}') Прочети повече
+                a.btn.pull-left(href='/blogs/#{blogs[i].slugifiedUrl()}') Прочети повече
                 .share-widget.pull-left share widget here
                 br.clear
   hr
