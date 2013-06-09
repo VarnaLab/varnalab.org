@@ -3,6 +3,12 @@ var _ = require("underscore");
 module.exports = function(config, httpServer){
   var plasma = httpServer;
   return function(req, res, next) {
+    res.result = function(data){
+      res.json({result: data});
+    }
+    res.error = function(msg){
+      res.send({result: msg}, 500);
+    }
     res.sendPage = function(path, data, statusCode){
       var renderChemical = _.extend({}, req, data?data:{}, {
         type: "RenderPage", 

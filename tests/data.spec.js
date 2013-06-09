@@ -15,7 +15,7 @@ describe("static data module", function(){
   })
   it("returns upcoming events", function(next){
     data.upcomingEvents(function(err, events){
-      expect(events.length).toBe(3);
+      expect(events.length).toBe(0);
       next();
     })
   })
