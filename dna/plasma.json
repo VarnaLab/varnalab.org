@@ -47,7 +47,8 @@
       },
       "target": {
         "targetsRoot": "/context/http/actions"
-      }
+      },
+      "models": "/context/models/server"
     },
     "target": {
       "targetExtname": ".js",

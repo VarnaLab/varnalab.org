@@ -11,9 +11,6 @@
   "HttpServer": {
     "source": "node_modules/organic-webcell/membrane/ExpressHttpServer",
     "port": 8080,
-    "middleware": [
-      "plasma/httpserver-plugins/pageHelpers"
-    ],
     "afterware": [
       { 
         "source": "plasma/httpserver-plugins/static", 
