@@ -20,7 +20,7 @@ module.exports = function(callback) {
     db.once("open", function(){
       modelBase.db = db;
       Cell.call(self, dna);
-      self.plasma.once("ExpressHttpActions", function(c){
+      self.plasma.once("HttpServer", function(c){
         console.log(("api running in CELL_MODE == "+process.env.CELL_MODE).blue);
         if(callback) callback();
       });

@@ -14,6 +14,9 @@ module.exports = function(config){
       function(req, res) {
         res.sendPage("index");
       }
-    ]
+    ],
+    "GET about": function(req, res) {
+      res.sendPage("about");
+    }
   }
 }
