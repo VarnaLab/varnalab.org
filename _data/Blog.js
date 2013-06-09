@@ -41,7 +41,10 @@ Blog.prototype.createdTime = function(){
   return moment(this.date, "YYYY-MM-DD").format("HH:mm");
 }
 
-// Method creates url from blog post title - no spaces and lowercased
+/**
+ * Method creates url from blog post title
+ * Allowed are latin, cyrillic letters, numbers, hyphen and underscore
+ */
 Blog.prototype.slugifiedUrl = function() {
-  return this.title.replace(/ /g, "-").toLowerCase();
+  return this.title.replace(/ /g, "-").replace(/[^a-zA-Z-а-я-А-Я-0-9-_]/g, '').toLowerCase();
 }
