@@ -1,7 +1,5 @@
 {
-  "ExpressHttpActions": {
-    "mongo": {
-      "dbname": "varnalab-test"
-    }
+  "MountHttpHelpers": {
+    "dbname": "varnalab-test"
   }
 }
