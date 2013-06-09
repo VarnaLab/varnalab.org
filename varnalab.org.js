@@ -8,7 +8,7 @@ var DNA = require("organic").DNA;
 
 var mongoose = require('mongoose');
 var mongojs = require("mongojs");
-var modelBase = require("./api/models/Base");
+var modelBase = require("./context/models/server/Base");
 
 process.env.CELL_MODE = process.env.NODE_ENV || process.env.CELL_MODE || "development";
 
@@ -16,7 +16,7 @@ module.exports = function(callback) {
   
   var self = this;
   var bootApp = function(){
-    var db = mongoose.createConnection('localhost', dna.plasma.ExpressHttpActions.mongo.dbname);
+    var db = mongoose.createConnection('localhost', dna.plasma.MountHttpHelpers.dbname);
     db.once("open", function(){
       modelBase.db = db;
       Cell.call(self, dna);
@@ -33,9 +33,9 @@ module.exports = function(callback) {
       dna.mergeBranchInRoot(process.env.CELL_MODE);
     
     if(process.env.CELL_MODE == "test" || argv.cleanDB) {
-      var connection = mongojs.connect(dna.plasma.ExpressHttpActions.mongo.dbname)
+      var connection = mongojs.connect(dna.plasma.MountHttpHelpers.dbname)
       connection.dropDatabase(function(){
-        console.log((dna.plasma.ExpressHttpActions.mongo.dbname+" is dropped").red);
+        console.log((dna.plasma.MountHttpHelpers.dbname+" is dropped").red);
         connection.close();
         bootApp();
       });
