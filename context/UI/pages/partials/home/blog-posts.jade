@@ -14,7 +14,7 @@ section
             | #{blogs[0].ingress} ...
           .section-nav
             a.btn.pull-left(href='/blogs/#{blogs[0].slugifiedUrl()}') Прочети повече
-            .share-widget.pull-left.fb-like(data-href="http://127.0.0.1:8080/blogs/#{blogs[0].slugifiedUrl()}", data-send="true", data-width="700", data-show-faces="false")
+            include ../sharer
             br.clear
   hr
   .row
@@ -31,7 +31,7 @@ section
                 | #{blogs[i].ingress} ...
               .section-nav
                 a.btn.pull-left(href='/blogs/#{blogs[i].slugifiedUrl()}') Прочети повече
-                .share-widget.pull-left.fb-like(data-href="http://127.0.0.1:8080/blogs/#{blogs[0].slugifiedUrl()}", data-send="false", data-width="200", data-show-faces="false")
+                include ../sharer
                 br.clear
   hr
   a.pull-right(href='/blogs')

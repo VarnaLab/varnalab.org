@@ -7,8 +7,12 @@ html
     //
        <link rel="icon" type="image/x-icon" href="/favicon.ico" /> 
     link(href='/bundle.css', rel='stylesheet', type='text/css')
+    script
+      var switchTo5x=false;
+    script(src="http://w.sharethis.com/button/buttons.js")
+    script
+      stLight.options({publisher: "828242f5-b208-42f3-ad5c-45847cbe235f", doNotHash: false, doNotCopy: false, hashAddressBar: false});
   body
-    #fb-root
     .content
       .content-inner
         .container
@@ -23,11 +27,3 @@ html
               include ./partials/paypalButtonTeaser
               include ./partials/foursquareTeaser
           include ./partials/footer
-    script
-      (function(d, s, id) {
-      var js, fjs = d.getElementsByTagName(s)[0];
-      if (d.getElementById(id)) return;
-      js = d.createElement(s); js.id = id;
-      js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=130871037117634";
-      fjs.parentNode.insertBefore(js, fjs);
-      }(document, 'script', 'facebook-jssdk'));
