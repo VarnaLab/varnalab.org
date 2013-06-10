@@ -21,18 +21,7 @@ section
     - for(var i = 1; i<blogs.length; i++)
       .span4
         .section-item
-          h3
-            | #{blogs[i].title}
-            h3
-              h5.section-description
-                | Публикувано на #{blogs[i].date} от&nbsp;
-                a(href='#') #{blogs[i].author}
-              article
-                | #{blogs[i].ingress} ...
-              .section-nav
-                a.btn.pull-left(href='/blogs/#{blogs[i].slugifiedUrl()}') Прочети повече
-                include ../sharer
-                br.clear
+          include ../blogPost
   hr
   a.pull-right(href='/blogs')
     i.icon-plus-sign
