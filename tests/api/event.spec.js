@@ -1,7 +1,6 @@
 describe("events", function(){
   var helpers = require("../helpers");
   var request = require("request");
-  require("jasmine-matchers");
 
   it("boots", function(next){
     helpers.boot(next);
@@ -91,7 +90,7 @@ describe("events", function(){
       json: event
     }, function(err, res, body){
       expect(body.result).toBeDefined();
-        request.get({
+      request.get({
         uri: helpers.apiendpoint+"/events",
         json: {}
       }, function(err, res, body){

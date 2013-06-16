@@ -9,6 +9,7 @@ var api;
 module.exports.apiendpoint = "http://localhost:8081/api";
 
 module.exports.boot = function(next){
+  require("jasmine-matchers");
   api = new Api(function(){
     console.log("api running".green);
     next();

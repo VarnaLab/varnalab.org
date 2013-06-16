@@ -1,7 +1,6 @@
 describe("members", function(){
   var helpers = require("../helpers");
   var request = require("request");
-  require("jasmine-matchers");
 
   it("boots", function(next){
     helpers.boot(next);

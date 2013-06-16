@@ -1,4 +1,5 @@
 var _ = require('underscore');
+
 module.exports = function(config){
   var Event = require(config.models+"/Event");
   return {
