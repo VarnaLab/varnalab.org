@@ -1,0 +1,14 @@
+extends layout
+
+block scripts
+  script(src="/register.app.js")
+
+block content
+  .row-fluid
+    .span12
+      form
+        input(type="email", name="email", required)
+        input(type="password", name='password', required)
+        input(type="submit")
+
+  

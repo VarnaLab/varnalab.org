@@ -30,3 +30,5 @@ for(var i = 0; i<files.length; i++) {
     helper[method] = helper[method].bind(module.exports);
   console.log("loaded helper:".green, name);
 }
+
+module.exports.shortText = 'asd';
