@@ -9,8 +9,7 @@ $(function(){
       email: $("input[name='email']").val(),
       password: $("input[name='password']").val()
     }).success(function(){
-      alert("THANK YOU");
-      console.log(newMember);
+      window.location = "/admin";
     }).error(function(res){
       var body = JSON.parse(res.responseText);
       if(body.result.code === 11000) /// duplicate key
