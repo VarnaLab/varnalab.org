@@ -10,6 +10,7 @@ module.exports = function(config){
     "POST /register": function(req, res){
       Member.create(req.body, function(err, member){
         if(err) return res.error(err);
+        req.session.userId = member._id;
         res.result(member);
       })
     },
