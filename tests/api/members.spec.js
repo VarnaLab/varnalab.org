@@ -16,7 +16,6 @@ describe("members", function(){
       expect(body.result._id).toBeDefined();
       user['id'] = body.result._id;
       expect(user['id']).toBe == body.result._id
-      expect(body.result.username).toBeDefined();
       next();
     })
   })
@@ -30,7 +29,6 @@ describe("members", function(){
     }, function(err, res, body){
       expect(body.result).toBeDefined();
       expect(body.result.message).toMatch('Validation failed');
-      expect(body.result.username).not.toBeDefined();
       next();
     })
   })
@@ -44,7 +42,6 @@ describe("members", function(){
     }, function(err, res, body){
       expect(body.result).toBeDefined();
       expect(body.result.errors.email.type).toMatch('invalid email address');
-      expect(body.result.username).not.toBeDefined();
       next();
     })
   })
@@ -65,7 +62,6 @@ describe("members", function(){
       json: {'email':'asdasd@asd.as', 'password': 'asdasd'}
     }, function(err, res, body){
       expect(body.result).toBeDefined();
-      expect(body.result.username).toBe = user.username
       next()
     })
   })
