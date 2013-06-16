@@ -8,12 +8,12 @@ section
         | #{blogs[0].title}
         h1
           h5.section-description
-            | Публикувано на #{blogs[0].date} от
+            | Публикувано на #{blogs[0].date} от&nbsp;
             a(href='#') #{blogs[0].author}
           article
             | #{blogs[0].ingress} ...
           .section-nav
-            a.btn.pull-left(href='/blogs/#{blogs[0].title}') Прочети повече
+            a.btn.pull-left(href='/blogs/#{blogs[0].slugifiedUrl()}') Прочети повече
             .share-widget.pull-left share widget here
             br.clear
   hr
@@ -25,12 +25,12 @@ section
             | #{blogs[i].title}
             h3
               h5.section-description
-                | Публикувано на #{blogs[i].date} от
+                | Публикувано на #{blogs[i].date} от&nbsp;
                 a(href='#') #{blogs[i].author}
               article
                 | #{blogs[i].ingress} ...
               .section-nav
-                a.btn.pull-left(href='/blogs/#{blogs[i].title}') Прочети повече
+                a.btn.pull-left(href='/blogs/#{blogs[i].slugifiedUrl()}') Прочети повече
                 .share-widget.pull-left share widget here
                 br.clear
   hr
