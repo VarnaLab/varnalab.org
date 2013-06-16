@@ -48,3 +48,7 @@ Blog.prototype.createdTime = function(){
 Blog.prototype.slugifiedUrl = function() {
   return this.title.replace(/ /g, "-").replace(/[^a-zA-Z-а-я-А-Я-0-9-_]/g, '').toLowerCase();
 }
+
+Blog.prototype.matchTitle = function(name){
+  return this.slugifiedUrl() == name
+}
