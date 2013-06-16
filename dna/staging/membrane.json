@@ -14,7 +14,14 @@
         "uploadDir": "uploads/",
         "keepExtensions": true
       },
-      "plasma/httpserver-plugins/pageHelpers"
+      "plasma/httpserver-plugins/pageHelpers",
+      { 
+        "source": "plasma/httpserver-plugins/static", 
+        "path": ".assets-store/staging/",
+        "index": false,
+        "passthrough": true,
+        "dot": true
+      }
     ]
   }
 }

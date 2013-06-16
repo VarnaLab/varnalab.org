@@ -1,0 +1,56 @@
+{
+  "plasma": {
+    "FindCodeBundles": {
+      "source" : "node_modules/organic-dirtransform/plasma/DirTransform",
+      "cwd": {
+        "transformFilesList": "/node_modules/organic-dirtransform/plasma/addons/sort-files-to-routes",
+        "transformFile": "/plasma/dirtransform-addons/bundlecode-to-file",
+        "addons": {
+          "urlizeFile": "/node_modules/organic-dirtransform/plasma/addons/urlize-file"
+        },
+        "target": {
+          "targetsRoot": "/context/UI/apps"
+        }
+      },
+      "target": {
+        "targetExtname": ".app.js",
+        "indexName": "index",
+        "assetsStore": ".assets-store/staging"
+      },
+      "reactOn": "StoreCodeBundles",
+      "emitResultAs": "StoreBundlesDone"
+    },
+    "FindStyleBundles": {
+      "source" : "node_modules/organic-dirtransform/plasma/DirTransform",
+      "cwd": {
+        "transformFilesList": "/node_modules/organic-dirtransform/plasma/addons/sort-files-to-routes",
+        "transformFile": "/plasma/dirtransform-addons/bundlestyle-to-file",
+        "addons": {
+          "urlizeFile": "/node_modules/organic-dirtransform/plasma/addons/urlize-file"
+        },
+        "target": {
+          "targetsRoot": "/context/UI/styles"
+        }
+      },
+      "target": {
+        "targetExtname": ".bundle.less",
+        "indexName": "index",
+        "assetsStore": ".assets-store/staging"
+      },
+      "reactOn": "StoreStyleBundles",
+      "emitResultAs": "StoreBundlesDone"
+    },
+    "BundleCode": {
+      "source": "node_modules/organic-bundlecode",
+      "uglify": true,
+      "plugins": ["plasma/bundlecode-plugins/Config", "plasma/bundlecode-plugins/Jade"]
+    },
+    "BundleStyle": {
+      "source": "node_modules/organic-webcell/plasma/BundleStyle",
+      "useCache": true,
+      "less": {
+        "compress": true
+      }
+    }
+  }
+}
