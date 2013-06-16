@@ -31,4 +31,17 @@ for(var i = 0; i<files.length; i++) {
   console.log("loaded helper:".green, name);
 }
 
-module.exports.shortText = 'asd';
+module.exports.getValidEvent = function(){
+  return {
+
+  }
+}
+module.exports.getValidMember = function(){
+  return {
+    'email':'asd@asd.as',
+    'password':'asdasd'
+  }
+}
+module.exports.getInvalidEmail = function(){
+  return 'asd';
+}
