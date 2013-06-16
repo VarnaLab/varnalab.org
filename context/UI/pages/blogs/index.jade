@@ -15,5 +15,5 @@ block content
               | #{blogs[i].ingress} ...
             .section-nav
               a.btn.pull-left(href='/blogs/#{blogs[i].title}') Прочети повече
-              .share-widget.pull-left share widget here
+              .share-widget.pull-left.fb-like(data-href="http://127.0.0.1:8080/blogs/#{blogs[i].slugifiedUrl()}", data-send="false", data-width="200", data-show-faces="false")
               br.clear

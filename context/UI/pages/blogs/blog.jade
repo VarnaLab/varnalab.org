@@ -12,8 +12,9 @@ block content
         h5.section-description Автор: #{blog.author}
         article!= blog.content
         .section-nav
-          a.btn.pull-left(href='#') Прочети повече
-          .share-widget.pull-left share widget here
+          //
+            a.btn.pull-left(href='#') Прочети повече
+          .share-widget.pull-left.fb-like(data-href="http://127.0.0.1:8080/blogs/#{blog.slugifiedUrl()}", data-send="true", data-width="700", data-show-faces="false")
           br.clear
       hr
       br.clearfix
