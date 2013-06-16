@@ -6,14 +6,15 @@ describe("blogposts", function() {
 		helpers.boot(next);
 	});
 
+	// fixture object that is used all over the test
 	var dummyBlogpost = {
 		title : helpers.shortText,
 		memberId : '51bb2b7909a992281a00000f',
 		content : helpers.longText,
-		date : 1371396166321
+		date : Date.now
 	};
 
-	it('does not add blogpost without title', function(next) {
+	it('add a blogpost', function(next) {
 		var post = dummyBlogpost;
 		post.title = null;
 
@@ -21,7 +22,15 @@ describe("blogposts", function() {
 			uri: helpers.apiendpoint + "/blogposts/add",
 			json: post
 		}, function(err, res, body) {
-			
+			console.log(body);
+			// expect(body.result).toBeDefined();
+			// expect(body.result._id).toBeDefined();
+			// expect(body.result._id).toMatch("^[0-9a-fA-F]{24}$");// A valid MongoId
+			// expect(body.result._id).toBe(post.memberId);
+
+			// expect(body.result.title).toBe(post.title);
+			// expect(body.result.content).toBe(post.content);
+			// expect(body.result.date).toBe(post.date);
 		});
 	});
 });
