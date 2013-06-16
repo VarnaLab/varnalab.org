@@ -47,7 +47,7 @@ Data.getBlogByName = function(name, callback) {
   Data.loadAllBlogs(function(err, blogs){
     if(err) return callback(err);
     callback(null, _.find(blogs, function(blog){
-      return blog.title == name;
+      return blog.matchTitle(name);
     }));
   });
 }
