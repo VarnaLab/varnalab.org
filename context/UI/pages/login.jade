@@ -1,0 +1,14 @@
+extends layout
+
+block scripts
+  script(src="/login.app.js")
+
+block content
+  section
+    form.login_form
+      fieldset
+        legend login
+        input(type="text", name="email", placeholder="email")
+        input(type="password", name="password", placeholder="password")
+        input(type="submit")
+
