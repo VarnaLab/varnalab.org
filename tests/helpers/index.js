@@ -31,17 +31,22 @@ for(var i = 0; i<files.length; i++) {
   console.log("loaded helper:".green, name);
 }
 
-module.exports.getValidEvent = function(){
-  return {
-
-  }
-}
 module.exports.getValidMember = function(){
   return {
     'email':'asd@asd.as',
     'password':'asdasd'
   }
 }
+
+module.exports.getValidEvent = function(){
+  return {
+    'title': 'happy birthday Varna Lab',
+    'description': 'lets drink some beer',
+    'startDateTime': new Date(),
+    'endDateTime': new Date()
+  }
+}
+
 module.exports.getInvalidEmail = function(){
   return 'asd';
 }
