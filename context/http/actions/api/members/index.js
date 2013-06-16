@@ -25,6 +25,8 @@ module.exports = function(config){
         return res.error('wrong parameters');
       Member.findOne({'email':req.body.email, 'password': req.body.password}, function(err, member){
         if(err) return res.error(err);
+        if(!member) return res.error("sorry dude wrong lab");
+        req.session.userId = member._id;
         res.result(member);
       });
     }
