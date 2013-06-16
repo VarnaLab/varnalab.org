@@ -1,9 +1,8 @@
-require("../client/vendor/jquery");
-require("../client/vendor/bootstrap.min");
-require("../client/vendor/bootstrap-fileupload.min");
+require("./vendor/jquery");
+require("./vendor/bootstrap.min");
 
-_ = require("../client/vendor/underscore");
-Backbone = require("../client/vendor/backbone");
+_ = require("./vendor/underscore");
+Backbone = require("./vendor/backbone");
 config = require("config");
 
 jadeCompile = function(path){
