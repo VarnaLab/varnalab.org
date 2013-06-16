@@ -1,12 +1,13 @@
 describe("members", function(){
   var helpers = require("../helpers");
   var request = require("request");
+  require("jasmine-matchers");
 
   it("boots", function(next){
     helpers.boot(next);
   })
 
-  var user={'username': 'asdasd', 'email':'asdasd@asd.as', 'password': 'asdasd'};
+  var user={'email':'asdasd@asd.as', 'password': 'asdasd'};
   it("registers new member", function(next){
     request.post({
       uri: helpers.apiendpoint+"/members/register",
@@ -21,7 +22,7 @@ describe("members", function(){
   })
 
   it("does not register a member without email", function(next){
-    var dummyUser = user;
+    var dummyUser = JSON.parse(JSON.stringify(user)); //clone the user
     dummyUser.email = null;
     request.post({
       uri: helpers.apiendpoint+"/members/register",
@@ -34,7 +35,7 @@ describe("members", function(){
   })
 
   it("does not register a member with wrong email", function(next){
-    var dummyUser = user;
+    var dummyUser = JSON.parse(JSON.stringify(user)); //clone the user
     dummyUser.email = helpers.shortText;
     request.post({
       uri: helpers.apiendpoint+"/members/register",
@@ -52,6 +53,7 @@ describe("members", function(){
       json: {}
     }, function(err, res, body){
       expect(body.result).toBeDefined();
+      expect(body.result).toBeArray();
       next();
     })
   })
@@ -59,20 +61,21 @@ describe("members", function(){
   it("login a member", function(next){
     request.post({
       uri: helpers.apiendpoint+"/members/login",
-      json: {'email':'asdasd@asd.as', 'password': 'asdasd'}
+      json: user
     }, function(err, res, body){
       expect(body.result).toBeDefined();
-      next()
+      expect(body.result.email).toMatch(user.email);
+      next();
     })
   })
 
   it("does not login without email", function(next){
     request.post({
       uri: helpers.apiendpoint+"/members/login",
-      json: {'password': 'asdasd'}
+      json: {'password': user.password}
     }, function(err, res, body){
       expect(err).toBeDefined();
-      //TODO
+      expect(body.result).toMatch('wrong parameters');
       next();
     })
   })
