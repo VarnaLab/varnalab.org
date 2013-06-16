@@ -23,9 +23,8 @@ module.exports = function(config){
     "POST /login": function(req, res){
       Member.findOne(req.body, function(err, member){
         if(err) return res.error(err);
-
         if(!member) return res.error("sorry dude wrong lab");
-
+        req.session.userId = member._id;
         res.result(member);
       });
     }
