@@ -21,6 +21,34 @@ describe("members", function(){
     })
   })
 
+  it("does not register a member without email", function(next){
+    var dummyUser = user;
+    dummyUser.email = null;
+    request.post({
+      uri: helpers.apiendpoint+"/members/register",
+      json: dummyUser
+    }, function(err, res, body){
+      expect(body.result).toBeDefined();
+      expect(body.result.message).toMatch('Validation failed');
+      expect(body.result.username).not.toBeDefined();
+      next();
+    })
+  })
+
+  it("does not register a member with wrong email", function(next){
+    var dummyUser = user;
+    dummyUser.email = helpers.shortText;
+    request.post({
+      uri: helpers.apiendpoint+"/members/register",
+      json: dummyUser
+    }, function(err, res, body){
+      expect(body.result).toBeDefined();
+      expect(body.result.errors.email.type).toMatch('invalid email address');
+      expect(body.result.username).not.toBeDefined();
+      next();
+    })
+  })
+
   it("list all members", function(next){
     request.get({
       uri: helpers.apiendpoint+"/members",
@@ -39,6 +67,17 @@ describe("members", function(){
       expect(body.result).toBeDefined();
       expect(body.result.username).toBe = user.username
       next()
+    })
+  })
+
+  it("does not login without email", function(next){
+    request.post({
+      uri: helpers.apiendpoint+"/members/login",
+      json: {'password': 'asdasd'}
+    }, function(err, res, body){
+      expect(err).toBeDefined();
+      //TODO
+      next();
     })
   })
 
