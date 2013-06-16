@@ -1,2 +1,2 @@
-require("../client/vendor/jquery");
-require("../client/vendor/bootstrap.min");
+require("./vendor/jquery");
+require("./vendor/bootstrap.min");
