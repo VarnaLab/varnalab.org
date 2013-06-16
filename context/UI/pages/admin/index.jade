@@ -1,0 +1,9 @@
+extends layout
+
+block content
+  - if(member.fullname)
+    span Welcome #{member.fullname} to Varnalab admin
+  - else
+    span Welcome 
+    a(href="#changeName", title="change your name") Unnamed 
+    span to Varnalab admin
