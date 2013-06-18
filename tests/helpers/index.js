@@ -9,6 +9,7 @@ var api;
 module.exports.apiendpoint = "http://localhost:8081/api";
 
 module.exports.boot = function(next){
+  require("jasmine-matchers");
   api = new Api(function(){
     console.log("api running".green);
     next();
@@ -31,4 +32,22 @@ for(var i = 0; i<files.length; i++) {
   console.log("loaded helper:".green, name);
 }
 
-module.exports.shortText = 'asd';
+module.exports.getValidMember = function(){
+  return {
+    'email':'asd@asd.as',
+    'password':'asdasd'
+  }
+}
+
+module.exports.getValidEvent = function(){
+  return {
+    'title': 'happy birthday Varna Lab',
+    'description': 'lets drink some beer',
+    'startDateTime': new Date(),
+    'endDateTime': new Date()
+  }
+}
+
+module.exports.getInvalidEmail = function(){
+  return 'asd';
+}
