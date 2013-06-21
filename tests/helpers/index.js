@@ -1,5 +1,6 @@
 var fs = require('fs');
 var path = require("path");
+var request = require('request');
 
 process.env.NODE_ENV = "test";
 process.env.CELL_MODE = "test";
@@ -32,6 +33,10 @@ for(var i = 0; i<files.length; i++) {
   console.log("loaded helper:".green, name);
 }
 
+module.exports.shortText = 'asd';
+module.exports.longText = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce in justo felis. Fusce ut iaculis urna. Sed suscipit dolor felis, non vehicula turpis mattis eget. Etiam a magna et quam ullamcorper placerat. Sed et elit egestas, fringilla ligula id, blandit magna. Pellentesque cursus eget turpis sit amet blandit. Suspendisse potenti. Suspendisse pharetra bibendum lectus in mattis. Duis sodales sit amet est ut condimentum.\
+Suspendisse in luctus lacus. Vivamus interdum sollicitudin arcu eu molestie. Cras a accumsan enim, eu interdum massa. Vivamus porttitor blandit nunc, non pulvinar ipsum mollis eget. Quisque ullamcorper consectetur dui, nec pulvinar lectus. Quisque interdum nulla sem, sit amet ultrices enim tempor sed. Praesent bibendum metus id nunc suscipit commodo. Nam feugiat lobortis magna sed tincidunt. Interdum et malesuada fames ac ante ipsum primis in faucibus. Ut nec velit mauris. Pellentesque vel lacinia nisl. Suspendisse velit sapien, porta sed ornare quis, pellentesque vel tellus. Phasellus nibh lorem, congue ac tortor euismod, convallis luctus lectus. Phasellus in lacus semper, semper elit congue, elementum orci. Phasellus commodo porta risus, eu pretium turpis venenatis ac.';
+
 module.exports.getValidMember = function(){
   return {
     'email':'asd@asd.as',
@@ -50,4 +55,13 @@ module.exports.getValidEvent = function(){
 
 module.exports.getInvalidEmail = function(){
   return 'asd';
+}
+
+module.exports.createUser = function(callback) {
+  request.post({
+    uri: module.exports.apiendpoint+"/members/register",
+    json: module.exports.getValidMember()
+  }, function(err, res, body){
+    callback(body.result);
+  });
 }
