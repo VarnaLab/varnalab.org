@@ -17,6 +17,7 @@
     "mongoose": "3.5.2",
     "mongoose-createdmodified": "0.0.2",
     "mongoose-validate": "latest",
+    "jasmine-matchers":"latest",
 
     "mongojs": "latest",
     "coffee-script": "latest",
