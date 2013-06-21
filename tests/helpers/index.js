@@ -1,5 +1,6 @@
 var fs = require('fs');
 var path = require("path");
+var request = require('request');
 
 process.env.NODE_ENV = "test";
 process.env.CELL_MODE = "test";
@@ -54,4 +55,13 @@ module.exports.getValidEvent = function(){
 
 module.exports.getInvalidEmail = function(){
   return 'asd';
+}
+
+module.exports.createUser = function(callback) {
+  request.post({
+    uri: module.exports.apiendpoint+"/members/register",
+    json: module.exports.getValidMember()
+  }, function(err, res, body){
+    callback(body.result);
+  });
 }
