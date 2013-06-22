@@ -4,7 +4,7 @@ validate = require('mongoose-validate');
 
 schema = mongoose.Schema({
 	title: {type: String, require: true},
-	member: { type: mongoose.Schema.ObjectId, ref: "Member" },
+	member: { type: mongoose.Schema.ObjectId, ref: "Member", require: true },
 	content: {type: String, require:true},
 	date: {type: Date, default: Date.now, require:true}
 });
