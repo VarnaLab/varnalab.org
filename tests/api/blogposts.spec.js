@@ -13,7 +13,7 @@ describe("blogposts", function() {
 					title : helpers.shortText,
 					member : dummyUser._id,
 					content : helpers.longText,
-					date : Date.now
+					date : Date.now()
 				};
 				next();
 			});
@@ -30,7 +30,6 @@ describe("blogposts", function() {
 		}, function(err, res, body){
 			expect(body.result).toBeDefined();
 			expect(body.result._id).toBeDefined();
-			expect(body.result._id).toBe == dummyUser._id;
 			next();
 		});
 	});
@@ -40,13 +39,15 @@ describe("blogposts", function() {
 			uri: helpers.apiendpoint + "/blogposts",
 			json: {}
 		}, function(err, res, body){
-			// console.log(body);
+			var blogDate = new Date(blog.date).getTime(),
+			resultBlogDate = new Date(body.result[0].date).getTime();
+
 			expect(body.result).toBeDefined();
 			expect(body.result).toBeArray();
-			expect(body.result.length).toBe === 1;
-			expect(body.result[0].title).toBe === blog.title;
-			expect(body.result[0].content).toBe === blog.content;
-			expect(body.result[0].date).toBe === blog.date;
+			expect(body.result.length).toBe(1);
+			expect(body.result[0].title).toBe(blog.title);
+			expect(body.result[0].content).toBe(blog.content);
+			expect(resultBlogDate).toBe(blogDate);
 			next();
 		})
 	});
@@ -59,7 +60,10 @@ describe("blogposts", function() {
 			uri:helpers.apiendpoint + '/blogposts/add',
 			json: blog
 		}, function (err, res, body) {
-			console.log(err, body);
+
+			expect(body.result.errors).toBeDefined();
+			expect(body.result.message).toBe('Validation failed');
+			expect(body.result.errors.member.message).toBe('Validator "required" failed for path member');
 			next();
 		});
 	});
