@@ -1,5 +1,6 @@
 h3
-  | #{blogs[i].title}
+  a.title-link(href='/blogs/#{blogs[i].slugifiedUrl()}')
+    | #{blogs[i].title}
 h5.section-description
   | Публикувано на #{blogs[i].date} от&nbsp;
   a(href='#go-to-author-page') #{blogs[i].author}

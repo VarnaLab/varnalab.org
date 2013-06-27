@@ -5,7 +5,8 @@ section
   - if(blogs[0])
     .section-item
       h1
-        | #{blogs[0].title}
+        a.title-link(href='/blogs/#{blogs[0].slugifiedUrl()}')
+          | #{blogs[0].title}
         h5.section-description
           | Публикувано на #{blogs[0].date} от&nbsp;
           a(href='#go-to-author-page') #{blogs[0].author}
