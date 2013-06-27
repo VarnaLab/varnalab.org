@@ -57,7 +57,7 @@ describe("blogposts", function() {
 		blog.member = null;
 
 		request.post({
-			uri:helpers.apiendpoint + '/blogposts/add',
+			uri:helpers.apiendpoint + "/blogposts/add",
 			json: blog
 		}, function (err, res, body) {
 
@@ -67,7 +67,38 @@ describe("blogposts", function() {
 			next();
 		});
 	});
-	
+
+	it('reject inserting blogpost with an invalid member', function (next) {
+		blog = dummyBlogpost;
+		blog.member = "test";
+
+		request.post({
+			uri:helpers.apiendpoint + "/blogposts/add",
+			json: blog
+		}, function (err, res, body) {
+
+			expect(body.result.errors).toBeDefined();
+			expect(body.result.message).toBe('Validation failed');
+			expect(body.result.errors.member.message).toBe('Validator "required" failed for path member');
+			next();
+		});
+	});
+
+	it('reject inserting blogpost without a valid content', function (next) {
+		blog = dummyBlogpost;
+		blog.content = null;
+
+		request.post({
+			uri : helpers.apiendpoint + "/blogposts/add",
+			json : blog
+		}, function (err, res, body) {
+			expect(body.result).toBeDefined();
+			expect(body.result.errors).toBeDefined();
+			expect(body.result.message).toBe('Validation failed');
+			expect(body.result.errors.content.message).toBe('Validator "required" failed for path content');
+			next();
+		});
+	});
 	it('kill', function (){ 
 		helpers.kill();
 	});
