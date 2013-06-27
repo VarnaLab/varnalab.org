@@ -6,16 +6,15 @@ section
     .section-item
       h1
         | #{blogs[0].title}
-        h1
-          h5.section-description
-            | Публикувано на #{blogs[0].date} от&nbsp;
-            a(href='#') #{blogs[0].author}
-          article
-            | #{blogs[0].ingress} ...
-          .section-nav
-            a.btn.pull-left(href='/blogs/#{blogs[0].slugifiedUrl()}') Прочети повече
-            include ../sharer
-            br.clear
+        h5.section-description
+          | Публикувано на #{blogs[0].date} от&nbsp;
+          a(href='#go-to-author-page') #{blogs[0].author}
+        article
+          | #{blogs[0].ingress} ...
+        .section-nav
+          a.btn.pull-left(href='/blogs/#{blogs[0].slugifiedUrl()}') Прочети повече
+          include ../sharer
+          br.clear
   hr
   .row
     - for(var i = 1; i<blogs.length; i++)

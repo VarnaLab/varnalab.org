@@ -11,11 +11,11 @@ section
         br
         | #{events[0].createdTime()}
       h2 #{events[0].title}
-      h5.section-description Автор: #{events[0].author}
+      .section-description Автор: #{events[0].author}
       article
         | #{events[0].ingress}
       .section-nav
-        a.btn.pull-left(href='#') Прочети повече
+        a.btn.pull-left(href='#read-more') Прочети повече
         .share-widget.pull-left share widget here
         br.clear
   - for(var i = 1; i<events.length; i++)
@@ -28,9 +28,9 @@ section
         br
         | #{events[i].createdTime()}
       h3 #{events[i].title}
-      h5.section-description Автор: #{events[i].author}
+      .section-description Автор: #{events[i].author}
       .section-nav
-        a.btn.pull-left(href='#') Прочети повече
+        a.btn.pull-left(href='#go-to-author-page') Прочети повече
         .share-widget.pull-left share widget here
         br.clear
   hr
