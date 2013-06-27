@@ -10,7 +10,7 @@
   },
   "HttpServer": {
     "source": "node_modules/organic-webcell/membrane/ExpressHttpServer",
-    "port": 8880,
+    "port": 8080,
     "afterware": [
       { 
         "source": "plasma/httpserver-plugins/static", 
