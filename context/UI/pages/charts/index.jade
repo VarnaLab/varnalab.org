@@ -1,0 +1,11 @@
+extends ../layout
+
+block content
+  form.form-inline()
+    label Month
+    select.input-small(name="month")
+    label From
+    input.input-small(type="text", name="from")
+    label To
+    input.input-small(type="text", name="to")
+    button Filter
