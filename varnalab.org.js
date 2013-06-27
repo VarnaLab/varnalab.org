@@ -21,7 +21,7 @@ module.exports = function(callback) {
       modelBase.db = db;
       Cell.call(self, dna);
       self.plasma.once("HttpServer", function(c){
-        console.log(("api running in CELL_MODE == "+process.env.CELL_MODE).blue);
+        console.log(("api running in CELL_MODE == "+process.env.CELL_MODE).blue+" on port "+dna.membrane.HttpServer.port);
         if(callback) callback();
       });
     });
@@ -31,6 +31,10 @@ module.exports = function(callback) {
   dna.loadDir(process.cwd()+"/dna", function(){
     if(dna[process.env.CELL_MODE])
       dna.mergeBranchInRoot(process.env.CELL_MODE);
+
+    // if PORT env variable is set, use that instead of what is defined in dna
+    if(process.env.PORT) 
+      dna.membrane.HttpServer.port = process.env.PORT;
     
     if(process.env.CELL_MODE == "test" || argv.cleanDB) {
       var connection = mongojs.connect(dna.plasma.MountHttpHelpers.dbname)
