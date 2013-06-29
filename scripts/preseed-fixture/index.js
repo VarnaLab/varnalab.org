@@ -21,10 +21,12 @@ dna.loadDir(__dirname+"/../../dna", function(){
   db.once("open", function(){
     modelBase.db = db;
 
-    require("./income")(incomeJSON, function(){
-      require("./outcome")(spendJSON, function(){
+    var imp = require('./user-and-spend');
+    imp.addUsers(incomeJSON, function(){
+      imp.addSpend(spendJSON, function(){
         console.log("DONE");
-      })
-    })
+        process.exit();
+      });
+    });
   });
 });

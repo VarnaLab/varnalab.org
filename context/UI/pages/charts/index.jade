@@ -1,11 +1,32 @@
+block scripts
+  
+  script(src='/charts.app.js', type='text/javascript', charset='utf-8')
+
 extends ../layout
 
+
 block content
-  form.form-inline()
-    label Month
-    select.input-small(name="month")
-    label From
+
+  nav.statistics
+    ul
+      li
+        a(href="#period") Период
+      li
+        a(href="#months") Всички месеци
+      li
+        a(href="#ranglist") Ранг листа
+
+
+  form.form-inline.filter-date
+    label От
     input.input-small(type="text", name="from")
-    label To
+    label До
     input.input-small(type="text", name="to")
-    button Filter
+    button ЖЕГА
+
+  #period
+  #months
+  #ranglist
+
+  //- onload
+  p.json(style="display:none;") #{JSON.stringify(data)}
