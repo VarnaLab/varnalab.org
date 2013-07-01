@@ -23,7 +23,7 @@ describe("blogposts", function() {
   });
 
   
-  it("add new blogpost", function(next){
+  it("adds new blogpost", function(next){
     var blog = _.clone(dummyBlogpost);
     request.post({
       uri: helpers.apiendpoint+"/blogposts/add",
@@ -35,7 +35,7 @@ describe("blogposts", function() {
     });
   });
 
-  it('list all blogposts', function(next) {
+  it('lists all blogposts', function(next) {
     request.get({
       uri: helpers.apiendpoint + "/blogposts",
       json: {}
@@ -53,7 +53,7 @@ describe("blogposts", function() {
     })
   });
 
-  it('reject inserting blogpost without a valid member', function (next) {
+  it('rejects inserting a blogpost without a valid member', function (next) {
     var blog = _.clone(dummyBlogpost);
     blog.member = null;
 
@@ -69,7 +69,7 @@ describe("blogposts", function() {
     });
   });
 
-  it('reject inserting blogpost with an invalid member', function (next) {
+  it('rejects inserting a blogpost with an invalid member', function (next) {
     var blog = _.clone(dummyBlogpost);
     blog.member = "test";
 
@@ -85,7 +85,7 @@ describe("blogposts", function() {
     });
   });
 
-  it('reject inserting blogpost without a valid content', function (next) {
+  it('rejects inserting a blogpost without a valid content', function (next) {
     var blog = _.clone(dummyBlogpost);
     blog.content = null;
 
@@ -102,7 +102,7 @@ describe("blogposts", function() {
     });
   });
 
-  it('reject inserting blogpost without a valid date', function(next) {
+  it('rejects inserting a blogpost without a date', function(next) {
     var blog = _.clone(dummyBlogpost);
     blog.date = null;
 
