@@ -46,7 +46,28 @@
         "urlizeFile": "/node_modules/organic-dirtransform/plasma/addons/urlize-file"
       },
       "target": {
-        "targetsRoot": "/context/http/actions"
+        "targetsRoot": "/context/http/api"
+      },
+      "models": "/context/models/server"
+    },
+    "target": {
+      "targetExtname": ".js",
+      "indexName": "index",
+      "mount": "/api"
+    },
+    "reactOn": "HttpServer",
+    "delayLoadIntoWithContextOn": "HttpHelpers"
+  },
+  "MountHttpPagesRoutes": {
+    "source" : "node_modules/organic-dirtransform/plasma/DirTransform",
+    "cwd": {
+      "transformFilesList": "/node_modules/organic-dirtransform/plasma/addons/sort-files-to-routes",
+      "transformFile": "/node_modules/organic-dirtransform/plasma/addons/routeHandling",
+      "addons": {
+        "urlizeFile": "/node_modules/organic-dirtransform/plasma/addons/urlize-file"
+      },
+      "target": {
+        "targetsRoot": "/context/http/pages"
       },
       "models": "/context/models/server"
     },
