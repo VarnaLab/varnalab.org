@@ -74,7 +74,7 @@ describe("members", function(){
       json: {'password': user.password}
     }, function(err, res, body){
       expect(err).toBeDefined();
-      expect(body.result).toMatch('wrong parameters');
+      expect(body.result.message).toMatch('Missing credentials');
       next();
     })
   })
