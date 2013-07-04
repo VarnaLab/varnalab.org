@@ -95,7 +95,7 @@
   },
   "Self": {
     "source": "node_modules/organic-cells/plasma/Self",
-    "tissue": "edukami",
+    "tissue": "varnalab",
     "surviveExceptions": true,
     "upgradeCommand": "git pull; npm install; node scripts/prebuild-assets.js"
   }

@@ -35,6 +35,8 @@ module.exports = function(callback) {
     // if PORT env variable is set, use that instead of what is defined in dna
     if(process.env.PORT) 
       dna.membrane.HttpServer.port = process.env.PORT;
+    if(process.env.NODEMON)
+      delete dna.plasma.Self;
     
     if(process.env.CELL_MODE == "test" || argv.cleanDB) {
       var connection = mongojs.connect(dna.plasma.MountHttpHelpers.dbname)
