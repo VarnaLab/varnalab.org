@@ -4,15 +4,15 @@
   "version": "0.0.9",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon varnalab.org.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "nodemon nodemon.varnalab.org.js",
+    "test": "jasmine-node tests"
   },
   "dependencies": {
     "organic": "0.0.13",
     "organic-webcell": "0.3.2",
     "organic-cells": "0.0.15",
     
-    "organic-dirtransform": "0.0.2",
+    "organic-dirtransform": "0.0.3",
     "organic-bundlecode": "0.0.2",
 
     "mongoose": "3.5.2",
