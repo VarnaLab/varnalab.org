@@ -18,6 +18,9 @@ section {
 			padding: 8px;
 		}
 	}
+    .title-link {
+        color: #333;
+    }
 	.section-description {
 		color: #616161;
 		font-size: 14px;
@@ -25,7 +28,7 @@ section {
 		font-weight: normal;
 	}
 	.section-nav {
-		width: 100%;
+        bottom: 0;
 		margin: 16px 0 0 0;
 		.share-widget {
 			margin: 5px 0 0 10px;
@@ -35,6 +38,15 @@ section {
 		clear: both;
 		margin: 0 0 30px 0;
 	}
+    .post-item {
+        position: relative;
+        height: 330px;
+        	.section-nav {
+		        width: 100%;
+                position: absolute;
+            }
+
+    }
 	.section-date {
 		border-left: solid 1px #000;
 		padding: 0 0 0 20px;

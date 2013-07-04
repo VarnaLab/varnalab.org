@@ -4,6 +4,7 @@
   "version": "0.0.9",
   "main": "index.js",
   "scripts": {
+    "start": "nodemon varnalab.org.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
@@ -38,7 +39,8 @@
     "request": "latest",
     "shelljs": "latest",
     "backbone": "latest",
-    "jquery": "latest"
+    "jquery": "latest",
+    "nodemon": "*"
   },
   "license": "MIT"
 }

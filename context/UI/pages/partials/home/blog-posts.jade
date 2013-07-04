@@ -1,27 +1,25 @@
 section
-  h3.section-title
+  .section-title
     span какво ново
     small общо #{blogsCount} статии
   - if(blogs[0])
     .section-item
       h1
-        | #{blogs[0].title}
-        h1
-          h5.section-description
-            | Публикувано на #{blogs[0].date} от&nbsp;
-            a(href='#') #{blogs[0].author}
-          article
-            | #{blogs[0].ingress} ...
-          .section-nav
-            a.btn.pull-left(href='/blogs/#{blogs[0].slugifiedUrl()}') Прочети повече
-            include ../sharer
-            br.clear
+        a.title-link(href='/blogs/#{blogs[0].slugifiedUrl()}')
+          | #{blogs[0].title}
+        h5.section-description
+          | Публикувано на #{blogs[0].date} от&nbsp;
+          a(href='#go-to-author-page') #{blogs[0].author}
+        article
+          | #{blogs[0].ingress} …
+        .section-nav
+          a.btn.pull-left(href='/blogs/#{blogs[0].slugifiedUrl()}') Прочети повече
+          br.clear
   hr
   .row
     - for(var i = 1; i<blogs.length; i++)
       .span4
-        .section-item
-          include ../blogPost
+        include ../blogPost
   hr
   a.pull-right(href='/blogs')
     i.icon-plus-sign
