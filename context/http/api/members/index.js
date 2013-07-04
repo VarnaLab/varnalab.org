@@ -20,15 +20,15 @@ module.exports = function(config){
         res.result(member);
       });
     },
-    "POST /login": function(req, res){
-      if(!(req.body.email&&req.body.password))
-        return res.error('wrong parameters');
-      Member.findOne({'email':req.body.email, 'password': req.body.password}, function(err, member){
-        if(err) return res.error(err);
-        if(!member) return res.error("sorry dude wrong lab");
-        req.session.userId = member._id;
-        res.result(member);
-      });
+    "POST /login": function(req, res, next) {
+      passport.authenticate('local', function(err, user, info){
+        if (err) { return next(err); }
+        if (!user) { return res.error(info); }
+        req.logIn(user, function(err) {
+          if (err) { return next(err); }
+          return res.result(user);
+        });
+      })(req, res, next)
     }
   }
 }

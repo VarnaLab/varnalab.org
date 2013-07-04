@@ -2,7 +2,9 @@ mongoose = require "mongoose"
 Base = require "./Base"
 
 schema = mongoose.Schema
-  memberId: { type: mongoose.Schema.ObjectId, ref: "Member" }
+  source : 
+    member: { type: mongoose.Schema.ObjectId, ref: "Member" }
+    fullname: String
   amount: Number
   creator: { type: mongoose.Schema.ObjectId, ref: "Member" }
 

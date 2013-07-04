@@ -18,7 +18,7 @@ $(function(){
 
     }).error(function(res){
       var body = JSON.parse(res.responseText);
-      alert(body.result);
+      alert(body.result.message);
     });
 
     return false;
