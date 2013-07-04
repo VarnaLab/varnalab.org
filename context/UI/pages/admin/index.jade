@@ -7,3 +7,7 @@ block content
     span Welcome 
     a(href="#changeName", title="change your name") Unnamed 
     span to Varnalab admin
+
+    #members-list
+      - for(var i = members.length-1; i>=0; i--)
+        include ./partials/member
