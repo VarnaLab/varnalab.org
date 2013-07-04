@@ -33,7 +33,9 @@
     "async": "*",
     "moment": "2.0.0",
     "st": "0.1.3",
-    "passport": "latest"
+
+    "passport": "latest",
+    "passport-local": "latest"
   },
   "devDependencies": {
     "jasmine-node": "latest",
