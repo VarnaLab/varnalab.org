@@ -21,6 +21,9 @@
   "MountHttpActionRoutes": {
     "log": true
   },
+  "MountHttpPagesRoutes": {
+    "log": true
+  },
   "MountCodeRoutes": {
     "log": true
   },
