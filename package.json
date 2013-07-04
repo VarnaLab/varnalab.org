@@ -4,8 +4,8 @@
   "version": "0.0.9",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon varnalab.org.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "nodemon nodemon.varnalab.org.js",
+    "test": "jasmine-node tests"
   },
   "dependencies": {
     "organic": "0.0.13",
