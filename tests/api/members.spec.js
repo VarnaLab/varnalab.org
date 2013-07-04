@@ -1,13 +1,12 @@
 describe("members", function(){
   var helpers = require("../helpers");
   var request = require("request");
-  require("jasmine-matchers");
 
   it("boots", function(next){
     helpers.boot(next);
   })
 
-  var user={'email':'asdasd@asd.as', 'password': 'asdasd'};
+  var user=helpers.getValidMember();
   it("registers new member", function(next){
     request.post({
       uri: helpers.apiendpoint+"/members/register",
@@ -22,7 +21,7 @@ describe("members", function(){
   })
 
   it("does not register a member without email", function(next){
-    var dummyUser = JSON.parse(JSON.stringify(user)); //clone the user
+    var dummyUser = helpers.getValidMember();
     dummyUser.email = null;
     request.post({
       uri: helpers.apiendpoint+"/members/register",
@@ -35,8 +34,8 @@ describe("members", function(){
   })
 
   it("does not register a member with wrong email", function(next){
-    var dummyUser = JSON.parse(JSON.stringify(user)); //clone the user
-    dummyUser.email = helpers.shortText;
+    var dummyUser = helpers.getValidMember();
+    dummyUser.email = helpers.getInvalidEmail();
     request.post({
       uri: helpers.apiendpoint+"/members/register",
       json: dummyUser
