@@ -53,6 +53,16 @@ module.exports.getValidEvent = function(){
   }
 }
 
+module.exports.getValidTransaction = function(){
+  return {
+    'from': 'VarnaLab',
+    'to': 'eon',
+    'reason': 'tok',
+    'amount': 146,
+    'forDate': new Date()
+  }
+}
+
 module.exports.getInvalidEmail = function(){
   return 'asd';
 }
