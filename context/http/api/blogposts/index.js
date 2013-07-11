@@ -8,15 +8,15 @@ module.exports = function (config) {
       });
     },
     'POST /add' : function (req, res) {
-      if (!/^[0-9a-fA-F]{24}$/i.test(req.body.member)) {
+      if (!/^[0-9a-fA-F]{24}$/i.test(req.body.creator)) {
         return res.error({
           message: 'Validation failed',
           name : 'ValidationError',
           errors : {
-            member : {
+            creator : {
               message : 'Invalid member id provided',
               name : 'ValidationError',
-              path : 'member',
+              path : 'creator',
               type : 'ObjectId'
             }
           }

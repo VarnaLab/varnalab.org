@@ -7,9 +7,9 @@ block content
         .span4
           .section-item
             h3
-              | #{members[i].name}
+              | #{members[i].name || "Unnamed"}
             article
-              | !{members[i].content}
+              | !{members[i].content || ""}
             .section-nav
               a.btn.pull-left(href='/members/#{members[i].name}') Прочети повече
               .share-widget.pull-left share widget here

@@ -12,7 +12,7 @@ describe("blogposts", function() {
         dummyUser = userData;
         dummyBlogpost = {
           title : helpers.shortText,
-          member : dummyUser._id,
+          creator : dummyUser._id,
           content : helpers.longText,
           date : Date.now()
         };
@@ -55,7 +55,7 @@ describe("blogposts", function() {
 
   it('rejects inserting a blogpost without a valid member', function (next) {
     var blog = _.clone(dummyBlogpost);
-    blog.member = null;
+    blog.creator = null;
 
     request.post({
       uri:helpers.apiendpoint + "/blogposts/add",
@@ -64,14 +64,14 @@ describe("blogposts", function() {
 
       expect(body.result.errors).toBeDefined();
       expect(body.result.message).toBe('Validation failed');
-      expect(body.result.errors.member.message).toBe('Invalid member id provided');
+      expect(body.result.errors.creator.message).toBe('Invalid member id provided');
       next();
     });
   });
 
   it('rejects inserting a blogpost with an invalid member', function (next) {
     var blog = _.clone(dummyBlogpost);
-    blog.member = "test";
+    blog.creator = "test";
 
     request.post({
       uri:helpers.apiendpoint + "/blogposts/add",
@@ -80,7 +80,7 @@ describe("blogposts", function() {
 
       expect(body.result.errors).toBeDefined();
       expect(body.result.message).toBe('Validation failed');
-      expect(body.result.errors.member.message).toBe('Invalid member id provided');
+      expect(body.result.errors.creator.message).toBe('Invalid member id provided');
       next();
     });
   });

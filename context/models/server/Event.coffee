@@ -8,4 +8,6 @@ schema = mongoose.Schema
   endDateTime: { type: Date }
   creator: { type: mongoose.Schema.ObjectId, ref: "Member" }
 
+Base.timestampify schema
+
 module.exports = Base.model "Event", schema
