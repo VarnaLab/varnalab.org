@@ -1,7 +1,7 @@
-var data = require("../../../_data");
+var Member = require("models/server/Member");
 
 module.exports = function(req, res, next) {
-  data.loadAllMembers(function(err, members){
+  Member.find({}, function(err, members){
     if(err) return next(err);
     req.members = members;
     next();

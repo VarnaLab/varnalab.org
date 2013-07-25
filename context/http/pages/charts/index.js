@@ -3,8 +3,8 @@ var moment = require('moment');
 
 
 module.exports = function(config){
-  var User = require(config.models+"/User");
-  var Spend = require(config.models+"/Spend");
+  /*var User = require(config.models+"/User");
+  var Spend = require(config.models+"/Spend");*/
 
   /*
    * Period

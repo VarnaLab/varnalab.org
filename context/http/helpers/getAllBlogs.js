@@ -1,7 +1,7 @@
-var data = require("../../../_data");
+var BlogPost = require("models/server/BlogPost");
 
 module.exports = function(req, res, next) {
-  data.loadAllBlogs(function(err, blogs){
+  BlogPost.find({}, function(err, blogs){
     if(err) return next(err);
     req.blogs = blogs;
     next();

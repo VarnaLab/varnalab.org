@@ -9,13 +9,13 @@ module.exports = function(config) {
     "GET": [
       this.getAllMembers,
       function(req, res) {
-        res.sendPage();
+        res.sendPage("members/index");
       }
     ],
     "GET /:member": [
       this.getMemberByName("member"),
       function(req, res) {
-        res.sendPage("members/index");
+        res.sendPage("members/member");
       }
     ]
   }

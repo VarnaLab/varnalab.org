@@ -7,6 +7,12 @@
     "source": "plasma/Jadify",
     "reactOn": "HttpServer"
   },
+  "Required": {
+    "source": "plasma/Required",
+    "target": {
+      "models": "/context/models"
+    }
+  },
   "BundleCode": {
     "source": "node_modules/organic-bundlecode",
     "useCache": true,

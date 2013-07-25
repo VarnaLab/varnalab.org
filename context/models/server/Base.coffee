@@ -11,6 +11,10 @@ module.exports.model = (name, schema) ->
 module.exports.timestampify = (schema) ->
   schema.plugin createdModifiedPlugin, {index: true}
 
+module.exports.attachGetUrlMethod = (schema) ->
+  schema.method "getUrl", () ->
+    [@created.getYear(), @created.getMonth(), @created.getDate(), @slug].join("/")
+
 orderSame = (data, order) ->
   result = []
   for i in order
