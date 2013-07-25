@@ -4,7 +4,13 @@ validate = require "mongoose-validate"
 crypto = require 'crypto'
 
 schema = mongoose.Schema
-  email: { type: String, required: true, validate: [validate.email, 'invalid email address'], index:{ unique: true } }
+  email: { 
+    type: String, 
+    required: true, 
+    validate: [validate.email, 'invalid email address'], 
+    index:{ unique: true } 
+  }
+  name: {type: String, index: { unique: true } }
   password: { type: String, required: true }
 
 schema.pre "save", (next) ->
@@ -19,5 +25,7 @@ schema.method 'validPassword', (value) ->
   md5sum = crypto.createHash('md5')
   md5sum.update value
   md5sum.digest('hex') == @password
+
+Base.timestampify schema
 
 module.exports = Base.model "Member", schema

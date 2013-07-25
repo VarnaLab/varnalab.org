@@ -7,7 +7,7 @@ module.exports = function(config){
       this.getFoursquareMayor
     ], 
     "GET": [
-      this.getLast3Blogs,
+      this.getBlogPosts.last(3),
       this.blogsCount,
       this.getUpcomingEvents,
       this.eventsCount,

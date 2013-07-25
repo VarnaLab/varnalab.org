@@ -9,4 +9,6 @@ schema = mongoose.Schema
   forDate: { type: Date,default: Date.now, required: true }
   creator: { type: mongoose.Schema.ObjectId, ref: "Member" }
 
+Base.timestampify schema
+
 module.exports = Base.model "Transaction", schema

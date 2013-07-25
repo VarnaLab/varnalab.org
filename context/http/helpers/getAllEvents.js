@@ -1,7 +1,7 @@
-var data = require("../../../_data");
+var Event = require("models/server/Event");
 
 module.exports = function(req, res, next) {
-  data.loadAllEvents(function(err, events){
+  Event.find({}, function(err, events){
     if(err) return next(err);
     req.events = events;
     next();

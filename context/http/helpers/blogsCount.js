@@ -1,8 +1,8 @@
-var data = require("../../../_data");
+var BlogPost = require("models/server/BlogPost");
 
 module.exports = function(req, res, next){
-  data.loadAllBlogs(function(err, blogs){
-    req.blogsCount = blogs.length;
+  BlogPost.count({}, function(err, count){
+    req.blogsCount = count;
     next();
   })
 }
