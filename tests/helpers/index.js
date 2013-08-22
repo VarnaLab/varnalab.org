@@ -1,6 +1,7 @@
 var fs = require('fs');
 var path = require("path");
 var request = require('request');
+var wrench = require("wrench");
 
 process.env.NODE_ENV = "test";
 process.env.CELL_MODE = "test";
@@ -11,15 +12,20 @@ module.exports.apiendpoint = "http://localhost:8081/api";
 
 module.exports.boot = function(next){
   require("jasmine-matchers");
-  api = new Api(function(){
-    console.log("api running".green);
-    next();
+  api = new Api();
+  api.plasma.on("HttpApiActions", function(){
+    if(fs.existsSync(path.join(process.cwd(),api.dna.uploads.path)))
+      wrench.rmdirSyncRecursive(path.join(process.cwd(),api.dna.uploads.path));
+    wrench.mkdirSyncRecursive(path.join(process.cwd(),api.dna.uploads.path));
+    console.log("cleaned uploads at "+path.join(process.cwd(),api.dna.uploads.path));
+    next()
   });
 }
 
-module.exports.kill = function(){
+module.exports.kill = function(next){
   api.kill();
-  console.log("api killed".green);
+  console.log("api killed");
+  next();
 }
 
 var files = fs.readdirSync(__dirname);

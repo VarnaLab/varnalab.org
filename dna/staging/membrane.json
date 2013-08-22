@@ -1,31 +1,5 @@
 {
   "HttpServer": {
-    "port": 9090,
-    "middleware": [
-      "node_modules/organic-webcell/membrane/expressMiddleware/cookieParser",
-      { 
-        "source": "node_modules/organic-webcell/membrane/expressMiddleware/handleMongoSession", 
-        "dbname": "varnalab-staging", 
-        "collection": "sessions",
-        "cookie_secret": "varnalab-staging" 
-      },
-      { 
-        "source": "node_modules/organic-webcell/membrane/expressMiddleware/bodyParser", 
-        "uploadDir": "uploads/",
-        "keepExtensions": true
-      },
-      {
-        "source": "plasma/httpserver-plugins/passport",
-        "model": "context/models/server/Member"
-      },
-      { 
-        "source": "plasma/httpserver-plugins/static", 
-        "path": ".assets-store/staging/",
-        "index": false,
-        "passthrough": true,
-        "dot": true
-      },
-      "plasma/httpserver-plugins/pageHelpers"
-    ]
+    "port": 9090
   }
 }

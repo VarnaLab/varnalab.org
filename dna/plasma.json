@@ -41,7 +41,7 @@
       "targetExtname": ".js",
       "indexName": "index"
     },
-    "reactOn": "HttpServer",
+    "reactOn": "Mongoose",
     "emitResultAs": "HttpHelpers"
   },
   "MountHttpActionRoutes": {
@@ -63,7 +63,8 @@
       "mount": "/api"
     },
     "reactOn": "HttpServer",
-    "delayLoadIntoWithContextOn": "HttpHelpers"
+    "delayLoadIntoWithContextOn": "HttpHelpers",
+    "emitResultAs": "HttpApiActions"
   },
   "MountHttpPagesRoutes": {
     "source" : "node_modules/organic-dirtransform/plasma/DirTransform",

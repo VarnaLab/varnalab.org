@@ -8,14 +8,12 @@
     "test": "jasmine-node tests"
   },
   "dependencies": {
-    "organic": "0.0.13",
-    "organic-webcell": "0.3.2",
-    "organic-cells": "0.0.15",
-    
-    "organic-dirtransform": "0.0.3",
-    "organic-bundlecode": "0.0.2",
+    "organic": "0.1.1",
+    "organic-webcell": "0.3.3",
+    "organic-cells": "0.0.16",
+    "organic-dirtransform": "0.0.4",
 
-    "mongoose": "3.5.2",
+    "mongoose": "3.6.17",
     "mongoose-createdmodified": "0.0.2",
     "mongoose-validate": "latest",
     "jasmine-matchers":"latest",
@@ -43,7 +41,8 @@
     "shelljs": "latest",
     "backbone": "latest",
     "jquery": "latest",
-    "nodemon": "*"
+    "nodemon": "*",
+    "wrench": "*"
   },
   "license": "MIT"
 }

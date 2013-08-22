@@ -2,11 +2,8 @@ mongoose = require "mongoose"
 
 createdModifiedPlugin = require("mongoose-createdmodified").createdModifiedPlugin
 
-module.exports.db = mongoose # mongoose db connection
-
 module.exports.model = (name, schema) ->
   mongoose.model name, schema
-  module.exports.db.model name
 
 module.exports.timestampify = (schema) ->
   schema.plugin createdModifiedPlugin, {index: true}

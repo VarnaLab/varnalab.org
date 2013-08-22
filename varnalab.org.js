@@ -1,56 +1,69 @@
 #!/usr/bin/env node
-var argv = require('optimist').argv;
 require('coffee-script')
 
 var util = require("util");
-var Cell = require("organic-webcell/WebCell");
+var _ = require("underscore");
 var DNA = require("organic").DNA;
+var Plasma = require("organic").Plasma;
+var Cell = require("organic").Cell;
 
-var mongoose = require('mongoose');
-var mongojs = require("mongojs");
-var modelBase = require("./context/models/server/Base");
+process.env.CELL_MODE = process.env.CELL_MODE || "development";
 
-process.env.CELL_MODE = process.env.NODE_ENV || process.env.CELL_MODE || "development";
-
-module.exports = function(callback) {
-  
-  var self = this;
-  var bootApp = function(){
-    var db = mongoose.createConnection('localhost', dna.plasma.MountHttpHelpers.dbname);
-    db.once("open", function(){
-      modelBase.db = db;
-      Cell.call(self, dna);
-      self.plasma.once("HttpServer", function(c){
-        console.log(("api running in CELL_MODE == "+process.env.CELL_MODE).blue+" on port "+dna.membrane.HttpServer.port);
-        if(callback) callback();
-      });
-    });
-  }
-
-  var dna = new DNA();
-  dna.loadDir(process.cwd()+"/dna", function(){
-    if(dna[process.env.CELL_MODE])
+var prepareDNA = function(dna){
+  // preselect cell dna based on its mode
+  if(dna[process.env.CELL_MODE])
       dna.mergeBranchInRoot(process.env.CELL_MODE);
 
-    // if PORT env variable is set, use that instead of what is defined in dna
-    if(process.env.PORT) 
-      dna.membrane.HttpServer.port = process.env.PORT;
-    if(process.env.NODEMON)
-      delete dna.plasma.Self;
-    
-    if(process.env.CELL_MODE == "test" || argv.cleanDB) {
-      var connection = mongojs.connect(dna.plasma.MountHttpHelpers.dbname)
-      connection.dropDatabase(function(){
-        console.log((dna.plasma.MountHttpHelpers.dbname+" is dropped").red);
-        connection.close();
-        bootApp();
-      });
-    } else 
-      bootApp();
+  // if PORT env variable is set, use that instead of what is defined in dna
+  if(process.env.PORT) 
+    dna.membrane.HttpServer.port = process.env.PORT;
+
+  if(process.env.NODEMON)
+    delete dna.plasma.Self;
+
+  // inject db name into session middleware
+  var sessionsMiddleware = _.find(dna.membrane.HttpServer.middleware, function(item){
+    return item.source && item.source.indexOf("handleMongoSession") !== -1;
+  })
+  if(sessionsMiddleware && dna.database)
+    sessionsMiddleware.dbname = dna.database.name;
+
+  // inject uploads path into body parser middleware
+  var bodyParserMiddleware = _.find(dna.membrane.HttpServer.middleware, function(item){
+    return item.source && item.source.indexOf("bodyParser") !== -1;
+  })
+  if(bodyParserMiddleware && dna.uploads)
+    bodyParserMiddleware.uploadDir = dna.uploads.path;
+
+  // inject database name into Mongoose organelle
+  if(dna.membrane.Mongoose && dna.database)
+    dna.membrane.Mongoose.database.name = dna.database.name;
+}
+
+module.exports = function() {
+  var self = this;
+
+  // plasma is required, so that tests can take back result chemicals
+  self.plasma = new Plasma(); 
+
+  // breaking the 'rules' due test-ability
+  this.dna = new DNA();
+
+  this.dna.loadDir(process.cwd()+"/dna", function(){
+
+    prepareDNA(self.dna);
+    Cell.call(self, self.dna); // initial Cell construction
+
+    self.plasma.emit({type: "build", branch: "membrane"}); // build membrane organelles
+    self.plasma.emit({type: "build", branch: "plasma"}); // build plasma organelles
   });
 }
 
 util.inherits(module.exports, Cell);
+
+module.exports.prototype.kill = function(){
+  this.plasma.emit("kill");
+}
 
 // start the cell if this file is not required
 if(!module.parent)
