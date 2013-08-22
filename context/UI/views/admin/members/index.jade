@@ -1,0 +1,7 @@
+.membersView
+  table.membersList
+    thead
+      tr: th Members
+    tbody
+      each member in collection.models
+        include ./member-item
