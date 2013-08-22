@@ -10,7 +10,8 @@
   "Required": {
     "source": "plasma/Required",
     "target": {
-      "models": "/context/models"
+      "models": "/context/models",
+      "views": "/context/UI/views"
     }
   },
   "BundleCode": {

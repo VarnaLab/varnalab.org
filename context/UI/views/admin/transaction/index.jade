@@ -1,0 +1,5 @@
+.transactionsView
+  include ./transaction-form
+  .transactionsList
+    each transaction in collection.models
+      include ./transaction-item

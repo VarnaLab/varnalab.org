@@ -6,7 +6,7 @@ schema = mongoose.Schema
   to: { type: String, required: true }
   reason: { type: String, required: true }
   amount: { type: Number, required: true }
-  forDate: { type: Date,default: Date.now, required: true }
+  forDate: { type: Date, default: Date.now }
   creator: { type: mongoose.Schema.ObjectId, ref: "Member" }
 
 Base.timestampify schema
