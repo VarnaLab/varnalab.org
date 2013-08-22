@@ -16,7 +16,7 @@ describe("site", function(){
     })
   })
 
-  it("stops", function(){
-    helpers.kill();
-  })
+  it('kill', function (next){ 
+    helpers.kill(next);
+  });
 })

@@ -27,7 +27,6 @@ describe("transactions", function(){
       uri: helpers.apiendpoint+"/transactions",
       json: {}
     }, function(err, res, body){
-      console.log(err);
       expect(body).toBeDefined();
       expect(body.result).toBeDefined();
       expect(body.result).toBeArray();
@@ -35,7 +34,7 @@ describe("transactions", function(){
     })
   });
 
-  it("stops", function(){
-    helpers.kill();
+  it('kill', function (next){ 
+    helpers.kill(next);
   });
 })
