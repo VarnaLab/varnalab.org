@@ -1,6 +1,6 @@
 require("./boot");
 
-var TransactionsView = require("views/admin/transaction")
+var TransactionsView = require("views/admin/transactions")
 var TransactionsCollection = require("models/client/TransactionsCollection");
 
 $(function(){
