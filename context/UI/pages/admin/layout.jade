@@ -6,15 +6,15 @@ html
     title VarnaLab Admin
     //
        <link rel="icon" type="image/x-icon" href="/favicon.ico" /> 
-    link(href='/bundle.css', rel='stylesheet', type='text/css')
-
+    link(href='/admin.bundle.css', rel='stylesheet', type='text/css')
+    script(src="/js/jade.js")
+    script(src="/admin.app.js")
     block scripts
-    
   body
     .content
       .content-inner
         .container
           include ./partials/header
           .row
-            .span9
-              block content
+            .span9.currentView
+              block currentView
