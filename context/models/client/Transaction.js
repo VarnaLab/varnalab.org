@@ -4,5 +4,12 @@ module.exports = require("./MongoModel").extend({
       return "/api/transactions/create";
     else
       return "/api/transactions/"+this.model.id;
+  },
+  validate: function(attrs){
+    var error = {};
+    if(!attrs.from) error.from = "missing";
+    if(!attrs.to) error.to = "missing"
+    if(!_.isEmpty(error))
+      return error;
   }
 })

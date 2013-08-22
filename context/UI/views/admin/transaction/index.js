@@ -16,13 +16,15 @@ module.exports = Backbone.View.extend({
     e.preventDefault();
     
     var model = new TransactionModel();
+    model.on("error", helpers.handleError)
+    model.on("invalid", helpers.handleError)
     model.on("sync", function(){
       this.collection.add(model);
       this.$(".form").html(this.transactionFormTemplate());
     }, this);
 
     var data = helpers.extractFormData(this.$(".form"));
-    model.save(data, {wait: true}).error(helpers.handleError)
+    model.save(data, {wait: true})
 
     return false;
   },

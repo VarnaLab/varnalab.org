@@ -8,6 +8,17 @@ module.exports.extractFormData = function(selector) {
   return attrs;
 }
 
-module.exports.handleError = function(err) {
-  console.log(err);
+module.exports.handleError = function(model, error) {
+  if(error.responseText) { // then it is validation error from server side
+    try {
+      error = JSON.parse(error.responseText);
+    } catch(err) {
+      error = {message: "Internal Server Error"}
+    }
+  }
+
+  if(_.isObject(error)) {
+    alert(JSON.stringify(error));
+  } else 
+    alert(error);
 }
