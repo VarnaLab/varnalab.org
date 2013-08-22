@@ -15,9 +15,6 @@
       "pretty": true
     }
   },
-  "MountHttpHelpers": {
-    "dbname": "varnalab-dev"
-  },
   "MountHttpActionRoutes": {
     "log": true
   },

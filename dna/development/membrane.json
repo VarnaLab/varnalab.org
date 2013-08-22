@@ -1,24 +1,5 @@
 {
   "HttpServer": {
-    "log": true,
-    "middleware": [
-      "node_modules/organic-webcell/membrane/expressMiddleware/cookieParser",
-      { 
-        "source": "node_modules/organic-webcell/membrane/expressMiddleware/handleMongoSession", 
-        "dbname": "varnalab-dev", 
-        "collection": "sessions",
-        "cookie_secret": "varnalab-dev" 
-      },
-      { 
-        "source": "node_modules/organic-webcell/membrane/expressMiddleware/bodyParser", 
-        "uploadDir": "uploads/",
-        "keepExtensions": true
-      },
-      {
-        "source": "plasma/httpserver-plugins/passport",
-        "model": "context/models/server/Member"
-      },
-      "plasma/httpserver-plugins/pageHelpers"
-    ]
+    "log": true
   }
 }

@@ -97,7 +97,7 @@ describe("blogposts", function() {
       expect(body.result).toBeDefined();
       expect(body.result.errors).toBeDefined();
       expect(body.result.message).toBe('Validation failed');
-      expect(body.result.errors.content.message).toBe('Validator "required" failed for path content');
+      expect(body.result.errors.content.message).toContain('Validator "required" failed');
       next();
     });
   });
@@ -113,12 +113,12 @@ describe("blogposts", function() {
       expect(body.result).toBeDefined();
       expect(body.result.errors).toBeDefined();
       expect(body.result.message).toBe('Validation failed');
-      expect(body.result.errors.date.message).toBe('Validator "required" failed for path date');
+      expect(body.result.errors.date.message).toContain('Validator "required" failed');
       next();
     });
   });
 
-  it('kill', function (){ 
-    helpers.kill();
+  it('kill', function (next){ 
+    helpers.kill(next);
   });
 });

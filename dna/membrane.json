@@ -8,9 +8,35 @@
     "source": "node_modules/organic-cells/membrane/Tissue",
     "bindTo": "varnalab"
   },
+  "Mongoose": {
+    "source": "plasma/Mongoose",
+    "database": {
+      "name": "@database.name"
+    },
+    "reactOn": "HttpServer"
+  },
   "HttpServer": {
     "source": "node_modules/organic-webcell/membrane/ExpressHttpServer",
     "port": 8080,
+    "middleware": [
+      "node_modules/organic-webcell/membrane/expressMiddleware/cookieParser",
+      { 
+        "source": "node_modules/organic-webcell/membrane/expressMiddleware/handleMongoSession", 
+        "dbname": "@database.name",
+        "collection": "sessions",
+        "cookie_secret": "varnalab" 
+      },
+      { 
+        "source": "node_modules/organic-webcell/membrane/expressMiddleware/bodyParser", 
+        "uploadDir": "@uploads.path",
+        "keepExtensions": true
+      },
+      {
+        "source": "plasma/httpserver-plugins/passport",
+        "model": "context/models/server/Member"
+      },
+      "plasma/httpserver-plugins/pageHelpers"
+    ],
     "afterware": [
       { 
         "source": "plasma/httpserver-plugins/static", 
