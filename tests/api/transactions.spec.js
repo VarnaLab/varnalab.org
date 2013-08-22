@@ -2,12 +2,13 @@ describe("transactions", function(){
   var helpers = require("../helpers");
   var request = require("request");
 
+  var user = helpers.getValidMember();
+  var transaction = helpers.getValidTransaction();
+  var createdTransaction;
+
   it("boots", function(next){
     helpers.boot(next);
   })
-
-  var user = helpers.getValidMember();
-  var transaction = helpers.getValidTransaction();
 
   it("creates new transaction", function(next){
     request.post({
@@ -17,7 +18,7 @@ describe("transactions", function(){
       expect(body).toBeDefined();
       expect(body.result).toBeDefined();
       expect(body.result._id).toBeDefined();
-      expect(transaction['id']).toBe == body.result._id
+      createdTransaction = body.result;
       next();
     })
   });
@@ -27,10 +28,37 @@ describe("transactions", function(){
       uri: helpers.apiendpoint+"/transactions",
       json: {}
     }, function(err, res, body){
-      console.log(err);
       expect(body).toBeDefined();
       expect(body.result).toBeDefined();
       expect(body.result).toBeArray();
+      expect(body.result.length).toBe(1);
+      next();
+    })
+  });
+
+  it("updates transaction", function(next){
+    request.put({
+      uri: helpers.apiendpoint+"/transactions/"+createdTransaction._id,
+      json: {
+        amount: 2
+      }
+    }, function(err, res, body){
+      expect(body).toBeDefined();
+      expect(body.result).toBeDefined();
+      expect(body.result.amount).toBe(2);
+      next();
+    })
+  });
+
+  it("deletes transaction", function(next){
+    request.del({
+      uri: helpers.apiendpoint+"/transactions/"+createdTransaction._id,
+      json: {}
+    }, function(err, res, body){
+      expect(body).toBeDefined();
+      expect(body.result).toBeDefined();
+      expect(body.result._id).toBe(createdTransaction._id);
+      expect(body.result.amount).toBe(2);
       next();
     })
   });

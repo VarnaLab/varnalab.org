@@ -33,7 +33,7 @@ module.exports = function(config){
       });
       
     },
-    "DELETE /remove": function(req, res){
+    "DELETE /:id": function(req, res){
       Transaction.findByIdAndRemove(req.params.id,req.body, function(err, transaction){
         if(err) return res.error(err);
         if(!transaction) return res.error("sorry dude");
