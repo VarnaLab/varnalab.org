@@ -23,6 +23,7 @@ $(function(){
       
       collection.fetch().success(function(){
         $(".currentView").empty().append(view.render().$el)  
+        view.postRender();
       })
     }
   })

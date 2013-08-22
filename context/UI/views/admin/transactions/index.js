@@ -38,5 +38,8 @@ module.exports = Backbone.View.extend({
       collection: this.collection
     }))
     return this;
+  },
+  postRender: function () {
+    this.$el.find(".transaction-from").chosen({});
   }
 })

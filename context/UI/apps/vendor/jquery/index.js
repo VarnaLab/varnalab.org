@@ -8,3 +8,4 @@ require("./jquery.bpopup.min");
 require("./jquery-center");
 require("./jquery-linkify.min");
 require("./jquery-mobile-detect.min");
+require("./chosen.jquery.min.js");
