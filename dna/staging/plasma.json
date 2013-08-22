@@ -1,6 +1,2 @@
 {
-  "HttpPostCommitHook": {
-    "source": "node_modules/organic-cells/plasma/HttpPostCommitHook",
-    "log": true
-  }
 }
