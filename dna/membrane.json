@@ -19,6 +19,13 @@
         "index": false,
         "passthrough": true
       },
+      { 
+        "source": "plasma/httpserver-plugins/static", 
+        "path": "/public",
+        "url": "/",
+        "index": false,
+        "passthrough": true
+      },
       "plasma/httpserver-plugins/show404",
       "node_modules/organic-webcell/membrane/expressMiddleware/gzip"
     ]
