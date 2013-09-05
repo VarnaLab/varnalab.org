@@ -105,22 +105,6 @@ describe("blogposts", function() {
     });
   });
 
-  it('rejects inserting a blogpost without a date', function(next) {
-    var blog = _.clone(dummyBlogpost);
-    blog.date = null;
-
-    request.post({
-      uri : helpers.apiendpoint + "/blogposts/add",
-      json : blog
-    }, function(err, res, body) {
-      expect(body.result).toBeDefined();
-      expect(body.result.errors).toBeDefined();
-      expect(body.result.message).toBe('Validation failed');
-      expect(body.result.errors.date.message).toContain('Validator "required" failed');
-      next();
-    });
-  });
-
   it('updates blog post', function(next){
     request.put({
       uri: helpers.apiendpoint+"/blogposts/"+createdBlogPost._id,
