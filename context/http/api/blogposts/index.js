@@ -31,13 +31,13 @@ module.exports = function (config) {
       });
     },
     'GET /:id' : function (req, res) {
-      BlogPost.findOne(req.params.id, function(err, blogpost) {
+      BlogPost.findById(req.params.id, function(err, blogpost) {
         if (err) return res.error(err);
         res.result(blogpost);
       });
     },
     "PUT /:id": function(req, res) {
-      BlogPost.findOne(req.params.id,function(err, blogpost){
+      BlogPost.findById(req.params.id,function(err, blogpost){
         if(err || !blogpost) return res.error(err || "not found");
         for(var key in req.body)
           blogpost[key] = req.body[key];
@@ -48,7 +48,7 @@ module.exports = function (config) {
       })
     },
     "DELETE /:id": function(req, res) {
-      BlogPost.findOneAndRemove(req.params.id, function(err, blogpost){
+      BlogPost.findByIdAndRemove(req.params.id, function(err, blogpost){
         if(err) return res.error(err);
         res.result(blogpost);
       })
