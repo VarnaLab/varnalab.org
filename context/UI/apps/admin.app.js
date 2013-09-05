@@ -6,6 +6,10 @@ var TransactionsCollection = require("models/client/TransactionsCollection");
 var MembersView = require("views/admin/members")
 var MembersCollection = require("models/client/MembersCollection")
 
+var BlogPostsCollection = require("models/client/BlogpostsCollection")
+var BlogPostsView = require("views/admin/blogposts")
+var EditBlogPostView = require("views/admin/blogposts/edit")
+
 $(function(){
   app = {}; // WARNING -> global variable
 
@@ -13,7 +17,9 @@ $(function(){
     routes: {
       "": "showIndex",
       "transactions": "showTransactions",
-      "members":"showMembers"
+      "members":"showMembers",
+      "blogposts": "showBlogposts",
+      "blogposts/edit/:id": "editBlogpost"
     },
     showIndex: function(){
 
@@ -40,6 +46,32 @@ $(function(){
         $(".currentView").empty().append(view.render().$el);  
       }).error(function(err){
         alert(err);
+      })
+    },
+    showBlogposts: function(){
+      var collection = new BlogPostsCollection();
+
+      var view = new BlogPostsView({
+        collection: collection
+      });
+
+      collection.fetch().success(function(){
+        $(".currentView").empty().append(view.render().$el);  
+      }).error(function(err){
+        alert(err);
+      })
+    },
+    editBlogpost: function(id){
+      var model = new BlogPostsCollection.prototype.model();
+      model.id = id;
+      var view = new EditBlogPostView({
+        model: model
+      });
+      model.fetch({
+        success: function(){
+          $(".currentView").empty().append(view.render().$el);  
+        },
+        error: alert
       })
     }
   })

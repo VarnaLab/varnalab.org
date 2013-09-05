@@ -1,0 +1,10 @@
+section Blog posts
+  button.js-newblogpost new blog post
+  table
+    thead
+      tr
+        th title
+        th creator
+    tbody
+      each model in collection.models
+        include ./blogpost-item
