@@ -37,9 +37,14 @@ module.exports = function (config) {
       });
     },
     "PUT /:id": function(req, res) {
-      BlogPost.findOneAndUpdate(req.params.id, req.body, function(err, blogpost){
-        if(err) return res.error(err);
-        res.result(blogpost);
+      BlogPost.findOne(req.params.id,function(err, blogpost){
+        if(err || !blogpost) return res.error(err || "not found");
+        for(var key in req.body)
+          blogpost[key] = req.body[key];
+        blogpost.save(function(err){
+          if(err) return res.error(err);
+          res.result(blogpost)
+        })
       })
     },
     "DELETE /:id": function(req, res) {

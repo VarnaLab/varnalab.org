@@ -1,5 +1,8 @@
 section Edit Blogpost
 input#title(type="text", value= model.get("title"))
+#created created: #{moment(model.get("created")).format("dddd, MMMM Do YYYY, h:mm:ss a")}
+#modified
+  include ./modified
 #editor
 button#save save
 textarea#content(style="display: none")!= model.get('content')

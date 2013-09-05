@@ -1,27 +1,38 @@
 module.exports = Backbone.View.extend({
   template: require("./index.jade"),
+  modifiedTemplate: require("./modified.jade"),
   
   events: {
     "click #save": "save"
   },
 
-  render: function(){
-    this.$el.html(this.template({
-      model: this.model
-    }));
-
-    return this;
-  },
-
   save: function(){
+    var self = this;
     this.model.save({
       title: this.$el.find("#title").val(),
       content: this.editor.exportFile()
     }, {
       success: function(){
         alert("done");
+        self.updateTimestamps();
       }
     })
+  },
+
+  updateTimestamps: function(){
+    this.$el.find("#modified").html(this.modifiedTemplate({
+      model: this.model,
+      moment: moment
+    }));
+  },
+
+  render: function(){
+    this.$el.html(this.template({
+      model: this.model,
+      moment: moment
+    }));
+
+    return this;
   },
 
   postRender: function(){

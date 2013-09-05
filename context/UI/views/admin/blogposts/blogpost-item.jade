@@ -1,7 +1,7 @@
 tr
   td= model.get("title")
   td= model.get("creator").name || model.get("creator").email
-  td= moment(model.get("date")).format("dddd, MMMM Do YYYY, h:mm:ss a")
+  td= moment(model.get("modified")).format("dddd, MMMM Do YYYY, h:mm:ss a")
   td
     button.js-edit(data-id= model.id) edit
     button.js-remove(data-id= model.id) X
