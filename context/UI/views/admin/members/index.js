@@ -1,10 +1,11 @@
 var MemberModel = require("models/client/Member");
+var MemberProfileView = require("./member/index.js")
 
 module.exports = Backbone.View.extend({
   template: require("./index.jade"),
   
   events: {
-    "submit .form": "submit"
+    "click .memberProfile": "showMember"
   },
   
   render: function(){
@@ -12,5 +13,12 @@ module.exports = Backbone.View.extend({
       collection: this.collection
     }))
     return this;
+  },
+  showMember: function(){
+    var model = new MemberModel();
+    var view = new MemberProfileView({
+      model: model
+    })
+    $(".currentView").empty().append(view.render().$el) ;
   }
 })

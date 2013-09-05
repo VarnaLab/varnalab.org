@@ -1,7 +1,10 @@
 .membersView
   table.membersList
+    caption Varna Lab Members
     thead
-      tr: th Members
+      tr
+        th Email
+        th Name
     tbody
       each member in collection.models
         include ./member-item
