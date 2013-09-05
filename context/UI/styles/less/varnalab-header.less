@@ -21,10 +21,9 @@
 				padding: 4px 5px;
 				color: #000;
 				font-size: 18px;
-				em{
-					display: block;
-					height: 60px;
-
+				em {
+                    display: block;
+                    height: 60px;
 				}
 				span{
 					.transition(all 400ms);
@@ -72,9 +71,9 @@
 		}
 		.nav li a {
 			height: auto;
-			em {
-				display: none;
-			}
+            em {
+                display: none !important;
+		    }
 		}
 	}
 }
@@ -85,4 +84,23 @@
 			float: none;
 		}
 	}
+}
+
+.vl-branding {
+    max-width: 120px;
+}
+
+@media (max-width: 977px) {
+    .vl-main-nav {
+        max-width: 580px;
+    }
+}
+
+@media (max-width: 767px) {
+    .vl-branding {
+        float: left;
+    }
+    .vl-main-nav {
+        max-width: 500px;
+    }
 }
