@@ -30,7 +30,7 @@ module.exports = function (config) {
         res.result(blogpost);
       });
     },
-    'POST /:id' : function (req, res) {
+    'GET /:id' : function (req, res) {
       BlogPost.findOne(req.params.id, function(err, blogpost) {
         if (err) return res.error(err);
         res.result(blogpost);
