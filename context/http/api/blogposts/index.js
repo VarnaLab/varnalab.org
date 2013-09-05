@@ -32,8 +32,18 @@ module.exports = function (config) {
         if (err) return res.error(err);
         res.result(blogpost);
       });
+    },
+    "PUT /:id": function(req, res) {
+      BlogPost.findOneAndUpdate(req.params.id, req.body, function(err, blogpost){
+        if(err) return res.error(err);
+        res.result(blogpost);
+      })
+    },
+    "DELETE /:id": function(req, res) {
+      BlogPost.findOneAndRemove(req.params.id, function(err, blogpost){
+        if(err) return res.error(err);
+        res.result(blogpost);
+      })
     }
-    //@todo PUT request ?
-    //@todo DELETE request ?
   }
 }

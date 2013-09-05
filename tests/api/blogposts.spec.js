@@ -5,6 +5,8 @@ describe("blogposts", function() {
   var dummyUser;
   // fixture object that is used all over the test
   var dummyBlogpost;
+  // first created blog post, used in update & delete tests
+  var createdBlogPost;
 
   it('boots', function(next) {
     helpers.boot(function() {
@@ -31,6 +33,7 @@ describe("blogposts", function() {
     }, function(err, res, body){
       expect(body.result).toBeDefined();
       expect(body.result._id).toBeDefined();
+      createdBlogPost = body.result;
       next();
     });
   });
@@ -117,6 +120,36 @@ describe("blogposts", function() {
       next();
     });
   });
+
+  it('updates blog post', function(next){
+    request.put({
+      uri: helpers.apiendpoint+"/blogposts/"+createdBlogPost._id,
+      json: {
+        title: "updated blog"
+      }
+    }, function(err, res, body){
+      expect(body.result.title).toBe("updated blog");
+      next();
+    })
+  })
+
+  it('removes blog post', function(next){
+    request.del({
+      uri: helpers.apiendpoint+"/blogposts/"+createdBlogPost._id,
+      json: {}
+    }, function(err, res, body){
+      expect(body.result.title).toBe("updated blog");
+
+      // check again is the blog post present in listing
+      request.get({
+        uri: helpers.apiendpoint + "/blogposts",
+        json: {}
+      }, function(err, res, body){
+        expect(body.result.length).toBe(0);
+        next();
+      });
+    })
+  })
 
   it('kill', function (next){ 
     helpers.kill(next);
