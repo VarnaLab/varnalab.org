@@ -2,13 +2,13 @@ var BlogPost = require("models/server/BlogPost");
 
 module.exports.byFullUrl = function(req, res, next) {
   var pattern = {
-    date: {
-      $gte: new Date(req.params.year, req.params.month, req.params.date),
-      $lt: new Date(req.params.year, req.params.month, req.params.date+1),
+    created: {
+      $gte: new Date(parseInt(req.params.year), parseInt(req.params.month), parseInt(req.params.date)),
+      $lt: new Date(parseInt(req.params.year), parseInt(req.params.month), parseInt(req.params.date)+1),
     },
     slug: req.params.slug
   }
-  BlogPost.find(pattern, function(err, blog){
+  BlogPost.findOne(pattern, function(err, blog){
     if(err) return next(err);
     req.blog = blog;
     next();

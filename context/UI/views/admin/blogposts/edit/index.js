@@ -6,11 +6,20 @@ module.exports = Backbone.View.extend({
     "click #save": "save"
   },
 
+  getSlugValue: function(){
+    var slugVal = this.$el.find("#slug").val();
+    if(slugVal.length == 0)
+      return this.$el.find("#title").val().split(" ").join("-");
+    else
+      return slugVal
+  },
+
   save: function(){
     var self = this;
     this.model.save({
       title: this.$el.find("#title").val(),
-      content: this.editor.exportFile()
+      content: this.editor.exportFile(),
+      slug: this.getSlugValue()
     }, {
       success: function(){
         alert("done");
