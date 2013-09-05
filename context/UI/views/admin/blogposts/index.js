@@ -30,7 +30,7 @@ module.exports = Backbone.View.extend({
     }
   },
 
-  editBlogPost: function(){
+  editBlogPost: function(e){
     e.preventDefault();
     var id = $(e.currentTarget).attr("data-id")
     app.router.navigate("blogposts/edit/"+id, true);

@@ -10,6 +10,8 @@ var BlogPostsCollection = require("models/client/BlogpostsCollection")
 var BlogPostsView = require("views/admin/blogposts")
 var EditBlogPostView = require("views/admin/blogposts/edit")
 
+var EpicEditor = require("./vendor/epiceditor");
+
 $(function(){
   app = {}; // WARNING -> global variable
 
@@ -70,6 +72,7 @@ $(function(){
       model.fetch({
         success: function(){
           $(".currentView").empty().append(view.render().$el);  
+          view.postRender();
         },
         error: alert
       })

@@ -1,1 +1,5 @@
 section Edit Blogpost
+input#title(type="text", value= model.get("title"))
+#editor
+button#save save
+textarea#content(style="display: none")!= model.get('content')
