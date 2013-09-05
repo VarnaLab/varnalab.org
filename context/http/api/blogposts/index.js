@@ -8,6 +8,9 @@ module.exports = function (config) {
       });
     },
     'POST /add' : function (req, res) {
+      if(!req.body.creator)
+        req.body.creator = req.session.userId;
+      
       if (!/^[0-9a-fA-F]{24}$/i.test(req.body.creator)) {
         return res.error({
           message: 'Validation failed',
