@@ -10,7 +10,7 @@ schema = mongoose.Schema
     validate: [validate.email, 'invalid email address'], 
     index:{ unique: true } 
   }
-  name: {type: String, index: { unique: true } }
+  name: {type: String }
   password: { type: String, required: true }
 
 schema.pre "save", (next) ->
