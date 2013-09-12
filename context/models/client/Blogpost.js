@@ -3,6 +3,6 @@ module.exports = require("./MongoModel").extend({
     if(this.isNew())
       return "/api/blogposts/add";
     else
-      return "/api/blogposts";
+      return "/api/blogposts/"+this.id;
   }
 })

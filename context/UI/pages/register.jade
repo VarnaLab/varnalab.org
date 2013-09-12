@@ -4,11 +4,11 @@ block scripts
   script(src="/register.app.js")
 
 block content
-  .row-fluid
-    .span12
-      form
-        input(type="email", name="email", required)
-        input(type="password", name='password', required)
-        input(type="submit")
-
+  section
+    form.login_form
+      fieldset
+        legend register
+        input(type="text", name="email", placeholder="email")
+        input(type="password", name="password", placeholder="password")
+        input(type="submit", value="register")
   

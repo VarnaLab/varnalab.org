@@ -15,35 +15,36 @@
 
     "mongoose": "3.6.17",
     "mongoose-createdmodified": "0.0.2",
-    "mongoose-validate": "latest",
-    "jasmine-matchers":"latest",
+    "mongoose-validate": "0.0.5",
+    "jasmine-matchers":"0.2.2",
 
-    "mongojs": "latest",
-    "coffee-script": "latest",
-    "optimist": "latest",
-    "underscore": "latest",
-    "async": "latest",
-    "moment": "latest",
-    "jade" : "latest",
+    "mongojs": "0.9.4",
+    "coffee-script": "1.6.3",
+    "optimist": "0.6.0",
+    "underscore": "1.5.1",
+    "jade" : "0.35.0",
     "node-markdown": "0.1.1",
     "jquery": "1.8.3",
     "glob": "3.1.14",
-    "async": "*",
+    "async": "0.2.9",
     "moment": "2.0.0",
     "st": "0.1.3",
 
-    "passport": "latest",
-    "passport-local": "latest"
+
+    "marked": "0.2.9",
+
+    "passport": "0.1.17",
+    "passport-local": "0.1.6"
   },
   "devDependencies": {
-    "jasmine-node": "latest",
+    "jasmine-node": "1.11.0",
     "Faker": "latest",
-    "request": "latest",
-    "shelljs": "latest",
-    "backbone": "latest",
-    "jquery": "latest",
-    "nodemon": "*",
-    "wrench": "*"
+    "request": "2.27.0",
+    "shelljs": "0.2.5",
+    "backbone": "1.0.0",
+    "jquery": "1.8.3",
+    "nodemon": "0.7.8",
+    "wrench": "1.5.1"
   },
   "license": "MIT"
 }

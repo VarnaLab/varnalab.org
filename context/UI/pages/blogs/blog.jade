@@ -9,8 +9,8 @@ block content
           br
           | #{blog.createdTime()}
         h2 #{blog.title}
-        h5.section-description Автор: #{blog.author}
-        article!= blog.content
+        h5.section-description Автор: #{blog.creator.name}
+        article!= blog.htmlContent()
         .section-nav
           include ../partials/sharer
           #disqus_thread
