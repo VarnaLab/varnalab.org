@@ -2,6 +2,7 @@ var fs = require('fs');
 var path = require("path");
 var request = require('request');
 var wrench = require("wrench");
+var Faker = require('Faker');
 
 process.env.NODE_ENV = "test";
 process.env.CELL_MODE = "test";
@@ -45,7 +46,7 @@ Suspendisse in luctus lacus. Vivamus interdum sollicitudin arcu eu molestie. Cra
 
 module.exports.getValidMember = function(){
   return {
-    'email':'asd@asd.as',
+    'email':Faker.Internet.email(),
     'password':'asdasd'
   }
 }
@@ -78,6 +79,9 @@ module.exports.createUser = function(callback) {
     uri: module.exports.apiendpoint+"/members/register",
     json: module.exports.getValidMember()
   }, function(err, res, body){
+    expect(err).toBeNull();
+    expect(body.result).toBeDefined();
+    if(err) return callback(err);
     callback(body.result);
   });
 }

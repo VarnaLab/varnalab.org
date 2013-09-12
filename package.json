@@ -37,6 +37,7 @@
   },
   "devDependencies": {
     "jasmine-node": "latest",
+    "Faker": "latest",
     "request": "latest",
     "shelljs": "latest",
     "backbone": "latest",
