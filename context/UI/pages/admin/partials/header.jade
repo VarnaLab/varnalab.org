@@ -1,16 +1,31 @@
-header.row
-  .span2
+header.row-fluid.vl-page-header
+  h1.span2.vl-branding
     a(href='/')
       img(src='/images/logo.png', alt='VarnaLab')
-  .span10
-    ul.nav.nav-pills.pull-right
+  nav.span10.pull-right.vl-main-nav
+    ul.nav.nav-pills
       li
-        a(href='/', title='Site') Site
+        a(href='/admin', title='Админ')
+          em
+            img(src='/images/nav-button-admin.png', alt='Админ')
+          span Админ
       li
-        a(href='#members', title='Members') Members
+        a(href='#members', title='Лабъри')
+          em
+            img(src='/images/nav-button-members.png', alt='Лабъри')
+          span Лабъри
       li
-        a(href='#blogposts', title='Blogs') Blogs
+        a(href='#blogposts', title='Блог')
+          em
+            img(src='/images/nav-button-blog.png', alt='Блог')
+          span Блог
       li
-        a(href='/', title='Events') Events
+        a(href='#events', title='Събития')
+          em
+            img(src='/images/nav-button-calendar.png', alt='Събития')
+          span Събития
       li
-        a(href='#transactions', title='Events') Transactions
+        a(href='#transactions', title='Плащания')
+          em
+            img(src='/images/nav-button-transactions.png', alt='Плащания')
+          span Плащания
