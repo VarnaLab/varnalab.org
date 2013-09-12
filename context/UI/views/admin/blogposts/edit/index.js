@@ -18,7 +18,8 @@ module.exports = Backbone.View.extend({
     var self = this;
     this.model.save({
       title: this.$el.find("#title").val(),
-      content: this.editor.exportFile(),
+      content: this.content.exportFile(),
+      ingress: this.ingress.exportFile(),
       slug: this.getSlugValue()
     }, {
       success: function(){
@@ -45,12 +46,21 @@ module.exports = Backbone.View.extend({
   },
 
   postRender: function(){
-    this.editor = new EpicEditor({
-      container: "editor",
-      textarea: "content",
+    this.content = new EpicEditor({
+      container: "content",
+      textarea: "contentData",
       basePath: "/css",
-      autogrow: true
+      autogrow: true,
+      clientSideStorage: false
     })
-    this.editor.load();
+    this.ingress = new EpicEditor({
+      container: "ingress",
+      textarea: "ingressData",
+      basePath: "/css",
+      autogrow: true,
+      clientSideStorage: false
+    })
+    this.content.load();
+    this.ingress.load();
   }
 })

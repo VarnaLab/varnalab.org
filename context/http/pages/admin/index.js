@@ -4,21 +4,9 @@ module.exports = function(config){
 
   return {
     "GET": function(req, res) {
-      if(!req.session.userId)
+      if(!req.session.passport.user)
         return res.sendPage("403", 403);
-
-      Member.find({}, function(err, members){
-        if(err) return res.error(err);
-
-        var member = _.find(members, function(member){
-          return member._id == req.session.userId
-        });
-
-        req.member = member;
-        req.members = members;
-        res.sendPage("admin/index");
-
-      });
+      res.sendPage("admin/index");
     }
   }
 }
