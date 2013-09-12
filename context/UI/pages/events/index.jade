@@ -3,15 +3,15 @@ extends ../layout
 block content
   section
     - for(var i = events.length-1; i>=0; i--)
-      .section-item(class= events[i].upcoming?"":"disable")
+      .section-item(class= events[i].isUpcoming()?"":"disable")
         .section-date
-          strong.date #{events[i].createdDate()}
+          strong.date #{events[i].startDate()}
           br
-          | #{events[i].createdNameOfDay()}
+          | #{events[i].startDateNameOfDay()}
           br
-          | #{events[i].createdTime()}
+          | #{events[i].startTime()}
         h3 #{events[i].title}
-        h5.section-description Автор: #{events[i].author}
+        h5.section-description Автор: #{events[i].creator.name}
         .section-nav
           a.btn.pull-left(href='#read-more') Прочети повече
           .share-widget.pull-left share widget here

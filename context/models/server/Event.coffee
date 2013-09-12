@@ -1,5 +1,6 @@
 Base = require "./Base"
 mongoose = require "mongoose"
+moment = require "moment"
 
 schema = mongoose.Schema
   title: { type: String, required: true }
@@ -7,6 +8,19 @@ schema = mongoose.Schema
   startDateTime: { type: Date, required: true }
   endDateTime: { type: Date }
   creator: { type: mongoose.Schema.ObjectId, ref: "Member" }
+
+
+schema.method 'startDate', () ->
+  moment(@startDateTime).format("MMMM Do YYYY")
+
+schema.method 'startDateNameOfDay', () ->
+  moment(@startDateTime).format("dddd")
+
+schema.method 'startTime', () ->
+  moment(@startDateTime).format("h:mm:ss a")
+
+schema.method 'isUpcoming', () ->
+  moment(@startDateTime).isAfter(moment())
 
 Base.timestampify schema
 

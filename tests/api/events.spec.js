@@ -2,35 +2,31 @@ describe("events", function(){
   var helpers = require("../helpers");
   var request = require("request");
 
+  var createdEvent;
+
   it("boots", function(next){
     helpers.boot(next);
   })
-
-  var member = helpers.getValidMember();
-  var event = helpers.getValidEvent();
   
   it("registers new member", function(next){
     request.post({
       uri: helpers.apiendpoint+"/members/register",
-      json: member
+      json: helpers.getValidMember()
     }, function(err, res, body){
       expect(body.result).toBeDefined();
       expect(body.result._id).toBeDefined();
-      member['id'] = body.result._id;
-      expect(member['id']).toBe == body.result._id;
       next();
     })
   })
 
   it("creates new event", function(next){
-
     request.post({
-      uri: helpers.apiendpoint+"/events/create",
-      json: event
+      uri: helpers.apiendpoint+"/events/add",
+      json: helpers.getValidEvent()
     }, function(err, res, body){
       expect(body.result).toBeDefined();
       expect(body.result._id).toBeDefined();
-      event['id'] = body.result._id;
+      createdEvent = body.result;
       next();
     })
   })
@@ -39,7 +35,7 @@ describe("events", function(){
     var event = helpers.getValidEvent();
     event.startDateTime = {};
     request.post({
-      uri: helpers.apiendpoint+"/events/create",
+      uri: helpers.apiendpoint+"/events/add",
       json: event
     }, function(err, res, body){
       expect(body.result).toBeDefined();
@@ -55,16 +51,18 @@ describe("events", function(){
     }, function(err, res, body){
       expect(body.result).toBeDefined();
       expect(body.result).toBeArray();
+      expect(body.result.length).toBe(1);
+      expect(body.result[0]._id).toBe(createdEvent._id)
       next();
     })
   })
 
   it("updates an event", function(next){
-    var up_event = event;
-    up_event.title = 'Happy BirthDay, Varnalab!';
     request.put({
-      uri: helpers.apiendpoint+"/events/"+up_event.id,
-      json: up_event
+      uri: helpers.apiendpoint+"/events/"+createdEvent._id,
+      json: {
+        title : 'Happy BirthDay, Varnalab!'
+      }
     }, function(err, res, body){
       expect(body.result).toBeDefined();
       expect(body.result.title).toMatch('Happy BirthDay, Varnalab!');
@@ -73,11 +71,11 @@ describe("events", function(){
   })
 
   it("does not update without title", function(next){
-    var up_event = event;
-    up_event.title = '';
     request.put({
-      uri: helpers.apiendpoint+"/events/"+up_event.id,
-      json: up_event
+      uri: helpers.apiendpoint+"/events/"+createdEvent._id,
+      json: {
+        title: ""
+      }
     }, function(err, res, body){
       expect(err).toBeDefined();
       expect(body.result.message).toMatch('Validation failed');
@@ -87,16 +85,15 @@ describe("events", function(){
 
   it("removes an event", function(next){
     request.del({
-      uri: helpers.apiendpoint+"/events/remove",
-      json: event
+      uri: helpers.apiendpoint+"/events/"+createdEvent._id,
+      json: {}
     }, function(err, res, body){
-      expect(body.result).toBeDefined();
       request.get({
         uri: helpers.apiendpoint+"/events",
         json: {}
       }, function(err, res, body){
         expect(body.result).toBeDefined();
-        expect(body.result).toMatch([]);
+        expect(body.result.length).toBe(0);
         next();
       });
     })

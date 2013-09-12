@@ -5,13 +5,13 @@ section
   - if(events[0])
     .section-item
       .section-date
-        strong.date #{events[0].createdDate()}
+        strong.date #{events[0].startDate()}
         br
-        | #{events[0].createdNameOfDay()}
+        | #{events[0].startDateNameOfDay()}
         br
-        | #{events[0].createdTime()}
+        | #{events[0].startTime()}
       h2 #{events[0].title}
-      .section-description Автор: #{events[0].author}
+      .section-description Автор: #{events[0].creator.name}
       article
         | #{events[0].ingress}
       .section-nav
@@ -22,13 +22,13 @@ section
     hr
     .section-item
       .section-date
-        strong.date #{events[i].createdDate()}
+        strong.date #{events[i].startDate()}
         br
-        | #{events[i].createdNameOfDay()}
+        | #{events[i].startDateNameOfDay()}
         br
-        | #{events[i].createdTime()}
+        | #{events[i].startTime()}
       h3 #{events[i].title}
-      .section-description Автор: #{events[i].author}
+      .section-description Автор: #{events[i].creator.name}
       .section-nav
         a.btn.pull-left(href='#go-to-author-page') Прочети повече
         .share-widget.pull-left share widget here

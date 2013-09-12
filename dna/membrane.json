@@ -47,6 +47,13 @@
       },
       { 
         "source": "plasma/httpserver-plugins/static", 
+        "path": "/context/UI/styles/images/vendor/jquery",
+        "url": "/images",
+        "index": false,
+        "passthrough": true
+      },
+      { 
+        "source": "plasma/httpserver-plugins/static", 
         "path": "/public",
         "url": "/",
         "index": false,
