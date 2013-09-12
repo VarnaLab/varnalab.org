@@ -16,10 +16,16 @@ module.exports = function(config){
         });
       })
     },
-    "GET /:id": function(req, res){
-      Member.findOne(req.params.id, function(err, member){
+    "GET /me": function(req, res){
+      Member.findById(req.session.passport.user, function(err, member){
         if(err) return res.error(err);
-        res.result(member);
+        res.result(member.toPublicJSON());
+      });
+    },
+    "GET /:id": function(req, res){
+      Member.findById(req.params.id, function(err, member){
+        if(err) return res.error(err);
+        res.result(member.toPublicJSON());
       });
     },
     "POST /login": function(req, res, next) {

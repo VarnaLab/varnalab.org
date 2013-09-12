@@ -39,7 +39,7 @@
   "devDependencies": {
     "jasmine-node": "1.11.0",
     "Faker": "latest",
-    "request": "2.27.0",
+    "request": "2.22.0",
     "shelljs": "0.2.5",
     "backbone": "1.0.0",
     "jquery": "1.8.3",

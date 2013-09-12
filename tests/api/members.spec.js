@@ -77,6 +77,7 @@ describe("members", function(){
       uri: helpers.apiendpoint+"/members/me",
       json: {}
     }, function(err, res, body){
+      expect(err).toBeNull();
       expect(body.result).toBeDefined();
       expect(body.result._id).toBe(currentUserData._id);
       expect(body.result.email).toBe(currentUserData.email);
