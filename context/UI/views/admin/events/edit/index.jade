@@ -1,6 +1,9 @@
 section Edit Event
+label title
 input#title(type="text", value= model.get("title"))
+label starts
 input#startDateTime(type="text", value= moment(model.get("startDateTime")).format("MM-DD-YY, hh:mm"))
+label ends
 input#endDateTime(type="text", value= moment(model.get("endDateTime")).format("MM-DD-YY, hh:mm"))
 section Description
   #description

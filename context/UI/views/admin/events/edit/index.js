@@ -7,6 +7,10 @@ module.exports = Backbone.View.extend({
     "click #save": "save"
   },
 
+  initialize: function(){
+    this.model.on("invalid", helpers.handleError)
+  },
+
   save: function(){
     var self = this;
     this.model.save({
