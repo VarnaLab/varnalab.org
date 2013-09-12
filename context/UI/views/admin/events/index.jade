@@ -1,0 +1,12 @@
+section Events
+  button.js-create new event
+  table
+    thead
+      tr
+        th title
+        th creator
+        th startTime
+        th actions
+    tbody
+      each model in collection.models
+        include ./event-item
