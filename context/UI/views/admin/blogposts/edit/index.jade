@@ -1,0 +1,13 @@
+section Edit Blogpost
+input#title(type="text", value= model.get("title"))
+#created created: #{moment(model.get("created")).format("dddd, MMMM Do YYYY, h:mm:ss a")}
+#modified
+  include ./modified
+input#slug(type="text", value= model.get("slug"))
+section Ingress
+  #ingress
+section Content
+  #content
+button#save save
+textarea#contentData(style="display: none")!= model.get('content')
+textarea#ingressData(style="display: none")!= model.get('ingress')
