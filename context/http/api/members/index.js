@@ -1,10 +1,15 @@
 module.exports = function(config){
   var Member = require(config.models+"/Member");
+  var _ = require('underscore');
+  
   return {
     "GET": function(req, res){
       Member.find({}, function(err, members){
         if(err) return res.error(err);
-        res.result(members); 
+        var publicMembers = _.map(members, function(mem){
+          return mem.toPublicJSON();
+        })
+        res.result(publicMembers); 
       })
     },
     "POST /register": function(req, res){
