@@ -27,7 +27,7 @@ $(function(){
       "blogposts": "showBlogposts",
       "blogposts/edit/:id": "editBlogpost",
       "events": "showEvents",
-      "events/new": "newEvent",
+      "events/create": "createEvent",
       "events/edit/:id": "editEvent"
     },
     showIndex: function(){
@@ -97,7 +97,7 @@ $(function(){
         alert(err);
       })
     },
-    newEvent: function(){
+    createEvent: function(){
       var model = new EventsCollection.prototype.model();
       var view = new EditEventsView({
         model: model

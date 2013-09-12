@@ -1,0 +1,8 @@
+section Edit Event
+input#title(type="text", value= model.get("title"))
+input#startDateTime(type="text", value= moment(model.get("startDateTime")).format("MM-DD-YY, hh:mm"))
+input#endDateTime(type="text", value= moment(model.get("endDateTime")).format("MM-DD-YY, hh:mm"))
+section Description
+  #description
+button#save save
+textarea#descriptionData(style="display: none")!= model.get('description')
