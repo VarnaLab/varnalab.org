@@ -4,5 +4,9 @@ module.exports = require("./MongoModel").extend({
       return "/api/events/add";
     else
       return "/api/events/"+this.id;
+  },
+  validate: function(attrs) {
+    if(moment(attrs.startDateTime).isAfter(attrs.endDateTime))
+      return "end date is after start date"
   }
 })

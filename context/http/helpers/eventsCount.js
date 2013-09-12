@@ -11,7 +11,7 @@ var isNew = function(e) {
 }
 
 module.exports = function(req, res, next){
-  Event.count({}, function(err, events){
+  Event.find({}, function(err, events){
     if(err) return next(err);
     req.previousCount = _.filter(events, isOld).length;
     req.upcomingCount = _.filter(events, isNew).length;
