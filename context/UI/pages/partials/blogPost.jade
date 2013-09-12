@@ -1,12 +1,12 @@
 .section-item.post-item
   h3
-    a.title-link(href='/blogs/#{blogs[i].slugifiedUrl()}')
+    a.title-link(href='/blogs/#{blogs[i].getUrl()}')
       | #{blogs[i].title}
   h5.section-description
-    | Публикувано на #{blogs[i].date} от&nbsp;
-    a(href='#go-to-author-page') #{blogs[i].author}
+    | Публикувано на #{blogs[i].createdDate()} от&nbsp;
+    a(href='#go-to-author-page') #{blogs[i].creator.name}
   article
-    | #{blogs[i].ingress} …
+    | !{blogs[i].htmlIngress()} …
   .section-nav
-    a.btn.pull-left(href='/blogs/#{blogs[i].slugifiedUrl()}') Прочети повече
+    a.btn.pull-left(href='/blogs/#{blogs[i].getUrl()}') Прочети повече
     br.clear
