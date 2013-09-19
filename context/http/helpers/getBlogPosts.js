@@ -2,7 +2,7 @@ var BlogPost = require("models/server/BlogPost");
 
 module.exports.byFullUrl = function(req, res, next) {
   var year = parseInt(req.params.year)
-  var month = parseInt(req.params.month)
+  var month = parseInt(req.params.month)-1
   var date = parseInt(req.params.date)
   var slug = req.params.slug
   BlogPost.getBlogpostByDateAndSlug(year, month, date, slug, function(err, blog){
