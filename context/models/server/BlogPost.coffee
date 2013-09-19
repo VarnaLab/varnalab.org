@@ -23,6 +23,16 @@ schema.pre 'save', (next) ->
   else
     next()
 
+schema.static 'getBlogpostByDateAndSlug', (year, month, date, slug, callback) ->
+  pattern = {
+    created: {
+      $gte: new Date(year, month-1, date),
+      $lt: new Date(year, month-1, date+1),
+    },
+    slug: slug
+  }
+  @findOne(pattern).populate("creator").exec callback
+
 schema.static 'createUniqueByDateAndSlug', (data, callback) ->
   creationDate = new Date()
   if data.date
@@ -53,7 +63,9 @@ schema.method 'htmlContent', () ->
 schema.method 'htmlIngress', () ->
   marked(@ingress || @content).substr(0, 255)
 
+schema.method "getUrl", () ->
+  [@created.getFullYear(), @created.getMonth()+1, @created.getDate(), @slug].join("/")
+
 Base.timestampify schema
-Base.attachGetUrlMethod schema
 
 module.exports = Base.model("BlogPost", schema)
