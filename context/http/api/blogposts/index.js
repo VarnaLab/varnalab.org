@@ -12,7 +12,7 @@ module.exports = function (config) {
       if(req.session.passport.user)
         req.body.creator = req.session.passport.user;
       
-      BlogPost.create(req.body, function (err, blogpost) {
+      BlogPost.createUniqueByDateAndSlug(req.body, function (err, blogpost) {
         if (err) return res.error(err);
         res.result(blogpost);
       });

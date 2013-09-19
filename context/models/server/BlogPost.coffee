@@ -23,6 +23,21 @@ schema.pre 'save', (next) ->
   else
     next()
 
+schema.static 'createUniqueByDateAndSlug', (data, callback) ->
+  creationDate = new Date()
+  if data.date
+    creationDate = new Date(data.date)
+  pattern = {
+    created: {
+      $gte: new Date(creationDate.getFullYear(), creationDate.getMonth(), creationDate.getDate()),
+      $lt: new Date(creationDate.getFullYear(), creationDate.getMonth(), creationDate.getDate()+1),
+    },
+    slug: data.slug
+  }
+  @findOne pattern, (err, found) =>
+    return callback("blog post with same slug name exists already for given date") if found
+    @create data, callback
+
 schema.method 'createdDate', () ->
   moment(@created).format("MMMM Do YYYY")
 
