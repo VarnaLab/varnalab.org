@@ -12,13 +12,7 @@ module.exports = Backbone.View.extend({
   },
 
   createNewBlogPost: function(){
-    var blogpost = new this.collection.model();
-    blogpost.save({title: "new blog post", content: "blogpost body"}, {
-      success: function(){
-        app.router.navigate("blogposts/edit/"+blogpost.id, true);
-      },
-      error: alert
-    })
+    app.router.navigate("blogposts/create", true)
   },
 
   removeBlogPost: function(e){
