@@ -17,6 +17,12 @@ schema = mongoose.Schema({
   }]
 })
 
+schema.pre 'save', (next) ->
+  if !/^[0-9a-fA-F]{24}$/i.test(@creator) 
+    next(new Error("Invalid member id provided"))
+  else
+    next()
+
 schema.method 'createdDate', () ->
   moment(@created).format("MMMM Do YYYY")
 

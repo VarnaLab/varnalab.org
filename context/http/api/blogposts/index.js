@@ -1,3 +1,4 @@
+var _ = require("underscore")
 module.exports = function (config) {
   var BlogPost = require(config.models + '/BlogPost');
   return {
@@ -8,23 +9,9 @@ module.exports = function (config) {
       });
     },
     'POST /add' : function (req, res) {
-      if(!req.body.creator)
+      if(req.session.passport.user)
         req.body.creator = req.session.passport.user;
       
-      if (!/^[0-9a-fA-F]{24}$/i.test(req.body.creator)) {
-        return res.error({
-          message: 'Validation failed',
-          name : 'ValidationError',
-          errors : {
-            creator : {
-              message : 'Invalid member id provided',
-              name : 'ValidationError',
-              path : 'creator',
-              type : 'ObjectId'
-            }
-          }
-        });
-      }
       BlogPost.create(req.body, function (err, blogpost) {
         if (err) return res.error(err);
         res.result(blogpost);
@@ -39,8 +26,7 @@ module.exports = function (config) {
     "PUT /:id": function(req, res) {
       BlogPost.findById(req.params.id,function(err, blogpost){
         if(err || !blogpost) return res.error(err || "not found");
-        for(var key in req.body)
-          blogpost[key] = req.body[key];
+        _.extend(blogpost, req.body)
         blogpost.save(function(err){
           if(err) return res.error(err);
           res.result(blogpost)

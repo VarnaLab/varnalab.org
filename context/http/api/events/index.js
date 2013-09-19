@@ -10,7 +10,8 @@ module.exports = function(config){
       })
     },
     "POST /create": function(req, res){
-      req.body.creator = req.session.userId;
+      req.body.creator = req.session.passport.user;
+
       Event.create(req.body, function(err, event){
         if(err) return res.error(err);
         res.result(event);

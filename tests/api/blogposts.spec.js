@@ -10,19 +10,47 @@ describe("blogposts", function() {
 
   it('boots', function(next) {
     helpers.boot(function() {
-      helpers.createUser(function(userData) {
-        dummyUser = userData;
-        dummyBlogpost = {
-          title : helpers.shortText,
-          creator : dummyUser._id,
-          content : helpers.longText,
-          date : Date.now()
-        };
-        next();
-      });
-      
+      dummyBlogpost = {
+        title : helpers.shortText,
+        content : helpers.longText,
+        date : Date.now()
+      };
+      next();
     });
   });
+
+  it('rejects inserting a blogpost without a valid member', function (next) {
+    var blog = _.clone(dummyBlogpost);
+    blog.creator = null;
+
+    request.post({
+      uri:helpers.apiendpoint + "/blogposts/add",
+      json: blog
+    }, function (err, res, body) {
+      expect(body.result.message).toBe('Validation failed');
+      next();
+    });
+  });
+
+  it('rejects inserting a blogpost with an invalid member', function (next) {
+    var blog = _.clone(dummyBlogpost);
+    blog.creator = "test";
+
+    request.post({
+      uri:helpers.apiendpoint + "/blogposts/add",
+      json: blog
+    }, function (err, res, body) {
+      expect(body.result.message).toContain('Cast to ObjectId failed');
+      next();
+    });
+  });
+
+  it("registers user", function(next){
+    helpers.createUser(function(userData) {
+      dummyUser = userData;
+      next()
+    })
+  })
 
   
   it("adds new blogpost", function(next){
@@ -56,38 +84,6 @@ describe("blogposts", function() {
     })
   });
 
-  it('rejects inserting a blogpost without a valid member', function (next) {
-    var blog = _.clone(dummyBlogpost);
-    blog.creator = null;
-
-    request.post({
-      uri:helpers.apiendpoint + "/blogposts/add",
-      json: blog
-    }, function (err, res, body) {
-
-      expect(body.result.errors).toBeDefined();
-      expect(body.result.message).toBe('Validation failed');
-      expect(body.result.errors.creator.message).toBe('Invalid member id provided');
-      next();
-    });
-  });
-
-  it('rejects inserting a blogpost with an invalid member', function (next) {
-    var blog = _.clone(dummyBlogpost);
-    blog.creator = "test";
-
-    request.post({
-      uri:helpers.apiendpoint + "/blogposts/add",
-      json: blog
-    }, function (err, res, body) {
-
-      expect(body.result.errors).toBeDefined();
-      expect(body.result.message).toBe('Validation failed');
-      expect(body.result.errors.creator.message).toBe('Invalid member id provided');
-      next();
-    });
-  });
-
   it('rejects inserting a blogpost without a valid content', function (next) {
     var blog = _.clone(dummyBlogpost);
     blog.content = null;
@@ -96,7 +92,6 @@ describe("blogposts", function() {
       uri : helpers.apiendpoint + "/blogposts/add",
       json : blog
     }, function (err, res, body) {
-      // console.log(body.result);
       expect(body.result).toBeDefined();
       expect(body.result.errors).toBeDefined();
       expect(body.result.message).toBe('Validation failed');
