@@ -3,7 +3,7 @@ module.exports = function (config) {
   var BlogPost = require(config.models + '/BlogPost');
   return {
     'GET' : function (req, res) {
-      BlogPost.find({}).populate("creator").exec(function(err, blogposts) {
+      BlogPost.find({}).populate("creator").sort({date: -1}).exec(function(err, blogposts) {
         if (err) return res.error(err);
         res.result(blogposts);
       });
