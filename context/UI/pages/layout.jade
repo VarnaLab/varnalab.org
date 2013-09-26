@@ -6,23 +6,7 @@ html
     title VarnaLab
     link(href='/bundle.css', rel='stylesheet', type='text/css')
 
-    script
-      var switchTo5x=false;
-    script(src="http://w.sharethis.com/button/buttons.js")
-    script
-      stLight.options({publisher: "828242f5-b208-42f3-ad5c-45847cbe235f", doNotHash: false, doNotCopy: false, hashAddressBar: false});
-    block scripts
   body
-    div#fb-root
-    script
-      (function(d, s, id) {
-      var js, fjs = d.getElementsByTagName(s)[0];
-      if (d.getElementById(id)) return;
-      js = d.createElement(s); js.id = id;
-      js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
-      fjs.parentNode.insertBefore(js, fjs);
-      }(document, 'script', 'facebook-jssdk'));
-
     .content
       .content-inner
         .container
@@ -39,3 +23,20 @@ html
               include ./partials/paypalButtonTeaser
               include ./partials/foursquareTeaser
           include ./partials/footer
+    div#fb-root
+    script
+      var switchTo5x=false;
+    script(src="http://w.sharethis.com/button/buttons.js")
+    script
+      stLight.options({publisher: "828242f5-b208-42f3-ad5c-45847cbe235f", doNotHash: false, doNotCopy: false, hashAddressBar: false});
+    block scripts
+    script
+      (function(d, s, id) {
+      var js, fjs = d.getElementsByTagName(s)[0];
+      if (d.getElementById(id)) return;
+      js = d.createElement(s); js.id = id;
+      js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
+      fjs.parentNode.insertBefore(js, fjs);
+      }(document, 'script', 'facebook-jssdk'));
+    script
+      !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");
