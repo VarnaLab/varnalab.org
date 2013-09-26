@@ -9,7 +9,7 @@ module.exports = function(config){
         var publicMembers = _.map(members, function(mem){
           return mem.toPublicJSON();
         })
-        res.result(publicMembers); 
+        res.result(publicMembers);
       })
     },
     "POST /register": function(req, res){
@@ -42,6 +42,11 @@ module.exports = function(config){
           return res.result(user);
         });
       })(req, res, next)
+    },
+    "GET /logout": function(req, res, next) {
+      req.logOut();
+      res.redirect('/');
+      res.result(true);
     }
   }
 }

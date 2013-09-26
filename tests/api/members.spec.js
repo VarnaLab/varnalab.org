@@ -114,7 +114,17 @@ describe("members", function(){
     })
   })
 
-  it('kill', function (next){ 
+  it("logouts", function(next){
+    request.get({
+      uri: helpers.apiendpoint+"members/logout"
+    }, function(err, res, body){
+      expect(err).toBeNull();
+      expect(body.result).toBeDefined();
+      next()
+    })
+  })
+
+  it('kill', function (next){
     helpers.kill(next);
   });
 })
