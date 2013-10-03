@@ -1,3 +1,5 @@
+var helpers = require("views/helpers")
+
 module.exports = Backbone.View.extend({
   template: require("./index.jade"),
   modifiedTemplate: require("./modified.jade"),
@@ -16,6 +18,7 @@ module.exports = Backbone.View.extend({
 
   save: function(){
     var self = this;
+    var created = this.model.isNew();
     this.model.save({
       title: this.$el.find("#title").val(),
       content: this.content.exportFile(),
@@ -24,8 +27,12 @@ module.exports = Backbone.View.extend({
     }, {
       success: function(){
         alert("done");
-        self.updateTimestamps();
-      }
+        if(created)
+          app.router.navigate("blogposts/edit/"+self.model.id, true)
+        else
+          self.updateTimestamps();
+      },
+      error: helpers.handleError
     })
   },
 
