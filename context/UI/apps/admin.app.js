@@ -1,23 +1,23 @@
 require("./boot");
 
-var TransactionsView = require("views/admin/transactions")
-var TransactionsCollection = require("models/client/TransactionsCollection");
-
-var MembersView = require("views/admin/members")
-var MembersCollection = require("models/client/MembersCollection")
-
-var BlogPostsCollection = require("models/client/BlogpostsCollection")
-var BlogPostsView = require("views/admin/blogposts")
-var EditBlogPostView = require("views/admin/blogposts/edit")
-
-var EventsCollection = require("models/client/EventsCollection")
-var EventsView = require("views/admin/events")
-var EditEventsView = require("views/admin/events/edit")
-
-var EpicEditor = require("./vendor/epiceditor");
-
 $(function(){
   app = {}; // WARNING -> global variable
+
+  var TransactionsView = require("views/admin/transactions")
+  var TransactionsCollection = require("models/client/TransactionsCollection");
+
+  var MembersView = require("views/admin/members")
+  var MembersCollection = require("models/client/MembersCollection")
+
+  var BlogPostsCollection = require("models/client/BlogpostsCollection")
+  var BlogPostsView = require("views/admin/blogposts")
+  var EditBlogPostView = require("views/admin/blogposts/edit")
+
+  var EventsCollection = require("models/client/EventsCollection")
+  var EventsView = require("views/admin/events")
+  var EditEventsView = require("views/admin/events/edit")
+
+  var EpicEditor = require("./vendor/epiceditor");
 
   var Router = Backbone.Router.extend({
     routes: {
@@ -129,6 +129,7 @@ $(function(){
       })
     }
   })
+
   app.router = new Router();
   Backbone.history.start(); // triggers routes
 })

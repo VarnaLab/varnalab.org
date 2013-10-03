@@ -13,7 +13,7 @@
       "target": {
         "node_modules": {
           "models": "/context/models",
-          "views": "/context/views"
+          "views": "/context/UI/apps/views"
         }
       }  
     }
