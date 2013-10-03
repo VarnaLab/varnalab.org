@@ -46,7 +46,7 @@
       "plugins": ["plasma/bundlecode-plugins/Config", "plasma/bundlecode-plugins/Jade"]
     },
     "BundleStyle": {
-      "source": "node_modules/organic-webcell/plasma/BundleStyle",
+      "source": "node_modules/organic-bundlestyle",
       "useCache": true,
       "less": {
         "compress": true

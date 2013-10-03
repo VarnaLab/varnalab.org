@@ -14,6 +14,7 @@ module.exports.exec = function(next) {
     })
     shelljs.rm("-rf",process.cwd()+"/"+dna.plasma.FindCodeBundles.target.assetsStore);
     shelljs.rm("-rf",process.cwd()+"/"+dna.plasma.FindStyleBundles.target.assetsStore);
+    cell.plasma.emit({type: "build", branch: "plasma"})
     cell.plasma.emit({ type: "StoreCodeBundles", data: {} });
     cell.plasma.emit({ type: "StoreStyleBundles", data: {} });
   })

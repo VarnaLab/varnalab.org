@@ -10,7 +10,7 @@ module.exports = function(file, dest, options, next) {
     type: "BundleStyle",
     style: file
   }, function(c){
-    if(c instanceof Error) return next(c);
+    if(c instanceof Error) {console.error(c); return next(c);}
     shelljs.mkdir('-p', path.join(options.assetsStore, path.dirname(url)));
     var storedFilepath = path.join(options.assetsStore, url);
     fs.writeFile(storedFilepath, c.data, function(err){
