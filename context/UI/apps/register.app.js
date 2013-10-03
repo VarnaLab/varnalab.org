@@ -1,7 +1,7 @@
 require('./boot');
 $(function(){
 
-  var Member = require("../../models/client/Member");
+  var Member = require("models/client/Member");
   $("form").submit(function(e){
     e.preventDefault();
     var newMember = new Member();
