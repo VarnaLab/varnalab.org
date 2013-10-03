@@ -11,14 +11,17 @@ var api;
 
 module.exports.apiendpoint = "http://localhost:8081/api";
 
+module.exports.cleanUploads = function(){
+  if(fs.existsSync(path.join(process.cwd(),api.dna.uploads.path)))
+    wrench.rmdirSyncRecursive(path.join(process.cwd(),api.dna.uploads.path));
+  wrench.mkdirSyncRecursive(path.join(process.cwd(),api.dna.uploads.path));
+}
+
 module.exports.boot = function(next){
   require("jasmine-matchers");
   api = new Api();
   api.plasma.on("HttpApiActions", function(){
-    if(fs.existsSync(path.join(process.cwd(),api.dna.uploads.path)))
-      wrench.rmdirSyncRecursive(path.join(process.cwd(),api.dna.uploads.path));
-    wrench.mkdirSyncRecursive(path.join(process.cwd(),api.dna.uploads.path));
-    console.log("cleaned uploads at "+path.join(process.cwd(),api.dna.uploads.path));
+    module.exports.cleanUploads()
     next()
   });
 }
