@@ -27,6 +27,11 @@ module.exports = function(config){
         res.result(member.toPublicJSON());
       });
     },
+    "POST /logout": function(req, res, next) {
+      req.logout();
+      res.result(true);
+
+    },
     "GET /:id": function(req, res){
       Member.findById(req.params.id, function(err, member){
         if(err) return res.error(err);
@@ -42,11 +47,7 @@ module.exports = function(config){
           return res.result(user);
         });
       })(req, res, next)
-    },
-    "GET /logout": function(req, res, next) {
-      req.logOut();
-      res.redirect('/');
-      res.result(true);
+
     }
   }
 }
