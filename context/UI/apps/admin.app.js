@@ -1,4 +1,5 @@
 require("./boot");
+require("./vendor/jquery/fileupload")
 
 $(function(){
   app = {}; // WARNING -> global variable
