@@ -1,8 +1,12 @@
 section Edit Blogpost
+- if(!model.isNew())
+  ul
+    li#created created: #{moment(model.get("created")).format("dddd, MMMM Do YYYY, h:mm:ss a")}
+    li#modified
+      include ./modified
+label title
 input#title(type="text", value= model.get("title"))
-#created created: #{moment(model.get("created")).format("dddd, MMMM Do YYYY, h:mm:ss a")}
-#modified
-  include ./modified
+label slug name
 input#slug(type="text", value= model.get("slug"))
 section Ingress
   #ingress

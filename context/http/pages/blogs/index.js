@@ -1,6 +1,6 @@
 module.exports = function(){
   return {
-    "GET": [this.blogsCount, this.getAllBlogs, function(req, res){
+    "GET /:pageNumber?": [this.blogsCount, this.getAllBlogs("pageNumber", 6), function(req, res){
       res.sendPage("blogs/index");
     }],
     "GET /:year/:month/:date/:slug": [this.getBlogPosts.byFullUrl, function(req, res) {      

@@ -87,6 +87,8 @@ describe("blogposts", function() {
   it('rejects inserting a blogpost without a valid content', function (next) {
     var blog = _.clone(dummyBlogpost);
     blog.content = null;
+    blog.date = new Date()
+    blog.date.setFullYear(2000)
 
     request.post({
       uri : helpers.apiendpoint + "/blogposts/add",
@@ -96,6 +98,19 @@ describe("blogposts", function() {
       expect(body.result.errors).toBeDefined();
       expect(body.result.message).toBe('Validation failed');
       expect(body.result.errors.content.message).toContain('Validator "required" failed');
+      next();
+    });
+  });
+
+  it('rejects inserting a blogpost with same slug name', function (next) {
+    var blog = _.clone(dummyBlogpost);
+
+    request.post({
+      uri : helpers.apiendpoint + "/blogposts/add",
+      json : blog
+    }, function (err, res, body) {
+      expect(body.result).toBeDefined();
+      expect(body.result).toBe("blog post with same slug name exists already for given date");
       next();
     });
   });

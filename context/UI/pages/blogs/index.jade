@@ -7,3 +7,16 @@ block content
         .span4
           .section-item
             include ../partials/blogPost
+  - if(pageNumber > 0)
+    a(href="/blogs/#{pageNumber-1}").btn previous
+  - else
+    a.btn.disabled previous
+  - for(var page = 0; page<blogsCount/blogsLimit; page++)
+    - if(pageNumber != page)
+      a.btn(href="/blogs/#{page}") #{page}
+    - else
+      a.btn.disabled #{page}
+  - if(blogsCount > blogs.length+pageNumber*blogsLimit)
+    a(href="/blogs/#{pageNumber+1}").btn next
+  - else
+    a.btn.disabled next

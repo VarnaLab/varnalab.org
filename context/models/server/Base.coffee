@@ -10,7 +10,7 @@ module.exports.timestampify = (schema) ->
 
 module.exports.attachGetUrlMethod = (schema) ->
   schema.method "getUrl", () ->
-    [@created.getFullYear(), @created.getMonth(), @created.getDate(), @slug].join("/")
+    [@created.getFullYear(), @created.getMonth()+1, @created.getDate(), @slug].join("/")
 
 orderSame = (data, order) ->
   result = []

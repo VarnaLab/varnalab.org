@@ -25,6 +25,7 @@ $(function(){
       "transactions": "showTransactions",
       "members":"showMembers",
       "blogposts": "showBlogposts",
+      "blogposts/create": "createBlogpost",
       "blogposts/edit/:id": "editBlogpost",
       "events": "showEvents",
       "events/create": "createEvent",
@@ -69,6 +70,14 @@ $(function(){
       }).error(function(err){
         alert(err);
       })
+    },
+    createBlogpost: function(){
+      var model = new BlogPostsCollection.prototype.model();
+      var view = new EditBlogPostView({
+        model: model
+      });
+      $(".currentView").empty().append(view.render().$el);  
+      view.postRender();
     },
     editBlogpost: function(id){
       var model = new BlogPostsCollection.prototype.model();
