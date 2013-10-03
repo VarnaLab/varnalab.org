@@ -66,6 +66,7 @@
         "index": false,
         "passthrough": true
       },
+      "plasma/httpserver-plugins/staticPages",
       "plasma/httpserver-plugins/show404",
       "node_modules/organic-expressserver/expressMiddleware/gzip"
     ],
