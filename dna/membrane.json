@@ -1,6 +1,6 @@
 {
   "Logger": {
-    "source": "node_modules/organic-webcell/membrane/Logger",
+    "source": "node_modules/organic-logger",
     "listenUncaughtExceptions": true,
     "prefixConsoleWithTimestamps": true
   },
@@ -9,25 +9,25 @@
     "bindTo": "varnalab"
   },
   "Mongoose": {
-    "source": "plasma/Mongoose",
+    "source": "node_modules/organic-mongoose",
     "database": {
       "name": "@database.name"
     },
     "reactOn": "HttpServer"
   },
   "HttpServer": {
-    "source": "node_modules/organic-webcell/membrane/ExpressHttpServer",
+    "source": "node_modules/organic-expressserver",
     "port": 8080,
     "middleware": [
-      "node_modules/organic-webcell/membrane/expressMiddleware/cookieParser",
+      "node_modules/organic-expressserver/expressMiddleware/cookieParser",
       { 
-        "source": "node_modules/organic-webcell/membrane/expressMiddleware/handleMongoSession", 
+        "source": "node_modules/organic-expressserver/expressMiddleware/handleMongoSession", 
         "dbname": "@database.name",
         "collection": "sessions",
         "cookie_secret": "varnalab" 
       },
       { 
-        "source": "node_modules/organic-webcell/membrane/expressMiddleware/bodyParser", 
+        "source": "node_modules/organic-expressserver/expressMiddleware/bodyParser", 
         "uploadDir": "@uploads.path",
         "keepExtensions": true
       },
@@ -60,7 +60,8 @@
         "passthrough": true
       },
       "plasma/httpserver-plugins/show404",
-      "node_modules/organic-webcell/membrane/expressMiddleware/gzip"
-    ]
+      "node_modules/organic-expressserver/expressMiddleware/gzip"
+    ],
+    "emitReady": "HttpServer"
   }
 }
