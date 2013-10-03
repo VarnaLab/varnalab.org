@@ -59,6 +59,13 @@
         "index": false,
         "passthrough": true
       },
+      { 
+        "source": "plasma/httpserver-plugins/static", 
+        "path": "/uploads",
+        "url": "/uploads",
+        "index": false,
+        "passthrough": true
+      },
       "plasma/httpserver-plugins/show404",
       "node_modules/organic-expressserver/expressMiddleware/gzip"
     ],

@@ -20,7 +20,7 @@
     "organic-bundlecode": "0.0.3",
     "organic-jadefy": "0.0.1",
     "organic-mongoose": "0.0.2",
-    "organic-symlink": "0.0.1",
+    "organic-symlink": "0.0.2",
 
     "mongoose": "3.6.20",
     "mongoose-createdmodified": "0.0.2",

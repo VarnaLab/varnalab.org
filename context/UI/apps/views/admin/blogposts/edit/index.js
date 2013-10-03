@@ -1,5 +1,7 @@
 var helpers = require("views/helpers")
 
+var FileuploadView = require("views/fileupload")
+
 module.exports = Backbone.View.extend({
   template: require("./index.jade"),
   modifiedTemplate: require("./modified.jade"),
@@ -48,6 +50,9 @@ module.exports = Backbone.View.extend({
       model: this.model,
       moment: moment
     }));
+
+    this.fileupload = new FileuploadView({el: this.$el.find("#fileupload")})
+    this.fileupload.render()
 
     return this;
   },
