@@ -3,15 +3,19 @@
     "source": "plasma/Backbonify",
     "attachOn": "HttpServer"
   },
-  "Jadify": {
-    "source": "plasma/Jadify",
-    "reactOn": "HttpServer"
+  "Jadefy": {
+    "source": "node_modules/organic-jadefy",
+    "exportsGlobal": "jadefy"
   },
-  "Required": {
-    "source": "plasma/Required",
-    "target": {
-      "models": "/context/models",
-      "views": "/context/UI/views"
+  "Symlink": {
+    "source": "node_modules/organic-symlink",
+    "symlink": {
+      "target": {
+        "node_modules": {
+          "models": "/context/models",
+          "views": "/context/views"
+        }
+      }  
     }
   },
   "BundleCode": {
@@ -22,11 +26,7 @@
     "plugins": ["plasma/bundlecode-plugins/Config","plasma/bundlecode-plugins/Jade"]
   },
   "BundleStyle": {
-    "source": "node_modules/organic-webcell/plasma/BundleStyle",
-    "useCache": true
-  },
-  "RenderPage": {
-    "source": "node_modules/organic-webcell/plasma/RenderPage",
+    "source": "node_modules/organic-bundlestyle",
     "useCache": true
   },
   "MountHttpHelpers": {

@@ -8,13 +8,6 @@
     "useCache": false,
     "debug": true
   },
-  "RenderPage": {
-    "useCache": false,
-    "debug": true,
-    "jadeConfig": {
-      "pretty": true
-    }
-  },
   "MountHttpActionRoutes": {
     "log": true
   },
