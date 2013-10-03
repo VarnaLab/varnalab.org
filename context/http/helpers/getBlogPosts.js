@@ -1,14 +1,11 @@
 var BlogPost = require("models/server/BlogPost");
 
 module.exports.byFullUrl = function(req, res, next) {
-  var pattern = {
-    created: {
-      $gte: new Date(parseInt(req.params.year), parseInt(req.params.month), parseInt(req.params.date)),
-      $lt: new Date(parseInt(req.params.year), parseInt(req.params.month), parseInt(req.params.date)+1),
-    },
-    slug: req.params.slug
-  }
-  BlogPost.findOne(pattern).populate("creator").exec(function(err, blog){
+  var year = parseInt(req.params.year)
+  var month = parseInt(req.params.month)-1
+  var date = parseInt(req.params.date)
+  var slug = req.params.slug
+  BlogPost.getBlogpostByDateAndSlug(year, month, date, slug, function(err, blog){
     if(err) return next(err);
     req.blog = blog;
     next();
