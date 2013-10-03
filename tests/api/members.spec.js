@@ -115,12 +115,12 @@ describe("members", function(){
   })
 
   it("logouts", function(next){
-    request.post({
+    request.get({
       uri: helpers.apiendpoint+"/members/logout",
       json: {}
     }, function(err, res, body){
       expect(err).toBeNull();
-      expect(body.result).toBeDefined();
+      expect(res.statusCode).toBe(200);
       next()
     })
   })

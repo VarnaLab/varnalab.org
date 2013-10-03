@@ -27,10 +27,9 @@ module.exports = function(config){
         res.result(member.toPublicJSON());
       });
     },
-    "POST /logout": function(req, res, next) {
+    "GET /logout": function(req, res, next) {
       req.logout();
-      res.result(true);
-
+      res.redirect("/");
     },
     "GET /:id": function(req, res){
       Member.findById(req.params.id, function(err, member){
