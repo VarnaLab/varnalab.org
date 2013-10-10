@@ -21,18 +21,18 @@ module.exports = Backbone.View.extend({
     model.on("error", helpers.handleError)
     model.on("invalid", helpers.handleError)
 
-    var data = helpers.extractFormData(this.$(".form"));
-    var forDateValue = this.$("#forDate").datepicker("getDate")
-    if(forDateValue)
-      data.forDate = new Date(forDateValue)
+    var data = helpers.extractFormData(this.$(".form"))
+    /*
+     Adding +1 days because 'strangely' datepicker("getDate")
+     returns one day behind of the shown selection.
+    */
+    data.forDate = moment(this.$("#forDate").datepicker("getDate")).add("days", 1).toDate()
     model.save(data, {
       wait: true,
       success: function(){
         self.collection.add(model);
         self.$(".form").html(self.transactionFormTemplate());
-        self.$el.find("#forDate").datepicker({
-          dateFormat: "dd-mm-yy"
-        });
+        self.postRender()
       }
     })
 
@@ -53,9 +53,14 @@ module.exports = Backbone.View.extend({
     this.$el.html(this.template({
       collection: this.collection
     }))
-    this.$el.find("#forDate").datepicker({
-      dateFormat: "dd-mm-yy"
-    });
+    this.postRender()
     return this;
+  },
+  postRender: function(){
+    this.$el.find("#forDate").datepicker({
+      dateFormat: "dd-mm-yy",
+      defaultDate: new Date()
+    })
+    this.$el.find("#forDate").datepicker("setDate", new Date())
   }
 })
