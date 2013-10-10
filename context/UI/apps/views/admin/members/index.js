@@ -3,22 +3,20 @@ var MemberProfileView = require("./member/index.js")
 
 module.exports = Backbone.View.extend({
   template: require("./index.jade"),
-  
+
   events: {
-    "click .memberProfile": "showMember"
+    "click .memberProfile": "editMember"
   },
-  
+
   render: function(){
     this.$el.html(this.template({
       collection: this.collection
     }))
     return this;
   },
-  showMember: function(){
-    var model = new MemberModel();
-    var view = new MemberProfileView({
-      model: model
-    })
-    $(".currentView").empty().append(view.render().$el) ;
+  editMember: function(e){
+    e.preventDefault();
+    var id = $(e.currentTarget).attr("data-id")
+    app.router.navigate("members/edit/"+id, true);
   }
 })

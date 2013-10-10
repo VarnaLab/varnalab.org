@@ -3,7 +3,7 @@ module.exports = require("./MongoModel").extend({
     if(this.isNew())
       return "/api/members/register";
     else
-      return "/api/members";
+      return "/api/members/"+this.id;
   },
 
   login: function(data){

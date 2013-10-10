@@ -1,2 +1,8 @@
-.memberProfile
-  | this is member profile
+section Edit Member Profile
+form#memberProfile
+  label name
+  input#name(type="text", value= model.get("name"), name="name")
+  label email
+  input#email(type="text", value= model.get("email"), name="email")
+  br
+  input#submit(type="submit", value="Save")
