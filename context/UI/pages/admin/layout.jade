@@ -5,9 +5,6 @@ html
     meta(name='viewport', content='width=device-width, initial-scale=1.0')
     title VarnaLab Admin
     link(href='/admin.bundle.css', rel='stylesheet', type='text/css')
-    script(src="/js/jade.js")
-    script(src="/admin.app.js")
-    block scripts
   body
     .content
       .content-inner
@@ -16,3 +13,6 @@ html
           .row
             .span9.currentView
               block currentView
+    script(src="/js/jade.js")
+    script(src="/admin.app.js")
+    block scripts
