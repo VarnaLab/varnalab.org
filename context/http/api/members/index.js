@@ -37,6 +37,17 @@ module.exports = function(config){
         res.result(member.toPublicJSON());
       });
     },
+    "PUT /:id": function(req, res){
+      Member.findById(req.params.id, function(err, member){
+        if(err) return res.error(err);
+        _.extend(member, req.body)
+        member.save(function(err){
+          if(err) return res.error(err);
+          res.result(member.toPublicJSON())
+        })
+
+      });
+    },
     "POST /login": function(req, res, next) {
       passport.authenticate('local', function(err, user, info){
         if (err) { return next(err); }
