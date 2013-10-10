@@ -1,5 +1,14 @@
-.transactionsView
+section
   include ./transaction-form
-  .transactionsList
-    each transaction in collection.models
-      include ./transaction-item
+  table
+    thead
+      tr
+        th from
+        th to
+        th amount
+        th reason
+        th forDate
+        th actions
+    tbody.js-transactionsList
+      each model in collection.models
+        include ./transaction-item

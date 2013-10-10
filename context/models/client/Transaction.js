@@ -3,7 +3,7 @@ module.exports = require("./MongoModel").extend({
     if(this.isNew())
       return "/api/transactions/create";
     else
-      return "/api/transactions/"+this.model.id;
+      return "/api/transactions/"+this.id;
   },
   validate: function(attrs){
     var error = {};
