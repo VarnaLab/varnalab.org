@@ -16,7 +16,7 @@ describe("site", function(){
     })
   })
 
-  it('kill', function (next){ 
+  it('kill', function (next){
     helpers.kill(next);
   });
 })
