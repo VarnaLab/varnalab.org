@@ -25,8 +25,7 @@ module.exports.exec = function(next) {
             updated: new Date(entry.updated),
             title: entry.title.$t,
             slug: entry.title.$t,
-            content: entry.content.$t,
-            contentType: "html"
+            content: entry.content.$t
           }, function(err, post){
             console.log(entry, err, post)
           })
