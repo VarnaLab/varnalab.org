@@ -1,5 +1,5 @@
 tr
-  td= member.get("email")
-  td= member.get("name")
+  td= model.get("email")
+  td= model.get("name")
   td
-    button.memberProfile More
+    button.memberProfile(data-id= model.id) Edit
