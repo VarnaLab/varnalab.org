@@ -2,7 +2,7 @@
   "name": "varnalab.org",
   "private": true,
   "version": "0.0.14",
-  "main": "index.js",
+  "main": "varnalab.org.js",
   "scripts": {
     "start": "nodemon nodemon.varnalab.org.js",
     "test": "jasmine-node tests"
@@ -10,9 +10,9 @@
   "dependencies": {
     "organic": "0.1.1",
     "organic-cells": "0.0.16",
-    
+
     "organic-logger": "0.0.1",
-    
+
     "express": "3.0.4",
     "organic-expressserver": "0.3.4",
     "organic-dirtransform": "0.0.5",
@@ -25,7 +25,7 @@
     "mongoose": "3.6.20",
     "mongoose-createdmodified": "0.0.2",
     "mongoose-validate": "0.0.5",
-    
+
     "coffee-script": "1.6.3",
     "optimist": "0.6.0",
     "underscore": "1.5.1",
