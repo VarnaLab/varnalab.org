@@ -9,6 +9,7 @@ $(function(){
 
   var MembersView = require("views/admin/members")
   var MembersCollection = require("models/client/MembersCollection")
+  var MemberProfileView = require("views/admin/members/member/index.js")
 
   var BlogPostsCollection = require("models/client/BlogpostsCollection")
   var BlogPostsView = require("views/admin/blogposts")
@@ -25,6 +26,7 @@ $(function(){
       "": "showIndex",
       "transactions": "showTransactions",
       "members":"showMembers",
+      "members/edit/:id":"editMember",
       "blogposts": "showBlogposts",
       "blogposts/create": "createBlogpost",
       "blogposts/edit/:id": "editBlogpost",
@@ -54,9 +56,23 @@ $(function(){
       });
 
       membersCollection.fetch().success(function(){
-        $(".currentView").empty().append(view.render().$el);  
+        $(".currentView").empty().append(view.render().$el);
       }).error(function(err){
         alert(err);
+      })
+    },
+    editMember: function(id){
+      var model = new MembersCollection.prototype.model();
+      model.id = id;
+      var view = new MemberProfileView({
+        model: model
+      })
+
+      model.fetch({
+        success: function(){
+          $(".currentView").empty().append(view.render().$el);
+        },
+        error: alert
       })
     },
     showBlogposts: function(){

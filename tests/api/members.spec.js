@@ -103,6 +103,20 @@ describe("members", function(){
     })
   })
 
+  it("updates its own profile", function(next){
+    request.put({
+      uri: helpers.apiendpoint+"/members/"+currentUserData._id,
+      json: {'name': 'Yoda'}
+    }, function(err, res, body){
+      expect(err).toBeNull();
+      expect(body.result).toBeDefined();
+      expect(body.result._id).toBe(currentUserData._id);
+      expect(body.result.email).toBe(currentUserData.email);
+      expect(body.result.name).toBe('Yoda')
+      next();
+    })
+  })
+
   it("does not login without email", function(next){
     request.post({
       uri: helpers.apiendpoint+"/members/login",
