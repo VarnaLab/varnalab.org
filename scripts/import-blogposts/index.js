@@ -22,6 +22,7 @@ module.exports.exec = function(next) {
           BlogPost.create({
             creator: admin,
             created: new Date(entry.published),
+            updated: new Date(entry.updated),
             title: entry.title.$t,
             slug: entry.title.$t,
             content: entry.content.$t,

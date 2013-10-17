@@ -9,7 +9,6 @@ schema = mongoose.Schema({
   creator: { type: mongoose.Schema.ObjectId, ref: "Member", required: true }
   ingress: { type: String, required: false }
   content: { type: String, required: true }
-  contentType: {type: String, default: "markdown"}
   date: { type: Date, default: Date.now }
   slug: { type: String }
   tags: [{
@@ -54,16 +53,10 @@ schema.method 'createdTime', () ->
   moment(@created).format("h:mm:ss a")
 
 schema.method 'htmlContent', () ->
-  if @contentType == "markdown"
-    marked @content
-  else
-    @content
+  marked @content
 
 schema.method 'htmlIngress', () ->
-  if @contentType == "markdown"
-    marked(@ingress || @content).substr(0, 255)
-  else
-    (@ingress || @content).replace(/(<([^>]+)>)/ig,"").substr(0, 255)
+  marked(@ingress || @content).replace(/(<([^>]+)>)/ig,"").substr(0, 255)
 
 schema.method "getUrl", () ->
   [@created.getFullYear(), @created.getMonth()+1, @created.getDate(), @slug].join("/")
