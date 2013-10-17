@@ -5,7 +5,7 @@
   "main": "varnalab.org.js",
   "scripts": {
     "start": "nodemon nodemon.varnalab.org.js",
-    "test": "jasmine-node tests"
+    "test": "jasmine-node tests --verbose"
   },
   "dependencies": {
     "organic": "0.1.1",
