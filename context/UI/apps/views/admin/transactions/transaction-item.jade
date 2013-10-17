@@ -1,4 +1,8 @@
-.row
-  .span3= transaction.get("from")
-  .span3= transaction.get("to")
-  .span3= transaction.get("amount")
+tr
+  td= model.get("from")
+  td= model.get("to")
+  td= model.get("amount")
+  td= model.get("reason")
+  td= model.get("forDate")
+  td
+    button.js-remove(data-id= model.id) X
