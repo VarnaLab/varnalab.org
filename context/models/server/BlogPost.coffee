@@ -11,14 +11,14 @@ schema = mongoose.Schema({
   content: { type: String, required: true }
   date: { type: Date, default: Date.now }
   slug: { type: String }
-  tags: [{ 
+  tags: [{
     name: String
     slug: String
   }]
 })
 
 schema.pre 'save', (next) ->
-  if !/^[0-9a-fA-F]{24}$/i.test(@creator) 
+  if !/^[0-9a-fA-F]{24}$/i.test(@creator)
     next(new Error("Invalid member id provided"))
   else
     next()
@@ -38,7 +38,7 @@ schema.static 'createUniqueByDateAndSlug', (data, callback) ->
   if data.date
     creationDate = new Date(data.date)
 
-  @getBlogpostByDateAndSlug creationDate.getFullYear(), creationDate.getMonth(), 
+  @getBlogpostByDateAndSlug creationDate.getFullYear(), creationDate.getMonth(),
     creationDate.getDate(), data.slug, (err, found) =>
       return callback("blog post with same slug name exists already for given date") if found
       @create data, callback
@@ -56,7 +56,7 @@ schema.method 'htmlContent', () ->
   marked @content
 
 schema.method 'htmlIngress', () ->
-  marked(@ingress || @content).substr(0, 255)
+  marked(@ingress || @content).replace(/(<([^>]+)>)/ig,"").substr(0, 255)
 
 schema.method "getUrl", () ->
   [@created.getFullYear(), @created.getMonth()+1, @created.getDate(), @slug].join("/")

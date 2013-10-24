@@ -7,7 +7,7 @@ module.exports = function(pageNumberParamName, limit){
     BlogPost.find({}).populate("creator")
       .limit(limit)
       .skip(skip)
-      .sort({date: -1})
+      .sort({created: -1})
       .exec(function(err, blogs){
         if(err) return next(err);
         req.blogs = blogs;
