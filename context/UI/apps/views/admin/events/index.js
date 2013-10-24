@@ -1,6 +1,6 @@
 module.exports = Backbone.View.extend({
   template: require("./index.jade"),
-  
+
   events: {
     "click .js-create": "create",
     "click .js-remove": "remove",
@@ -27,7 +27,7 @@ module.exports = Backbone.View.extend({
     var id = $(e.currentTarget).attr("data-id")
     app.router.navigate("events/edit/"+id, true);
   },
-  
+
   render: function(){
     this.$el.html(this.template({
       collection: this.collection,
