@@ -1,0 +1,72 @@
+teaser-facebook-like-box{
+  z-index:0;
+}
+section.contacts{
+  z-index:20000;
+  .row,a,.text, .map{
+    transition:all 0.3s ease;
+    -webkit-transition:all 0.3s ease;
+    text-align:right;
+  }
+  a,.text{
+    display:inline-block;
+    margin-left:50px;
+  }
+  .row{
+    border-bottom:2px solid black;
+    margin-left:0;
+  }
+  .row:hover{
+    background:rgba(176,176,176,0.3);
+  }
+  .row:hover a.scale{
+    transform: scale(2,2);
+    -webkit-transform: scale(2,2);
+    -ms-transform: scale(2,2);
+  }
+  .row:hover .text, .row:hover a{
+    transform: scale(1.2,1.2);
+    -webkit-transform: scale(1.2,1.2);
+    -ms-transform: scale(1.2,1.2);
+  }
+  .row:hover .map{
+    transform: scale(1.23,1.23);
+    -webkit-transform: scale(1.23,1.23);
+    -ms-transform: scale(1.23,1.23);
+  }
+  h3,span{
+    vertical-align:bottom;
+    display:inline-block;
+    overflow:hidden;
+    white-space:nowrap;
+    text-align:left;
+    height:40px;
+    margin: 10px auto;
+    /*padding-left:10px;*/
+    @media only screen and (max-width : 768px) { 
+      margin: 0px auto auto auto;
+    } 
+  }
+  span.text{
+    width: 100%;
+    text-align: left;
+    padding-left: 43px;
+    margin: auto 6px;
+    @media only screen and (max-width : 768px) { 
+      text-align:left;
+      transform: scale(1.2,1.2);
+      -webkit-transform: scale(1.2,1.2);
+      -ms-transform: scale(1.2,1.2);
+    } 
+  }
+  span{
+    padding-top:11px;
+    @media only screen and (max-width : 768px) { 
+      margin: auto auto 20px auto;
+    } 
+  }
+  span.map{
+    min-height:290px;
+  }
+
+}
