@@ -12,7 +12,10 @@
     "log": true
   },
   "MountHttpPagesRoutes": {
-    "log": true
+    "log": true,
+    "disqus": {
+      "shortname": "varnalabdev"
+    }
   },
   "MountCodeRoutes": {
     "source" : "node_modules/organic-dirtransform/plasma/DirTransform",

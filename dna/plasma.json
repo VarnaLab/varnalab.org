@@ -15,7 +15,7 @@
           "models": "/context/models",
           "views": "/context/UI/apps/views"
         }
-      }  
+      }
     }
   },
   "BundleCode": {
