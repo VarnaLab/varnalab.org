@@ -15,7 +15,7 @@ module.exports.byFullUrl = function(req, res, next) {
 module.exports.last = function(count){
   count = count || 1;
   return function(req, res, next) {
-    BlogPost.find({}).sort({date: -1}).limit(count).populate("creator").exec(function(err, blogs){
+    BlogPost.find({}).sort({created: -1}).limit(count).populate("creator").exec(function(err, blogs){
       if(err) return next(err);
       req.blogs = blogs;
       next();
