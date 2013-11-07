@@ -61,6 +61,12 @@ schema.method 'htmlIngress', () ->
 schema.method "getUrl", () ->
   [@created.getFullYear(), @created.getMonth()+1, @created.getDate(), @slug].join("/")
 
+schema.method "getCreatorName", () ->
+  if @get("creator")
+    @get("creator").name || @get("creator").email
+  else
+    "unknown"
+
 Base.timestampify schema
 
 module.exports = Base.model("BlogPost", schema)

@@ -1,5 +1,6 @@
 require("./boot");
 require("./vendor/jquery/fileupload")
+require("./vendor/bootstrap/bootstrap-datetimepicker.min")
 
 $(function(){
   app = {}; // WARNING -> global variable
@@ -43,9 +44,9 @@ $(function(){
       var view = new TransactionsView({
         collection: collection
       });
-      
+
       collection.fetch().success(function(){
-        $(".currentView").empty().append(view.render().$el)  
+        $(".currentView").empty().append(view.render().$el)
       })
     },
     showMembers: function(){
@@ -83,7 +84,7 @@ $(function(){
       });
 
       collection.fetch().success(function(){
-        $(".currentView").empty().append(view.render().$el);  
+        $(".currentView").empty().append(view.render().$el);
       }).error(function(err){
         alert(err);
       })
@@ -93,7 +94,7 @@ $(function(){
       var view = new EditBlogPostView({
         model: model
       });
-      $(".currentView").empty().append(view.render().$el);  
+      $(".currentView").empty().append(view.render().$el);
       view.postRender();
     },
     editBlogpost: function(id){
@@ -104,7 +105,7 @@ $(function(){
       });
       model.fetch({
         success: function(){
-          $(".currentView").empty().append(view.render().$el);  
+          $(".currentView").empty().append(view.render().$el);
           view.postRender();
         },
         error: alert
@@ -118,7 +119,7 @@ $(function(){
       });
 
       collection.fetch().success(function(){
-        $(".currentView").empty().append(view.render().$el);  
+        $(".currentView").empty().append(view.render().$el);
       }).error(function(err){
         alert(err);
       })
@@ -128,7 +129,7 @@ $(function(){
       var view = new EditEventsView({
         model: model
       });
-      $(".currentView").empty().append(view.render().$el);  
+      $(".currentView").empty().append(view.render().$el);
       view.postRender();
     },
     editEvent: function(id){
@@ -139,7 +140,7 @@ $(function(){
       });
       model.fetch({
         success: function(){
-          $(".currentView").empty().append(view.render().$el);  
+          $(".currentView").empty().append(view.render().$el);
           view.postRender();
         },
         error: alert

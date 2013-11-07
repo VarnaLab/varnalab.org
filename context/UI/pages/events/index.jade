@@ -11,7 +11,7 @@ block content
           br
           | #{events[i].startTime()}
         h3 #{events[i].title}
-        h5.section-description Автор: #{events[i].creator.name}
+        h5.section-description Автор: #{events[i].getCreatorName()}
         .section-nav
           a.btn.pull-left(href='#read-more') Прочети повече
           .share-widget.pull-left share widget here

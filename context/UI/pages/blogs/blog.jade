@@ -9,7 +9,7 @@ block content
           br
           | #{blog.createdTime()}
         h2 #{blog.title}
-        h5.section-description Автор: #{blog.creator.name}
+        h5.section-description Автор: #{blog.getCreatorName()}
         article!= blog.htmlContent()
         .section-nav
           include ../partials/sharer

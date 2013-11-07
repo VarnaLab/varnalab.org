@@ -2,7 +2,7 @@ var helpers = require("views/helpers");
 
 module.exports = Backbone.View.extend({
   template: require("./index.jade"),
-  
+
   events: {
     "click #save": "save"
   },
@@ -16,8 +16,8 @@ module.exports = Backbone.View.extend({
     this.model.save({
       title: this.$el.find("#title").val(),
       description: this.description.exportFile(),
-      startDateTime: this.$("#startDateTime").datetimepicker("getDate"),
-      endDateTime: this.$("#endDateTime").datetimepicker("getDate")
+      startDateTime: this.$("#startDateTime").data("datetimepicker").getLocalDate(),
+      endDateTime: this.$("#endDateTime").data("datetimepicker").getLocalDate()
     }, {
       success: function(){
         alert("done");
@@ -43,16 +43,10 @@ module.exports = Backbone.View.extend({
       autogrow: true,
       clientSideStorage: false
     })
-    this.$("#startDateTime").datetimepicker({
-      dateFormat: "mm-dd-y",
-      separator: ", ",
-      timeFormat: "hh:mm"
-    });
-    this.$("#endDateTime").datetimepicker({
-      dateFormat: "mm-dd-y",
-      separator: ", ",
-      timeFormat: "hh:mm"
-    });
+    this.$("#startDateTime").datetimepicker()
+    this.$("#startDateTime").data("datetimepicker").setLocalDate(this.model.get("startDateTime"))
+    this.$("#endDateTime").datetimepicker()
+    this.$("#endDateTime").data("datetimepicker").setLocalDate(this.model.get("endDateTime"))
     this.description.load();
   }
 })

@@ -6,7 +6,7 @@ module.exports = function(req, res, next) {
     startDateTime: {
       $gt: moment().toDate()
     }
-  }, function(err, events){
+  }).populate("creator").exec(function(err, events){
     if(err) return next(err);
     req.events = events;
     next();

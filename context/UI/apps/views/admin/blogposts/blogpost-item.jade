@@ -1,6 +1,6 @@
 tr
   td= model.get("title")
-  td= model.get("creator").name || model.get("creator").email
+  td= model.getCreatorName()
   td= moment(model.get("modified")).format("dddd, MMMM Do YYYY, h:mm:ss a")
   td
     button.js-edit(data-id= model.id) edit
