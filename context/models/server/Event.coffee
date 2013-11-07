@@ -22,6 +22,12 @@ schema.method 'startTime', () ->
 schema.method 'isUpcoming', () ->
   moment(@startDateTime).isAfter(moment())
 
+schema.method "getCreatorName", () ->
+  if @get("creator")
+    @get("creator").name || @get("creator").email
+  else
+    "unknown"
+
 Base.timestampify schema
 
 module.exports = Base.model "Event", schema
