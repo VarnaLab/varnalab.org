@@ -1,2 +1,7 @@
 {
+  "MountHttpPagesRoutes": {
+    "disqus": {
+      "shortname": "varnalabstaging"
+    }
+  }
 }
