@@ -15,8 +15,7 @@ section
       article
         | #{events[0].ingress}
       .section-nav
-        a.btn.pull-left(href='#read-more') Прочети повече
-        .share-widget.pull-left share widget here
+        a.btn.pull-left(href='/events/#{events[0].getUrl()}') Прочети повече
         br.clear
   - for(var i = 1; i<events.length; i++)
     hr
@@ -30,8 +29,7 @@ section
       h3 #{events[i].title}
       .section-description Автор: #{events[i].getCreatorName()}
       .section-nav
-        a.btn.pull-left(href='#go-to-author-page') Прочети повече
-        .share-widget.pull-left share widget here
+        a.btn.pull-left(href='/events/#{events[i].getUrl()}') Прочети повече
         br.clear
   hr
   a.pull-right(href='/events')

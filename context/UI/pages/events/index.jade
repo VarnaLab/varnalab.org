@@ -13,8 +13,7 @@ block content
         h3 #{events[i].title}
         h5.section-description Автор: #{events[i].getCreatorName()}
         .section-nav
-          a.btn.pull-left(href='#read-more') Прочети повече
-          .share-widget.pull-left share widget here
+          a.btn.pull-left(href='/events/#{events[i].getUrl()}') Прочети повече
           br.clear
       hr
     //
