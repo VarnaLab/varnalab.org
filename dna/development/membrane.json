@@ -1,5 +1,39 @@
 {
   "HttpServer": {
-    "log": true
+    "log": true,
+    "afterware": [
+      { 
+        "source": "plasma/httpserver-plugins/static", 
+        "path": "/context/UI/styles/images",
+        "url": "/images",
+        "index": false,
+        "passthrough": true
+      },
+      { 
+        "source": "plasma/httpserver-plugins/static", 
+        "path": "/context/UI/styles/images/vendor/jquery",
+        "url": "/images",
+        "index": false,
+        "passthrough": true
+      },
+      { 
+        "source": "plasma/httpserver-plugins/static", 
+        "path": "/public",
+        "url": "/",
+        "index": false,
+        "passthrough": true
+      },
+      { 
+        "source": "plasma/httpserver-plugins/static", 
+        "path": "/uploads",
+        "url": "/uploads",
+        "index": false,
+        "passthrough": true
+      },
+      "plasma/httpserver-plugins/staticPages",
+      "plasma/httpserver-plugins/show404",
+      "node_modules/organic-expressserver/expressMiddleware/gzip",
+      "plasma/httpserver-plugins/errorface"
+    ]
   }
 }
