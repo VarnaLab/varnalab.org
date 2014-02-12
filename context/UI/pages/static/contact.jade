@@ -1,48 +1,40 @@
 extends ../layout
 block content
+  h3 Свържете се с нас
   section.contacts
     .row
-      h3.span4.pull-left Github:
-      span.span5.pull-right
-        a(href="https://github.com/VarnaLab/varnalab.org") github.com/VarnaLab
+      dl
+        dt.vl-term Github
+        dd.vl-def.text
+          a(href="https://github.com/VarnaLab/varnalab.org") github.com/VarnaLab
 
-    .row
-      h3.span4.pull-left Facebook page:
-      span.span5.pull-right
-        a(href="https://www.facebook.com/varnalab") facebook.com/varnalab
+        dt.vl-term Facebook
+        dd.vl-def.text
+          a(href="https://www.facebook.com/varnalab") facebook page
+        dd.vl-def.text
+          a(href="https://www.facebook.com/groups/varnalab/") facebook group
 
-    .row
-      h3.span4.pull-left Facebook group:
-      span.span5.pull-right
-        a(href="https://www.facebook.com/groups/varnalab/") facebook.com/groups/varnalab
+        dt.vl-term Google
+        dd.vl-def.text
+          a("https://groups.google.com/forum/#!forum/varna-lab") group
+        dd.vl-def.text
+          a.text(href="mailto:varna-lab@googlegroups.com") varna-lab@googlegroups.com
 
-    .row
-      h3.span4.pull-left Google group:
-      span.span5.pull-right
-        a(href="https://groups.google.com/forum/#!forum/varna-lab") groups.google.com/forum/varna-lab
+        dt.vl-term Twitter
+        dd.vl-def.text
+          a(href="https://twitter.com/VarnaLab") @VarnaLab
 
-    .row
-      h3.span4.pull-left Twitter:
-      span.span5.pull-right
-        a(href="https://twitter.com/VarnaLab") twitter.com/VarnaLab
+        dt.vl-term
+          abbr(title="Internet Relay Chat") IRC
+        dd.vl-def.text
+          span.text irc.freenode.net #varnalab
 
-    .row
-      h3.span4.pull-left Адрес:
-      span.span5.pull-right
-        span.text ул. "Пенчо Славейков" 50, Варна
+        dt.vl-term Електронна поща
+        dd.vl-def.text
+          a(href="mailto:varna-lab@googlegroups.com") varna-lab@googlegroups.com
 
-    .row
-      h3.span3.pull-left Карта:
-      span.span5.map.
-        <iframe style="width:100%;height:100%;" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?f=q&amp;source=s_q&amp;hl=en&amp;geocode=&amp;q=%D1%83%D0%BB%D0%B8%D1%86%D0%B0+%D0%9F%D0%B5%D0%BD%D1%87%D0%BE+%D0%A1%D0%BB%D0%B0%D0%B2%D0%B5%D0%B9%D0%BA%D0%BE%D0%B2+50,+%D0%92%D0%B0%D1%80%D0%BD%D0%B0,+%D0%91%D1%8A%D0%BB%D0%B3%D0%B0%D1%80%D0%B8%D1%8F&amp;aq=0&amp;oq=%D1%83%D0%BB.+%D0%9F%D0%B5%D0%BD%D1%87%D0%BE+%D0%A1%D0%BB%D0%B0%D0%B2%D0%B5%D0%B9%D0%BA%D0%BE%D0%B2+50+,+%D0%92%D0%B0%D1%80%D0%BD%D0%B0&amp;sll=37.0625,-95.677068&amp;sspn=48.287373,107.138672&amp;t=h&amp;ie=UTF8&amp;hq=&amp;hnear=ulitsa+Pencho+Slaveykov+50,+Varna,+Bulgaria&amp;ll=43.216534,27.904469&amp;spn=0.001368,0.003487&amp;z=18&amp;output=embed"></iframe>
 
-    .row
-      h3.span4.pull-left Електронна поща<br>и форум
-      span.span5.pull-right
-        a.text(href="mailto:varna-lab@googlegroups.com") varna-lab@googlegroups.com
-
-    .row
-      h3.span4.pull-left  IRC:
-      span.span5.pull-right
-        span.text irc.freenode.net #varnalab
-
+        dt.vl-term Адрес
+        dd.vl-def.text ул. „Пенчо Славейков“ 50, Варна
+        dd.vl-map
+          iframe(src="https://maps.google.com/maps?f=d&amp;source=s_d&amp;saddr=%D0%92%D0%B0%D1%80%D0%BD%D0%B0,+%D0%91%D1%8A%D0%BB%D0%B3%D0%B0%D1%80%D0%B8%D1%8F&amp;daddr=%D1%83%D0%BB.+%E2%80%9E%D0%9F%D0%B5%D0%BD%D1%87%D0%BE+%D0%A1%D0%BB%D0%B0%D0%B2%D0%B5%D0%B9%D0%BA%D0%BE%D0%B2%E2%80%9C+50,+%D0%92%D0%B0%D1%80%D0%BD%D0%B0,+%D0%91%D1%8A%D0%BB%D0%B3%D0%B0%D1%80%D0%B8%D1%8F&amp;hl=en&amp;geocode=FTlAkwIdjuGpASmh1_Oqi1OkQDF8i6VxHJQnVw%3BFTJvkwIdYMqpASlBusmMelSkQDGSnMmLc1JZ2A&amp;aq=t&amp;sll=43.210712,27.90714&amp;sspn=0.015968,0.032916&amp;mra=ltm&amp;ie=UTF8&amp;ll=43.210712,27.90714&amp;spn=0.011841,0.006832&amp;t=m&amp;output=embed")
