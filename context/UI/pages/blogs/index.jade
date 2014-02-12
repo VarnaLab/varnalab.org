@@ -12,7 +12,7 @@ block content
                   | #{blogs[i].title}
               h5.section-description
                 | Публикувано на #{blogs[i].createdDate()} от&nbsp;
-                a(href='#go-to-author-page') #{blogs[i].creator.name}
+                a(href='#go-to-author-page') #{blogs[i].getCreatorName()}
               article
                 | !{blogs[i].htmlIngress()} …
               .section-nav
