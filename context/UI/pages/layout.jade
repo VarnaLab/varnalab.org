@@ -15,13 +15,11 @@ html
             .span9
               block content
             .span3
-              include ./partials/twitter-embedded-timeline-box.jade
-              include ./partials/facebook-like-box.jade
-              include ./partials/contactUsTeaser
-              include ./partials/whoishere
-              include ./partials/randomMemberTeaser
-              include ./partials/paypalButtonTeaser
-              include ./partials/foursquareTeaser
+              include ./widgets/contactUsTeaser
+              include ./widgets/whoishere
+              include ./widgets/foursquareTeaser
+              include ./widgets/twitter-embedded-timeline-box.jade
+              include ./widgets/facebook-like-box.jade
           include ./partials/footer
     div#fb-root
     script
