@@ -1,6 +1,6 @@
 {
   "HttpServer": {
-    "port": 9090,
+    "port": 5050,
     "afterware": [
       { 
         "source": "plasma/httpserver-plugins/static", 

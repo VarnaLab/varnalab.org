@@ -1,0 +1,14 @@
+{
+  "remote": "node@176.58.101.229",
+  "cwd": "~/varnalab.org",
+  "source": "git@github.com:VarnaLab/varnalab.org.git",
+  "origin": "origin",
+  "branch": "develop",
+  "nvmPath": "~/.nvm/nvm.sh",
+  "nodeVersion": "v0.10.24",
+  "start": "forever --sourceDir /home/node/varnlab.org -a -l /home/node/varnalab.org/varnalab.org-staging.js.out --minUptime 5000 --spinSleepTime 2000 start varnalab.org-staging.js",
+  "stop": "forever stop varnalab.org-staging.js",
+  "restart": "forever restart varnalab.org-staging.js",
+  "status": "forever list",
+  "build": "CELL_MODE=staging node scripts/prebuild-assets.js"
+}
