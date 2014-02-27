@@ -35,14 +35,14 @@
     "marked": "0.2.9",
     "passport": "0.1.17",
     "passport-local": "0.1.6",
-    "errorface": "~0.1.0"
+    "errorface": "~0.1.0",
+    "shelljs": "0.2.5"
   },
   "devDependencies": {
     "jasmine-node": "1.11.0",
     "jasmine-matchers": "0.2.2",
     "Faker": "latest",
     "request": "2.22.0",
-    "shelljs": "0.2.5",
     "backbone": "1.0.0",
     "jquery": "1.8.3",
     "nodemon": "0.7.8",
