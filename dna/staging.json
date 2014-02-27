@@ -6,7 +6,7 @@
   "branch": "develop",
   "nvmPath": "~/.nvm/nvm.sh",
   "nodeVersion": "v0.10.24",
-  "start": "forever --sourceDir /home/node/varnlab.org -a -l /home/node/varnalab.org/varnalab.org-staging.js.out --minUptime 5000 --spinSleepTime 2000 start varnalab.org-staging.js",
+  "start": "forever --sourceDir /home/node/varnalab.org -a -l /home/node/varnalab.org/varnalab.org-staging.js.out --minUptime 5000 --spinSleepTime 2000 start varnalab.org-staging.js",
   "stop": "forever stop varnalab.org-staging.js",
   "restart": "forever restart varnalab.org-staging.js",
   "status": "forever list",
