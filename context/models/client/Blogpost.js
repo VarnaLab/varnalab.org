@@ -6,8 +6,11 @@ module.exports = require("./MongoModel").extend({
       return "/api/blogposts/"+this.id;
   },
   getCreatorName: function(){
-    if(this.get("creator"))
-      return this.get("creator").name || this.get("creator").email
+    if(this.get("originalAuthor"))
+      return this.get("originalAuthor")
+    
+    if(this.get("creator") && this.get("creator").name)
+      return this.get("creator").name
     else
       return "unknown"
   }

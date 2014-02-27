@@ -16,8 +16,8 @@ module.exports = require("./MongoModel").extend({
       return "end date is after start date"
   },
   getCreatorName: function(){
-    if(this.get("creator"))
-      return this.get("creator").name || this.get("creator").email
+    if(this.get("creator") && this.get("creator").name)
+      return this.get("creator").name
     else
       return "unknown"
   }

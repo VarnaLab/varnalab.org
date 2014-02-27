@@ -39,8 +39,8 @@ schema.method "getUrl", () ->
   [@startDateTime.getFullYear(), @startDateTime.getMonth()+1, @startDateTime.getDate(), @title].join("/")
 
 schema.method "getCreatorName", () ->
-  if @get("creator")
-    @get("creator").name || @get("creator").email
+  if @get("creator") && @get("creator").name
+    @get("creator").name
   else
     "unknown"
 

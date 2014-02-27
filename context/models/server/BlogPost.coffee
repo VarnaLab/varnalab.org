@@ -7,6 +7,7 @@ marked = require("marked")
 schema = mongoose.Schema({
   title: { type: String, required: true }
   creator: { type: mongoose.Schema.ObjectId, ref: "Member", required: true }
+  originalAuthor: String
   ingress: { type: String, required: false }
   content: { type: String, required: true }
   date: { type: Date, default: Date.now }
@@ -62,10 +63,13 @@ schema.method "getUrl", () ->
   [@created.getFullYear(), @created.getMonth()+1, @created.getDate(), @slug].join("/")
 
 schema.method "getCreatorName", () ->
-  if @get("creator")
-    @get("creator").name || @get("creator").email
+  if @originalAuthor
+    return @originalAuthor
+
+  if @get("creator") && @get("creator").name 
+    return @get("creator").name
   else
-    "unknown"
+    return "unknown"
 
 Base.timestampify schema
 
