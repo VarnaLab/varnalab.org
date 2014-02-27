@@ -1,7 +1,7 @@
 {
   "name": "varnalab.org",
   "private": true,
-  "version": "0.0.18",
+  "version": "0.0.19",
   "main": "varnalab.org.js",
   "scripts": {
     "start": "nodemon nodemon.varnalab.org.js",
