@@ -6,6 +6,7 @@ varnalab.org
 2. git clone git@github.com:VarnaLab/varnalab.org.git
 3. cd varnalab.org && npm install
 4. node varnalab.org.js
+5. goto [http://localhost:8080](http://localhost:8080/)
 
 # scripts
 
@@ -29,3 +30,6 @@ Every .js in /scripts folder can be executed via node, example
 ## prebuild all js/css assets
 
     $ CELL_MODE=staging node scripts/prebuild-assets.js
+
+## change default launch port 
+    $ PORT=1337 node varnalab.org
