@@ -7,7 +7,8 @@ $(function(){
     var newMember = new Member();
     newMember.save({
       email: $("input[name='email']").val(),
-      password: $("input[name='password']").val()
+      password: $("input[name='password']").val(),
+      accessToken: $("input[name='accessToken']").val()
     }).success(function(){
       window.location = "/admin";
     }).error(function(res){

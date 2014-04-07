@@ -1,6 +1,12 @@
 module.exports = function(config){
   var Member = require(config.models+"/Member");
   var _ = require('underscore');
+  var accessToken;
+  try {
+   accessToken = require(process.cwd()+"/accesstoken.json").value
+  } catch(e){
+    // ignore
+  }
   
   return {
     "GET": function(req, res){
@@ -13,6 +19,8 @@ module.exports = function(config){
       })
     },
     "POST /register": function(req, res){
+      if(req.body.accessToken != accessToken)
+        return res.error("invalid accesstoken")
       Member.create(req.body, function(err, member){
         if(err) return res.error(err);
         req.logIn(member, function(err) {
