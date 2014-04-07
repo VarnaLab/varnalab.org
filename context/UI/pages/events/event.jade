@@ -9,7 +9,7 @@ block content
           br
           | #{event.startTime()}
         h2 #{event.title}
-        h5.section-description Автор: #{event.getCreatorName()}
+        h5.section-description Добавено от: #{event.getCreatorName()}
         article!= event.htmlContent()
         .section-nav
           include ../partials/sharer
