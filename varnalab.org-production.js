@@ -1,3 +1,3 @@
-process.env.CELL_MODE = "staging";
+process.env.CELL_MODE = "production";
 var Cell = require("./varnalab.org");
 var instance = new Cell();

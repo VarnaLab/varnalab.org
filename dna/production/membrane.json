@@ -4,7 +4,7 @@
     "afterware": [
       { 
         "source": "plasma/httpserver-plugins/static", 
-        "path": "/.assets-store/staging", 
+        "path": "/.assets-store/production", 
         "url": "/",
         "index": false,
         "passthrough": true,
