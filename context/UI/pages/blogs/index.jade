@@ -2,22 +2,23 @@ extends ../layout
 
 block content
   section
-    .row
-      - for(var i = 0; i<blogs.length; i++)
-        .span4
-          .section-item
-            .section-item.post-item
-              h3
-                a.title-link(href='/blogs/#{blogs[i].getUrl()}')
-                  | #{blogs[i].title}
-              h5.section-description
-                | Публикувано на #{blogs[i].createdDate()} от&nbsp;
-                a(href='#go-to-author-page') #{blogs[i].getCreatorName()}
-              article
-                | !{blogs[i].htmlIngress()} …
-              .section-nav
-                a.btn.pull-left(href='/blogs/#{blogs[i].getUrl()}') Прочети повече
-                br.clear
+    - for(var k = 0; k<blogs.length; k+=2)
+      .row
+        - for(var i = k; i<k+2 && i<blogs.length; i++)
+          .span4
+            .section-item
+              .section-item.post-item
+                h3
+                  a.title-link(href='/blogs/#{blogs[i].getUrl()}')
+                    | #{blogs[i].title}
+                h5.section-description
+                  | Публикувано на #{blogs[i].createdDate()} от&nbsp;
+                  a(href='#go-to-author-page') #{blogs[i].getCreatorName()}
+                article
+                  | !{blogs[i].htmlIngress()} …
+                .section-nav
+                  a.btn.pull-left(href='/blogs/#{blogs[i].getUrl()}') Прочети повече
+                  br.clear
   - if(pageNumber > 0)
     a(href="/blogs/#{pageNumber-1}").btn previous
   - else

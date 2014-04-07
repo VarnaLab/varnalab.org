@@ -5,6 +5,10 @@ var Member = require("models/server/Member")
 var parser = require('xml2json');
 var fs = require('fs')
 
+var wrap = function(content) {
+  return "<div class='imported-blog-post'>"+content+"</div>"
+}
+
 module.exports.exec = function(next) {
   var mode = process.env.CELL_MODE?process.env.CELL_MODE:""
   var dbname = require(process.cwd()+"/dna/"+mode+"/database.json").name
@@ -28,7 +32,7 @@ module.exports.exec = function(next) {
               updated: new Date(entry.updated),
               title: entry.title.$t,
               slug: entry.title.$t,
-              content: entry.content.$t,
+              content: wrap(entry.content.$t),
               originalAuthor: entry.author.name
             }, function(err, post){
               console.log("Inserted", entry.title.$t, allCount)
