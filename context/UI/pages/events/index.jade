@@ -12,7 +12,7 @@ block content
           br
           | #{events[i].startTime()}
         h3 #{events[i].title}
-        h5.section-description Автор: #{events[i].getCreatorName()}
+        h5.section-description Добавено от: #{events[i].getCreatorName()}
         .section-nav
           a.btn.pull-left(href='/events/#{events[i].getUrl()}') Прочети повече
           br.clear
