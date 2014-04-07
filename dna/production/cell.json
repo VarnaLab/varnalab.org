@@ -3,7 +3,7 @@
   "cwd": "~/varnalab.org",
   "source": "git@github.com:VarnaLab/varnalab.org.git",
   "origin": "origin",
-  "branch": "production",
+  "branch": "master",
   "nvmPath": "~/.nvm/nvm.sh",
   "nodeVersion": "v0.10.24",
   "start": "forever --sourceDir /home/node/varnalab.org -a -l /home/node/varnalab.org/varnalab.org-production.js.out --minUptime 5000 --spinSleepTime 2000 start varnalab.org-production.js",
