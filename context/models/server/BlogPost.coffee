@@ -57,7 +57,8 @@ schema.method 'htmlContent', () ->
   marked @content
 
 schema.method 'htmlIngress', () ->
-  marked(@ingress || @content).replace(/(<([^>]+)>)/ig,"").substr(0, 255)
+  ingress = marked(@ingress || @content).replace(/<br \/>/g, "\n").replace(/(<([^>]+)>)/ig,"").replace(/\n/g, "<br />")
+  ingress.split("<br />")[0].substr(0, 255)
 
 schema.method "getUrl", () ->
   [@created.getFullYear(), @created.getMonth()+1, @created.getDate(), @slug].join("/")
