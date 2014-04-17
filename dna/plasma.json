@@ -3,6 +3,9 @@
     "source": "plasma/Backbonify",
     "attachOn": "HttpServer"
   },
+  "Whoisatvarnalab": {
+    "source": "plasma/Whoisatvarnalab"
+  },
   "Jadefy": {
     "source": "node_modules/organic-jadefy",
     "exportsGlobal": "jadefy"

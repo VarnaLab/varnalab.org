@@ -1,8 +1,8 @@
-module.exports = function(config){
+module.exports = function(config, plasma){
   return {
     "* *": [
       this.version,
-      this.whoisatvarnalab,
+      this.whoisatvarnalab(plasma),
       this.randomMember,
       this.getFoursquareMayor
     ], 
