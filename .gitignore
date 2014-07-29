@@ -1,6 +1,6 @@
-node_modules
+/node_modules
+/build
 .assets-store
 *.*~
 .git-commands.md
 accesstoken.json
-build

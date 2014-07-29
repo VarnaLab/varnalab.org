@@ -5,7 +5,7 @@
   "cwd": "~/varnalab.org-staging",
   "main": "varnalab.org-staging.js",
   "source": "git@github.com:VarnaLab/varnalab.org.git",
-  "branch": "master",
+  "branch": "upgrade/stem-b306c9c",
   "origin": "origin",
   "runAngel": "CELL_MODE=_staging node ./node_modules/.bin/angel",
   "start": "{sourceNode}; cd {cwd}; forever --sourceDir {cwd} -a -l {cwd}/{main}.out --minUptime 5000 --spinSleepTime 2000 start {main}",
