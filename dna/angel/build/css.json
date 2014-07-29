@@ -1,0 +1,12 @@
+{
+  "type": "build",
+  "source": "node_modules/organic-globdir",
+  "root": "context/UI/styles",
+  "pattern": "/**/*.bundle.css",
+  "forEachEmit": {
+    "type": "build",
+    "source": "node_modules/organic-spawnfilecmd",
+    "dest": "build/css",
+    "cmd": "node ./node_modules/less/bin/lessc -x {srcfile} {destfile}"
+  }
+}

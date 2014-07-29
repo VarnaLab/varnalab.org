@@ -1,0 +1,26 @@
+{
+  "plasma": {
+    "organic-site-routes": {
+      "disqus": {
+        "shortname": "varnalabtest"
+      }
+    },
+    "organic-api-routes": {
+      "formidable": {
+        "uploadDir": "tests/uploads/",
+        "keepExtensions": true
+      }
+    }
+  },
+  "membrane": {
+    "bunyan-output": {
+      "bunyanInit": "context/init-bunyan-output"
+    },
+    "organic-express-server": {
+      "port": 8081
+    },
+    "organic-mongoose": {
+      "recreateDatabase": true
+    }
+  }
+}

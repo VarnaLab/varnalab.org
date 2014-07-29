@@ -1,9 +1,0 @@
-{
-  "scripts": [
-    "angelscripts",
-    "angelscripts-cellcmds"
-  ],
-  "abilities": [
-    "angelabilities/src/io.js"
-  ]
-}

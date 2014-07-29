@@ -32,7 +32,6 @@ module.exports = Organel.extend(function(plasma, dna){
       clearInterval(fetchDataIntervalID)
       fetchDataIntervalID = null
     }
-    return false
   })
 }, {
   whoisatvarnalab: function(c, next){

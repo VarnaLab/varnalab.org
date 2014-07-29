@@ -1,6 +1,6 @@
 describe("members", function(){
   var helpers = require("../helpers");
-  var request = require("request");
+  var request = require("request").defaults({jar: true})
 
   var currentUserData;
 

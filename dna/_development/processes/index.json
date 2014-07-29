@@ -1,0 +1,32 @@
+{
+  "plasma": {
+    "organic-api-routes": {
+      "log": true
+    },
+    "organic-site-routes": {
+      "log": true,
+      "disqus": {
+        "shortname": "varnalab01-dev"
+      }
+    },
+    "organic-express-static": {
+      "log": true
+    },
+    "organic-static-pages": {
+      "log": true
+    },
+    "organic-express-response": {
+      "skipDefaultErrorResponse": true
+    },
+    "buildJavascripts": "@angel.build.js",
+    "buildStylesheets": "@angel.build.css"
+  },
+  "membrane": {
+    "bunyan-output": {
+      "bunyanInit": "context/init-bunyan-output"
+    },
+    "organic-express-server": {
+      "logRunning": true
+    }
+  }
+}

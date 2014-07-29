@@ -1,7 +1,7 @@
 var _ = require('underscore');
 
-module.exports = function(config){
-  var Event = require(config.models+"/Event");
+module.exports = function(plasma, dna, helpers){
+  var Event = require(process.cwd()+dna.models+"/Event");
   return {
     "GET": function(req, res){
       Event.find({}).populate("creator").exec(function(err, events){
@@ -10,7 +10,7 @@ module.exports = function(config){
       })
     },
     "POST /add": function(req, res){
-      req.body.creator = req.session.passport.user;
+      req.body.creator = req.user;
       Event.create(req.body, function(err, event){
         if(err) return res.error(err);
         res.result(event);

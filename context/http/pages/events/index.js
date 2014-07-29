@@ -1,11 +1,11 @@
-module.exports = function(config){
+module.exports = function(plasma, dna, helpers){
   return {
-    "GET": [this.getAllEvents, this.eventsCount, function(req, res){
+    "GET": [helpers.getAllEvents, helpers.eventsCount, function(req, res){
       req.eventsCount = req.events.length;
       res.sendPage("events/index");
     }],
-    "GET /:year/:month/:date/:title": [this.getEvents.byFullUrl, function(req, res) {
-      req.disqus = config.disqus
+    "GET /:year/:month/:date/:title": [helpers.getEvents.byFullUrl, function(req, res) {
+      req.disqus = dna.disqus
       res.sendPage("events/event");
     }]
   }

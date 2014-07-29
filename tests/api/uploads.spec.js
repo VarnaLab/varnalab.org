@@ -1,5 +1,5 @@
 var helpers = require("../helpers")
-var request = require("request")
+var request = require("request").defaults({jar: true})
 var fs = require("fs")
 
 describe("uploads", function(){
@@ -9,7 +9,7 @@ describe("uploads", function(){
   })
 
   it("registers user", function(next){
-    helpers.createUser(function(userData) {
+    helpers.createUser(request, function(userData) {
       dummyUser = userData;
       next()
     })

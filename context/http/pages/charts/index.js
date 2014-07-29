@@ -2,7 +2,7 @@
 var moment = require('moment');
 
 
-module.exports = function(config){
+module.exports = function(plasma, dna, helpers){
   /*var User = require(config.models+"/User");
   var Spend = require(config.models+"/Spend");*/
 
