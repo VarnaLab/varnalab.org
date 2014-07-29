@@ -1,3 +1,5 @@
-process.env.CELL_MODE = "production";
-var Cell = require("./varnalab.org");
-var instance = new Cell();
+process.env.CELL_MODE = "_production"
+var instance = new (require("./index"))()
+instance.start(function(err){
+  if(err) throw err
+})

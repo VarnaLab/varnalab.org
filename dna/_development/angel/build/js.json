@@ -1,0 +1,6 @@
+{ 
+  "forEachEmit": {
+    "cmd": "CELL_MODE=_development node ./node_modules/watchify/bin/cmd {srcfile} -o {destfile} -d -v {transformations}",
+    "log": true
+  }
+}

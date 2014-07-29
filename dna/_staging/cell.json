@@ -1,0 +1,20 @@
+{
+  "name": "varnalab.org",
+  "remote": "ssh node@varnalab.org",
+  "sourceNode": ". ~/.nvm/nvm.sh ; nvm use v0.10.24",
+  "cwd": "~/varnalab.org-staging",
+  "main": "varnalab.org-staging.js",
+  "source": "git@github.com:VarnaLab/varnalab.org.git",
+  "branch": "upgrade/stem-b306c9c",
+  "origin": "origin",
+  "runAngel": "CELL_MODE=_staging node ./node_modules/.bin/angel",
+  "start": "{sourceNode}; cd {cwd}; forever --sourceDir {cwd} -a -l {cwd}/{main}.out --minUptime 5000 --spinSleepTime 2000 start {main}",
+  "stop": "{sourceNode}; cd {cwd}; forever stop {main}",
+  "restart": "{sourceNode}; cd {cwd}; forever restart {main}",
+  "status": "{sourceNode}; cd {cwd}; forever list",
+  "build": "{sourceNode}; cd {cwd}; {runAngel} build",
+  "install": "mkdir -p {cwd} ; cd {cwd} ; git clone {source} . ; {sourceNode} ; npm install --production",
+  "upgrade": "cd {cwd} ; git fetch {origin} ; git checkout {branch} ; git pull {origin} {branch} ; {sourceNode}; npm install --production ; {build} ; {stop} && {start}",
+  "upgrade-without-build": "cd {cwd} ; git fetch {origin} ; git checkout {branch} ; git pull {origin} {branch} ; {sourceNode}; npm install --production ; {stop} && {start}",
+  "uninstall": "rm -rf {cwd}"
+}

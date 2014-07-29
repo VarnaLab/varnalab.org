@@ -1,16 +1,17 @@
-module.exports = function(config, plasma){
+module.exports = function(plasma, dna, helpers){
   return {
     "* *": [
-      this.version,
-      this.whoisatvarnalab(plasma),
-      this.randomMember,
-      this.getFoursquareMayor
+      helpers.pageHelpers,
+      helpers.version,
+      helpers.whoisatvarnalab(plasma),
+      helpers.randomMember,
+      helpers.getFoursquareMayor(plasma)
     ], 
     "GET": [
-      this.getBlogPosts.last(3),
-      this.blogsCount,
-      this.getUpcomingEvents,
-      this.eventsCount,
+      helpers.getBlogPosts.last(3),
+      helpers.blogsCount,
+      helpers.getUpcomingEvents,
+      helpers.eventsCount,
       function(req, res) {
         res.sendPage("index");
       }

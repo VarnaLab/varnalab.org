@@ -1,0 +1,14 @@
+{
+  "plasma": {
+    "organic-site-routes": {
+      "disqus": {
+        "shortname": "varnalab01-staging"
+      }
+    }
+  },
+  "membrane": {
+    "organic-express-server": {
+      "port": 5051
+    }
+  }
+}

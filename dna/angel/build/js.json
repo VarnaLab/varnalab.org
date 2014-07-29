@@ -1,0 +1,13 @@
+{ 
+  "type": "build",
+  "source": "node_modules/organic-globdir",
+  "root": "context/UI/apps",
+  "pattern": "/**/*.bundle.js",
+  "forEachEmit": {
+    "type": "build",
+    "source": "node_modules/organic-spawnfilecmd",
+    "dest": "build/js",
+    "transformations": "@browserify",
+    "cmd": "node ./node_modules/browserify/bin/cmd {transformations} {srcfile} | node ./node_modules/uglify-js/bin/uglifyjs > {destfile}"
+  }
+}
