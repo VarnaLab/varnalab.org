@@ -4,7 +4,7 @@ module.exports = function(plasma, dna, helpers) {
       helpers.version, 
       helpers.whoisatvarnalab(plasma),
       helpers.randomMember,
-      helpers.getFoursquareMayor
+      helpers.getFoursquareMayor(plasma)
     ],
     "GET": [
       helpers.getAllMembers,
