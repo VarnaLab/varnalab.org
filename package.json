@@ -3,7 +3,6 @@
   "private": true,
   "version": "0.0.19",
   "main": "index.js",
-  "browserify": { "transform": [ "jadeify", "browserify-transform-dna" ] },
   "scripts": {
     "start": "node index",
     "test": "jasmine-node tests --verbose"
