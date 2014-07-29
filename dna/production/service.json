@@ -1,0 +1,18 @@
+{
+  "name":"varnalab.org",
+  "description": "",
+  "user": "node",
+  "start": "forever --sourceDir /home/node/varnalab.org -a -l /home/node/varnalab.org/varnalab.org-production.js.out --minUptime 5000 --spinSleepTime 2000 start varnalab.org-production.js",
+  "cwd": "/home/node/varnalab.org",
+  "log": "/home/node/varnalab.org/varnalab.org.service.out",
+  "startOn": "filesystem and started networking and started mongodb",
+  "forks": true,
+  "NODE_BIN_DIR": "/home/node/.nvm/v0.10.24/bin",
+  "NODE_PATH": "/home/node/.nvm/v0.10.24/lib/node_modules",
+  "ENV": [
+    { 
+      "key": "HOME", 
+      "value": "/home/node"
+    }
+  ]
+}
