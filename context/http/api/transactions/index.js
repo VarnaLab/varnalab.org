@@ -1,7 +1,7 @@
 var _ = require('underscore');
 
-module.exports = function(config){
-  var Transaction = require(config.models+"/Transaction");
+module.exports = function(plasma, dna, helpers){
+  var Transaction = require(process.cwd()+dna.models+"/Transaction");
   return {
     "GET": function(req, res){
       Transaction.find({}, function(err, transactions){

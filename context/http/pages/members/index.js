@@ -1,19 +1,19 @@
-module.exports = function(config, plasma) {
+module.exports = function(plasma, dna, helpers) {
   return {
     "* *": [
-      this.version, 
-      this.whoisatvarnalab(plasma),
-      this.randomMember,
-      this.getFoursquareMayor
+      helpers.version, 
+      helpers.whoisatvarnalab(plasma),
+      helpers.randomMember,
+      helpers.getFoursquareMayor
     ],
     "GET": [
-      this.getAllMembers,
+      helpers.getAllMembers,
       function(req, res) {
         res.sendPage("members/index");
       }
     ],
     "GET /:member": [
-      this.getMemberByName("member"),
+      helpers.getMemberByName("member"),
       function(req, res) {
         res.sendPage("members/member");
       }

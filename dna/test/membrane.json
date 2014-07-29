@@ -1,8 +1,0 @@
-{
-  "HttpServer": {
-    "port": 8081
-  },
-  "Mongoose": {
-    "recreateDatabase": true
-  }
-}

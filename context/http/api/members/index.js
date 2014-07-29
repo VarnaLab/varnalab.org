@@ -1,7 +1,8 @@
-module.exports = function(config){
-  var Member = require(config.models+"/Member");
+module.exports = function(plasma, dna, helpers){
+  var Member = require(process.cwd()+dna.models+"/Member");
   var _ = require('underscore');
   var accessToken;
+  var passport = require("passport")
   try {
    accessToken = require(process.cwd()+"/accesstoken.json").value
   } catch(e){
@@ -23,14 +24,14 @@ module.exports = function(config){
         return res.error("invalid accesstoken")
       Member.create(req.body, function(err, member){
         if(err) return res.error(err);
-        req.logIn(member, function(err) {
+        req.login(member, function(err) {
           if (err) { return next(err); }
           return res.result(member);
         });
       })
     },
     "GET /me": function(req, res){
-      Member.findById(req.session.passport.user, function(err, member){
+      Member.findById(req.user.id, function(err, member){
         if(err) return res.error(err);
         res.result(member.toPublicJSON());
       });
@@ -60,12 +61,11 @@ module.exports = function(config){
       passport.authenticate('local', function(err, user, info){
         if (err) { return next(err); }
         if (!user) { return res.error(info); }
-        req.logIn(user, function(err) {
+        req.login(user, function(err) {
           if (err) { return next(err); }
           return res.result(user);
         });
       })(req, res, next)
-
     }
   }
 }

@@ -1,0 +1,130 @@
+{
+  "plasma": {
+    "Whoisatvarnalab": {
+      "source": "plasma/Whoisatvarnalab"
+    },
+    "Jadefy": {
+      "source": "node_modules/organic-jadefy",
+      "exportsGlobal": "jadefy"
+    },
+    "Symlink": {
+      "source": "node_modules/organic-symlink",
+      "symlink": {
+        "target": {
+          "node_modules": {
+            "models": "/context/models",
+            "views": "/context/UI/apps/views"
+          }
+        }
+      }
+    },
+    "organic-express-sessions": {
+      "source": "node_modules/organic-express-mongo-sessions",
+      "reactOn": "ExpressServer",
+      "emitReady": "ExpressSessions",
+      "cookie_secret": "@processes.index.membrane.organic-express-server.cookie_secret",
+      "db": "@database.name"
+    },
+    "organic-express-passport": {
+      "source": "node_modules/organic-express-passport",
+      "reactOn": "ExpressServer",
+      "initPassport": "context/init-passport",
+      "oauth": {
+        "uncomment-facebook": {
+          "clientID": "get_your_own",
+          "clientSecret": "get_your_own",
+          "callbackURL": "http://127.0.0.1:1337/auth/facebook/callback"
+        },
+        "uncomment-twitter": {
+          "consumerKey": "get_your_own",
+          "consumerSecret": "get_your_own",
+          "callbackURL": "http://127.0.0.1:1337/auth/twitter/callback"
+        },
+        "uncomment-github": {
+          "clientID": "get_your_own",
+          "clientSecret": "get_your_own",
+          "callbackURL": "http://127.0.0.1:1337/auth/github/callback"
+        },
+        "uncomment-google": {
+          "returnURL": "http://127.0.0.1:1337/auth/google/callback",
+          "realm": "http://127.0.0.1:1337"
+        }
+      }
+    },
+    "organic-api-routes": {
+      "source": "node_modules/organic-express-routes",
+      "reactOn": ["ExpressServer", "ExpressSessions"],
+      "pattern": "/**/*.js",
+      "path": "context/http/api",
+      "helpers": "context/http/helpers",
+      "mount": "/api",
+      "emitReady": "ApiRoutesReady",
+      "models": "/context/models/server",
+      "formidable": {
+        "uploadDir": "uploads/",
+        "keepExtensions": true
+      }
+    },
+    "organic-site-routes": {
+      "source": "node_modules/organic-express-routes",
+      "reactOn": ["ExpressServer", "ExpressSessions"],
+      "pattern": "/**/*.js",
+      "path": "context/http/pages",
+      "helpers": "context/http/helpers",
+      "emitReady": "SiteRoutesReady",
+      "models": "/context/models/server"
+    },
+    "organic-express-response": {
+      "source": "node_modules/organic-express-response",
+      "reactOn": ["ExpressServer", "ApiRoutesReady", "SiteRoutesReady"],
+      "skipDefaultResponse": true
+    },
+    "organic-static-pages": {
+      "source": "node_modules/organic-express-staticpages",
+      "reactOn": ["ExpressServer", "ApiRoutesReady", "SiteRoutesReady"],
+      "pattern": "/**/*.jade",
+      "path": "context/UI/pages/static/",
+      "emitReady": "StaticPagesReady",
+      "exclude": "layouts"
+    },
+    "organic-express-static": {
+      "source": "node_modules/organic-express-static",
+      "reactOn": "ExpressServer",
+      "mount": {
+        "/public": "@public",
+        "/images": ["context/UI/styles/images", "context/UI/styles/images/vendor/jquery"],
+        "": ["public"],
+        "/uploads": ["uploads"]
+      }
+    }
+  },
+  "membrane": {
+    "console": {
+      "source": "node_modules/organic-console",
+      "emitEvery": {
+        "type": "console"
+      }
+    },
+    "bunyan-output": {
+      "source": "node_modules/organic-bunyan-output",
+      "reactOn": "console",
+      "bunyan": {
+        "name": "master"
+      }
+    },
+    "organic-mongoose": {
+      "source": "node_modules/organic-mongoose",
+      "database": "@database"
+    },
+    "organic-express-server": {
+      "source": "node_modules/organic-express-server",
+      "port": 8080,
+      "initScript": "context/init-express-app",
+      "reactOn": "Mongoose",
+      "emitReady": "ExpressServer",
+      "cookie_secret": "varnalab",
+      "views": "context/UI/pages",
+      "expressSetupDoneOnce": ["ExpressServer", "ApiRoutesReady", "SiteRoutesReady", "StaticPagesReady"]
+    }
+  }
+}

@@ -1,6 +1,6 @@
 var _ = require("underscore")
-module.exports = function (config) {
-  var BlogPost = require(config.models + '/BlogPost');
+module.exports = function (plasma, dna, helpers) {
+  var BlogPost = require(process.cwd()+dna.models+'/BlogPost');
   return {
     'GET' : function (req, res) {
       BlogPost.find({}).populate("creator").sort({created: -1}).exec(function(err, blogposts) {
@@ -9,8 +9,8 @@ module.exports = function (config) {
       });
     },
     'POST /add' : function (req, res) {
-      if(req.session.passport.user)
-        req.body.creator = req.session.passport.user;
+      if(req.user)
+        req.body.creator = req.user;
 
       BlogPost.createUniqueByDateAndSlug(req.body, function (err, blogpost) {
         if (err) return res.error(err);

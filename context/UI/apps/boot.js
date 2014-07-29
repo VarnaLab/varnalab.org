@@ -5,4 +5,4 @@ require("./vendor/bootstrap.min");
 _ = require("./vendor/underscore");
 moment = require("./vendor/moment");
 Backbone = require("./vendor/backbone");
-config = require("config");
+config = require("dna");

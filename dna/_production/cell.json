@@ -1,0 +1,20 @@
+{
+  "name": "stem",
+  "remote": "ssh user@remoteAddr",
+  "sourceNode": ". ~/.nvm/nvm.sh ; nvm use v0.10.24",
+  "cwd": "~/app",
+  "main": "index.js",
+  "source": "git url",
+  "branch": "master",
+  "origin": "origin",
+  "runAngel": "CELL_MODE=_staging node ./node_modules/.bin/angel",
+  "start": "{sourceNode}; cd {cwd}; {runAngel} app start app.js",
+  "stop": "{sourceNode}; cd {cwd}; {runAngel} app stop app.js",
+  "restart": "{sourceNode}; cd {cwd}; {runAngel} app restart app.js",
+  "status": "{sourceNode}; cd {cwd}; {runAngel} app status app.js",
+  "build": "{sourceNode}; cd {cwd}; {runAngel} app build",
+  "install": "mkdir -p {cwd} ; cd {cwd} ; git clone {source} . ; {sourceNode} ; npm install --production",
+  "upgrade": "git fetch {origin} ; git checkout {branch} ; git pull {origin} {branch} ; {sourceNode}; npm install --production ; {build} ; {stop} && {start}",
+  "upgrade-without-build": "git fetch {origin} ; git checkout {branch} ; git pull {origin} {branch} ; {sourceNode}; npm install --production ; {stop} && {start}",
+  "uninstall": "rm -rf {cwd}"
+}

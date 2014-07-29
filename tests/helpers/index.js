@@ -4,32 +4,32 @@ var request = require('request');
 var wrench = require("wrench");
 var Faker = require('Faker');
 
-process.env.NODE_ENV = "test";
-process.env.CELL_MODE = "test";
-var Api = require("../../varnalab.org");
-var api;
+process.env.CELL_MODE = process.env.CELL_MODE || "_test"
+var Cell = require("../../index")
+var cell;
 
 module.exports.apiendpoint = "http://localhost:8081/api";
 
 module.exports.cleanUploads = function(){
-  if(fs.existsSync(path.join(process.cwd(),api.dna.uploads.path)))
-    wrench.rmdirSyncRecursive(path.join(process.cwd(),api.dna.uploads.path));
-  wrench.mkdirSyncRecursive(path.join(process.cwd(),api.dna.uploads.path));
+  if(fs.existsSync(path.join(process.cwd(),"tests","uploads")))
+    wrench.rmdirSyncRecursive(path.join(process.cwd(),"tests","uploads"));
+  wrench.mkdirSyncRecursive(path.join(process.cwd(),"tests","uploads"));
 }
 
 module.exports.boot = function(next){
   require("jasmine-matchers");
-  api = new Api();
-  api.plasma.on("HttpApiActions", function(){
+  cell = new Cell();
+  cell.plasma.on(["ExpressServer", "ApiRoutesReady", "SiteRoutesReady", "StaticPagesReady"], function(){
     module.exports.cleanUploads()
     next()
   });
+  cell.start()
 }
 
 module.exports.kill = function(next){
-  api.kill();
-  console.log("api killed");
-  next();
+  cell.stop(function(){
+    next();  
+  });
 }
 
 var files = fs.readdirSync(__dirname);
@@ -77,8 +77,13 @@ module.exports.getInvalidEmail = function(){
   return 'asd';
 }
 
-module.exports.createUser = function(callback) {
-  request.post({
+module.exports.createUser = function(requestModule, callback) {
+  if(typeof requestModule == "function" && !callback) {
+    callback = requestModule
+    requestModule = request
+  }
+
+  requestModule.post({
     uri: module.exports.apiendpoint+"/members/register",
     json: module.exports.getValidMember()
   }, function(err, res, body){

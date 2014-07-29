@@ -1,6 +1,6 @@
 describe("transactions", function(){
   var helpers = require("../helpers");
-  var request = require("request");
+  var request = require("request").defaults({jar: true})
 
   var user = helpers.getValidMember();
   var transaction = helpers.getValidTransaction();

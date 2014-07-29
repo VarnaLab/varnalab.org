@@ -1,6 +1,6 @@
 describe("blogposts", function() {
   var helpers = require('../helpers');
-  var request = require('request');
+  var request = require('request').defaults({jar: true})
   var _ = require('underscore');
   var dummyUser;
   // fixture object that is used all over the test
@@ -46,7 +46,7 @@ describe("blogposts", function() {
   });
 
   it("registers user", function(next){
-    helpers.createUser(function(userData) {
+    helpers.createUser(request, function(userData) {
       dummyUser = userData;
       next()
     })
