@@ -75,7 +75,10 @@
       "path": "context/http/pages",
       "helpers": "context/http/helpers",
       "emitReady": "SiteRoutesReady",
-      "models": "/context/models/server"
+      "models": "/context/models/server",
+      "disqus": {
+        "shortname": "varnalab01"
+      }
     },
     "organic-express-response": {
       "source": "node_modules/organic-express-response",

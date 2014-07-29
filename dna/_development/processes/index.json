@@ -4,7 +4,10 @@
       "log": true
     },
     "organic-site-routes": {
-      "log": true
+      "log": true,
+      "disqus": {
+        "shortname": "varnalab01-dev"
+      }
     },
     "organic-express-static": {
       "log": true
