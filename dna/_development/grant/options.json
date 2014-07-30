@@ -1,0 +1,11 @@
+{
+  "facebook": {
+    "scope": "publish_actions,publish_stream,manage_pages,user_groups,friends_groups",
+    "callback": "http://localhost:8080/api/events/post/callback",
+    "redirect": "http://localhost:8080/api/events/post/callback"
+  },
+  "twitter": {
+    "callback": "http://localhost:8080/api/events/post/callback",
+    "redirect": "http://localhost:8080/api/events/post/callback"
+  }
+}

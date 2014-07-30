@@ -1,6 +1,9 @@
 section Edit Event
+
 label title
 input#title(type="text", value= model.get("title"))
+
+
 
 label starts
 #startDateTime.input-append.date
@@ -16,5 +19,13 @@ label ends
 
 section Description
   #description
+
+- if(!model.isNew())
+  a.btn(href="/api/events/#{model.id}/post/all") post in all (fb page / fb group / twitter) 
+  a.btn.btn-small(href="/api/events/#{model.id}/post/facebook-page") post in fb page 
+  a.btn.btn-small(href="/api/events/#{model.id}/post/facebook-group") post in fb group 
+  a.btn.btn-small(href="/api/events/#{model.id}/post/twitter") post in twitter 
+  hr 
+
 button#save save
 textarea#descriptionData(style="display: none")!= model.get('description')

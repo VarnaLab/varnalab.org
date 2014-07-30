@@ -1,7 +1,13 @@
 {
   "plasma": {
     "organic-api-routes": {
-      "log": true
+      "log": true,
+      "grant": {
+        "server": "@grant.server",
+        "oauth": "@grant.oauth",
+        "options": "@grant.options",
+        "credentials": "@grant.credentials"
+      }
     },
     "organic-site-routes": {
       "log": true,
@@ -26,7 +32,13 @@
       "bunyanInit": "context/init-bunyan-output"
     },
     "organic-express-server": {
-      "logRunning": true
+      "logRunning": true,
+      "grant": {
+        "server": "@grant.server",
+        "oauth": "@grant.oauth",
+        "options": "@grant.options",
+        "credentials": "@grant.credentials"
+      }
     }
   }
 }

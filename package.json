@@ -64,7 +64,9 @@
     "request": "~2.36.0",
     "jadeify": "~2.5.0",
     "formidable": "~1.0.15",
-    "browserify-transform-dna": "https://github.com/outbounder/browserify-transform-dna/archive/master.tar.gz"
+    "browserify-transform-dna": "https://github.com/outbounder/browserify-transform-dna/archive/master.tar.gz",
+    "grant": "~1.0.2",
+    "purest": "~1.0.0"
   },
   "devDependencies": {
     "jasmine-node": "~1.14.3",

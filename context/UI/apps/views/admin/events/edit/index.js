@@ -21,6 +21,8 @@ module.exports = Backbone.View.extend({
     }, {
       success: function(){
         alert("done");
+        self.render()
+        self.postRender()
       },
       error: helpers.handleError
     })

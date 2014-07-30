@@ -1,0 +1,22 @@
+{
+  "facebook": {
+    "base_url": "https://graph.facebook.com/",
+    "access_url": "oauth/access_token",
+    "request_url": "oauth/request_url",
+    "authorize_url": "https://www.facebook.com/dialog/oauth",
+    "access_name": "access_token",
+    "auth_type": "oauth",
+    "auth_version": 2,
+    "auth_leg": 3
+  },
+  "twitter": {
+    "base_url": "https://api.twitter.com/",
+    "access_url": "https://api.twitter.com/oauth/access_token",
+    "request_url": "https://api.twitter.com/oauth/request_token",
+    "authorize_url": "https://api.twitter.com/oauth/authenticate",
+    "access_name": "access_token",
+    "auth_type": "oauth",
+    "auth_version": 1,
+    "auth_leg": 3
+  }
+}
