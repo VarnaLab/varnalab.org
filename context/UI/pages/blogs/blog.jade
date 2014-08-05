@@ -2,19 +2,19 @@ extends ../layout
 block content
   section
     .section-item
-        .section-date
-          strong.date #{blog.createdDate()}
-          br
-          | #{blog.createdNameOfDay()}
-          br
-          | #{blog.createdTime()}
-        h2 #{blog.title}
-        h5.section-description Автор: #{blog.getCreatorName()}
-        article!= blog.htmlContent()
-        .section-nav
-          include ../partials/sharer
-          include ../partials/disqus
-          mixin disqus(disqus.shortname)
-          br.clear
+      .section-date
+        strong.date #{blog.createdDate()}
+        br
+        | #{blog.createdNameOfDay()}
+        br
+        | #{blog.createdTime()}
+      h2 #{blog.title}
+      h5.section-description Автор: #{blog.getCreatorName()}
+      article!= blog.htmlContent()
+      .section-nav
+        include ../partials/sharer
+        include ../partials/disqus
+        mixin disqus(disqus.shortname)
+        br.clear
       hr
       br.clearfix

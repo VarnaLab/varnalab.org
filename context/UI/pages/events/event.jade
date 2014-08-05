@@ -2,19 +2,19 @@ extends ../layout
 block content
   section
     .section-item
-        .section-date
-          strong.date #{event.startDate()}
-          br
-          | #{event.startDateNameOfDay()}
-          br
-          | #{event.startTime()}
-        h2 #{event.title}
-        h5.section-description Добавено от: #{event.getCreatorName()}
-        article!= event.htmlContent()
-        .section-nav
-          include ../partials/sharer
-          include ../partials/disqus
-          mixin disqus(disqus.shortname)
-          br.clear
+      .section-date
+        strong.date #{event.startDate()}
+        br
+        | #{event.startDateNameOfDay()}
+        br
+        | #{event.startTime()}
+      h2 #{event.title}
+      h5.section-description Добавено от: #{event.getCreatorName()}
+      article!= event.htmlContent()
+      .section-nav
+        include ../partials/sharer
+        include ../partials/disqus
+        mixin disqus(disqus.shortname)
+        br.clear
       hr
       br.clearfix

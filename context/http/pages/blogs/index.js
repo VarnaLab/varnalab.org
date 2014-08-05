@@ -4,7 +4,7 @@ module.exports = function(plasma, dna, helpers){
       res.sendPage("blogs/index");
     }],
     "GET /:year/:month/:date/:slug": [helpers.getBlogPosts.byFullUrl, function(req, res) {
-      req.disqus = dna.disqus
+      res.locals.disqus = dna.disqus
       res.sendPage("blogs/blog");
     }]
   }
