@@ -5,9 +5,9 @@ module.exports = function(req, res, next) {
   Member.find({}, function(err, members){
     if(err) return next(err);
     if(members.length > 0)
-      req.randomMember = members[_.random(members.length-1)];
+      res.locals.randomMember = members[_.random(members.length-1)];
     else
-      req.randomMember = null;
+      res.locals.randomMember = null;
     next();
   })
 }

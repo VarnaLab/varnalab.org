@@ -19,7 +19,7 @@
     "organic-express-routes": "0.0.1",
     "organic-express-response": "0.0.1",
     "organic-express-static": "0.0.1",
-    "organic-express-staticpages": "0.0.1",
+    "organic-express-staticpages": "0.0.2",
     "organic-express-mongo-sessions": "0.0.1",
     "underscore": "1.6.0",
     "mongoose": "3.6.20",

@@ -89,7 +89,7 @@
       "source": "node_modules/organic-express-staticpages",
       "reactOn": ["ExpressServer", "ApiRoutesReady", "SiteRoutesReady"],
       "pattern": "/**/*.jade",
-      "path": "context/UI/pages/static/",
+      "path": "context/UI/pages/static",
       "emitReady": "StaticPagesReady",
       "exclude": "layouts"
     },

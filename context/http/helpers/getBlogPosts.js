@@ -7,7 +7,7 @@ module.exports.byFullUrl = function(req, res, next) {
   var slug = req.params.slug
   BlogPost.getBlogpostByDateAndSlug(year, month, date, slug, function(err, blog){
     if(err) return next(err);
-    req.blog = blog;
+    res.locals.blog = blog;
     next();
   })
 }
@@ -17,7 +17,7 @@ module.exports.last = function(count){
   return function(req, res, next) {
     BlogPost.find({}).sort({created: -1}).limit(count).populate("creator").exec(function(err, blogs){
       if(err) return next(err);
-      req.blogs = blogs;
+      res.locals.blogs = blogs;
       next();
     })
   }

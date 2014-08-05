@@ -11,7 +11,7 @@ module.exports = function(req, res, next) {
   .sort({startDateTime: 1})
   .exec(function(err, events){
     if(err) return next(err);
-    req.events = events;
+    res.locals.events = events;
     next();
   })
 }

@@ -10,9 +10,9 @@ module.exports = function(pageNumberParamName, limit){
       .sort({created: -1})
       .exec(function(err, blogs){
         if(err) return next(err);
-        req.blogs = blogs;
-        req.pageNumber = pageNumber
-        req.blogsLimit = limit
+        res.locals.blogs = blogs;
+        res.locals.pageNumber = pageNumber
+        res.locals.blogsLimit = limit
         next();
       })
   }

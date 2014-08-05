@@ -7,7 +7,7 @@ module.exports.byFullUrl = function(req, res, next) {
   var title = req.params.title
   Event.getByDateAndTitle(year, month, date, title, function(err, event){
     if(err) return next(err);
-    req.event = event;
+    res.locals.event = event;
     next();
   })
 }
