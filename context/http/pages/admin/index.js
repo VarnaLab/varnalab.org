@@ -6,6 +6,7 @@ module.exports = function(plasma, dna, helpers){
     "GET": function(req, res) {
       if(!req.user)
         return res.sendPage("403", 403);
+      res.locals.user = req.user
       res.sendPage("admin/index");
     }
   }
