@@ -1,11 +1,12 @@
 {
   "name": "varnalab.org",
   "private": true,
-  "version": "0.1.2",
+  "version": "0.1.3",
   "main": "index.js",
   "scripts": {
     "start": "node index",
-    "test": "jasmine-node tests --verbose"
+    "test": "jasmine-node tests --verbose",
+    "release": "git checkout develop; grunt release; git checkout master; git merge develop; git push; git checkout develop;"
   },
   "dependencies": {
     "organic": "0.1.1",
