@@ -9,7 +9,12 @@ module.exports = function(plasma, dna) {
       try {
         body = JSON.parse(body);
         var data = body.response.venue.mayor;
-        mayor = data.user.firstName+" "+data.user.lastName;
+        // resolve missing mayour user object 
+        // -> https://developer.foursquare.com/docs/responses/venue
+        if(data.user)
+          mayor = data.user.firstName+" "+data.user.lastName;
+        else
+          mayor = "nobody"
       } catch(err) {
         console.error(err.stack);
       }

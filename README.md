@@ -14,18 +14,21 @@ Every .js in /scripts folder can be executed via node, example
 
     $ node scripts/import-blogposts
 
-
 ## import old blogposts from blogger
 
     $ node scripts/import-blogposts
 
-## release develop to master
+## release `develop` to `master` branch
 
-    $ node scripts/release.js
+    $ npm release
 
 ## release to staging
 
-    $ node scripts/release-staging.js
+    $ node scripts/upgrade-staging.js
+
+## release to production
+
+    $ node scripts/upgrade-production.js
 
 ## prebuild all js/css assets
 
