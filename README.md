@@ -20,7 +20,7 @@ Every .js in /scripts folder can be executed via node, example
 
 ## release `develop` to `master` branch
 
-    $ npm release
+    $ npm run release
 
 ## release to staging
 
