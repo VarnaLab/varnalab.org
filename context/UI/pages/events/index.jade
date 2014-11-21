@@ -3,18 +3,18 @@ extends ../layout
 block content
   <iframe src="https://www.google.com/calendar/embed?height=600&amp;wkst=2&amp;hl=bg&amp;bgcolor=%23FFFFFF&amp;src=lo0fh2tu3nu9vegm8ibf6hhtjg%40group.calendar.google.com&amp;color=%23856508&amp;ctz=Europe%2FSofia" style=" border-width:0 " width="100%" height="600" frameborder="0" scrolling="no"></iframe>
   section
-    - for(var i = events.length-1; i>=0; i--)
-      .section-item(class= events[i].isUpcoming()?"":"disable")
+    - for(var i = 0; i<eventsUpcomingOrder.length; i++)
+      .section-item(class= eventsUpcomingOrder[i].isUpcoming()?"":"disable")
         .section-date
-          strong.date #{events[i].startDate()}
+          strong.date #{eventsUpcomingOrder[i].startDate()}
           br
-          | #{events[i].startDateNameOfDay()}
+          | #{eventsUpcomingOrder[i].startDateNameOfDay()}
           br
-          | #{events[i].startTime()}
-        h3 #{events[i].title}
-        h5.section-description Добавено от: #{events[i].getCreatorName()}
+          | #{eventsUpcomingOrder[i].startTime()}
+        h3 #{eventsUpcomingOrder[i].title}
+        h5.section-description Добавено от: #{eventsUpcomingOrder[i].getCreatorName()}
         .section-nav
-          a.btn.pull-left(href='/events/#{events[i].getUrl()}') Прочети повече
+          a.btn.pull-left(href='/events/#{eventsUpcomingOrder[i].getUrl()}') Прочети повече
           br.clear
       hr
     //
