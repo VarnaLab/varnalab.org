@@ -28,10 +28,10 @@ module.exports = Organel.extend(function(plasma, dna){
   Organel.call(this, plasma, dna)
   this.on("whoisatvarnalab", this.whoisatvarnalab)
   this.on("kill", function(){
-    if(fetchDataIntervalID) {
+    /*if(fetchDataIntervalID) {
       clearInterval(fetchDataIntervalID)
       fetchDataIntervalID = null
-    }
+    }*/
   })
 }, {
   whoisatvarnalab: function(c, next){
