@@ -21,8 +21,8 @@ var fetchData = function(){
   });
 }
 
-var fetchDataIntervalID = setInterval(fetchData, 15*60*1000);
-fetchData();
+/*var fetchDataIntervalID = setInterval(fetchData, 15*60*1000);
+fetchData();*/
 
 module.exports = Organel.extend(function(plasma, dna){
   Organel.call(this, plasma, dna)
