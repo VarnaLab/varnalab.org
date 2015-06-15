@@ -1,1 +1,22 @@
-["public", "build"]
+{
+  "public": [
+    {
+      "path": "public",
+      "include": "*.+(js|css|png|jpg|otf|eot|svg|ttf|woff)"
+    },
+    {
+      "path": "build",
+      "include": "*.+(js|css|png|jpg|otf|eot|svg|ttf|woff)"
+    }
+  ],
+  "images": [
+    {
+      "path": "context/UI/styles/images"
+    }, 
+    {
+      "path": "context/UI/styles/images/vendor/jquery"
+      }
+  ],
+  "": ["public"],
+  "uploads": ["uploads"]
+}
