@@ -3,9 +3,6 @@
     "Whoisatvarnalab": {
       "source": "plasma/Whoisatvarnalab"
     },
-    "Foursquaremayor": {
-      "source": "plasma/Foursquaremayor"
-    },
     "Jadefy": {
       "source": "node_modules/organic-jadefy",
       "exportsGlobal": "jadefy"
