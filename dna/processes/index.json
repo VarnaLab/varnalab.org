@@ -1,14 +1,8 @@
 {
   "plasma": {
     "Whoisatvarnalab": {
-      "source": "plasma/Whoisatvarnalab"
-    },
-    "Foursquaremayor": {
-      "source": "plasma/Foursquaremayor"
-    },
-    "Jadefy": {
-      "source": "node_modules/organic-jadefy",
-      "exportsGlobal": "jadefy"
+      "source": "plasma/whoisatvarnalab",
+      "auth": "@secrets.mikrotek-api"
     },
     "Symlink": {
       "source": "node_modules/organic-symlink",
@@ -82,8 +76,7 @@
     },
     "organic-express-response": {
       "source": "node_modules/organic-express-response",
-      "reactOn": ["ExpressServer", "ApiRoutesReady", "SiteRoutesReady"],
-      "skipDefaultResponse": true
+      "reactOn": ["ExpressServer", "ApiRoutesReady", "SiteRoutesReady"]
     },
     "organic-static-pages": {
       "source": "node_modules/organic-express-staticpages",
@@ -96,12 +89,7 @@
     "organic-express-static": {
       "source": "node_modules/organic-express-static",
       "reactOn": "ExpressServer",
-      "mount": {
-        "/public": "@public",
-        "/images": ["context/UI/styles/images", "context/UI/styles/images/vendor/jquery"],
-        "": ["public"],
-        "/uploads": ["uploads"]
-      }
+      "mount": "@public"
     }
   },
   "membrane": {
@@ -125,6 +113,7 @@
     "organic-express-server": {
       "source": "node_modules/organic-express-server",
       "port": 8080,
+      "forceConnectionsDestroyOnClose": true,
       "initScript": "context/init-express-app",
       "reactOn": "Mongoose",
       "emitReady": "ExpressServer",

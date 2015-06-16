@@ -1,0 +1,13 @@
+extends ../layout
+
+block content
+  section
+    h1 Make your Mac <-> Alias
+    p Input your mac address and alias to be used for `who is here` widget
+  section
+    form.login_form(action="/here", method="POST")
+      fieldset
+        input(type="text", name="mac", placeholder="mac", value= currentMac)
+        input(type="text", name="alias", placeholder="alias", value= currentAlias)
+        input(type="submit", value="update")
+  

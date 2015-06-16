@@ -4,3 +4,7 @@
 *.*~
 .git-commands.md
 accesstoken.json
+/dna/_development/secrets.json
+/dna/_staging/secrets.json
+/dna/_production/secrets.json
+/dna/_test/secrets.json

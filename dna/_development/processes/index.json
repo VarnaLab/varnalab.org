@@ -15,9 +15,6 @@
     "organic-static-pages": {
       "log": true
     },
-    "organic-express-response": {
-      "skipDefaultErrorResponse": true
-    },
     "buildJavascripts": "@angel.build.js",
     "buildStylesheets": "@angel.build.css"
   },

@@ -1,11 +1,12 @@
 .teaser.teaser-who-is-here
-  img.pull-left(src='/images/teaser-whois-icon.png', alt='')
+  a(href="/here")
+    img.pull-left(src='/images/teaser-whois-icon.png', alt='')
   p.teaser-text-with-icon
     strong Кой е в Лаба #{whoisatvarnalab.timestamp}
     - if(whoisatvarnalab.data.length > 0)
       - for(var i = 0; i<whoisatvarnalab.data.length; i++)
         br
-        | #{whoisatvarnalab.data[i].alias}
+        | #{whoisatvarnalab.data[i].alias || whoisatvarnalab.data[i].host}
     - else
         br
         | Няма сървър :|
