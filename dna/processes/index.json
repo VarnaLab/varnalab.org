@@ -113,6 +113,7 @@
     "organic-express-server": {
       "source": "node_modules/organic-express-server",
       "port": 8080,
+      "forceConnectionsDestroyOnClose": true,
       "initScript": "context/init-express-app",
       "reactOn": "Mongoose",
       "emitReady": "ExpressServer",

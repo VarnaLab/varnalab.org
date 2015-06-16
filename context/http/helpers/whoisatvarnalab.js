@@ -21,6 +21,8 @@ module.exports = function(plasma) {
         
         result.data = result.data.map(function(connectedPerson){
           var found = _.findWhere(aliases, {mac: connectedPerson.mac})
+          if(found)
+            found = found.toJSON()
           return _.extend({}, connectedPerson, found)
         })
 
