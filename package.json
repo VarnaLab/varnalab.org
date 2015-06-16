@@ -27,6 +27,7 @@
     "jadeify": "~2.5.0",
     "less": "~1.7.0",
     "marked": "0.2.9",
+    "mikronode": "^0.3.3",
     "moment": "2.0.0",
     "mongoose": "3.6.20",
     "mongoose-createdmodified": "0.0.2",

@@ -1,7 +1,8 @@
 {
   "plasma": {
     "Whoisatvarnalab": {
-      "source": "plasma/Whoisatvarnalab"
+      "source": "plasma/whoisatvarnalab",
+      "auth": "@secrets.mikrotek-api"
     },
     "Symlink": {
       "source": "node_modules/organic-symlink",

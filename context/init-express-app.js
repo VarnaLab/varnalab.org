@@ -22,7 +22,10 @@ module.exports = function(plasma, dna, next) {
     app.all("*", function(req, res, next){
       res.send(404, "not found")
     })
-    app.use(errorface.errorHandler())
+    app.use(function(err, req, res, next){
+      console.error(err)
+      res.send(500, {})
+    })
   })
   if(!dna.reactOn)
     next(null, app)

@@ -5,7 +5,7 @@
     - if(whoisatvarnalab.data.length > 0)
       - for(var i = 0; i<whoisatvarnalab.data.length; i++)
         br
-        | #{whoisatvarnalab.data[i].alias}
+        | #{whoisatvarnalab.data[i].alias || whoisatvarnalab.data[i].host}
     - else
         br
         | Няма сървър :|
