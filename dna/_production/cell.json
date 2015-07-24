@@ -1,7 +1,7 @@
 {
   "name": "varnalab.org",
-  "remote": "ssh node@varnalab.org",
-  "sourceNode": ". ~/.nvm/nvm.sh ; nvm use v0.10.24",
+  "remote": "ssh varnalab@varnalab.org",
+  "sourceNode": ". ~/.nvm/nvm.sh ; nvm use v0.10.30",
   "cwd": "~/varnalab.org",
   "main": "varnalab.org-production.js",
   "source": "git@github.com:VarnaLab/varnalab.org.git",

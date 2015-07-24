@@ -11,14 +11,14 @@ var Person = module.exports.Person = function(data){
 }
 
 module.exports = function(plasma, dna){
-  
+
   this.updateInProgress = false
   this.peopleOnline = []
   this.lastFetchTimestamp = new Date()
-  
+
   plasma.on("whoisatvarnalab", this.whoisatvarnalab, this)
   plasma.on("kill", this.kill, this)
-  
+
   if(dna.auth && dna.auth.host) {
     var self = this
     this.dhcpRouter = new Mikrotek(dna.auth)
@@ -28,12 +28,12 @@ module.exports = function(plasma, dna){
           plasma.emit({type: dna.emitReady})
       })
     })
-    
+
     this.poolIntervalID = setInterval(function(){
       self.update()
     }, dna.interval || 5*60*1000)
   } else
-    console.info("whoisatvarnalab missing auth options")
+    console.warn("whoisatvarnalab missing auth options")
 }
 
 module.exports.prototype.update = function(c, next) {
@@ -44,7 +44,7 @@ module.exports.prototype.update = function(c, next) {
   this.dhcpRouter.fetchDHCPClientsPopulated(function(items){
     self.updateInProgress = false
     self.lastFetchTimestamp = new Date()
-    
+
     self.peopleOnline = items.map(function(data){
       return new Person(data)
     })
@@ -63,7 +63,7 @@ module.exports.prototype.whoisatvarnalab = function(c, next){
 module.exports.prototype.kill = function(c, next) {
   if(this.poolIntervalID)
     clearInterval(this.poolIntervalID)
-    
+
   if(this.dhcpRouter)
     this.dhcpRouter.close(next)
   else

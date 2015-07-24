@@ -13,6 +13,9 @@ module.exports.prototype.connect = function(done){
     self.chan = conn.openChannel()
     done && done()
   })
+  this.connection.on('error', function(err){
+    console.error(err)
+  })
 }
 
 module.exports.prototype.close = function(done){
@@ -39,6 +42,9 @@ module.exports.prototype.fetchActiveDHCPClients = function(done){
   var self = this
   if(!self.chan) return done([])
   self.chan.write('/ip/arp/getall',function() {
+     self.chan.on('error', function(err){
+       console.error(err)
+     })
      self.chan.on('done',function(data) {
         var parsed = api.parseItems(data);
         done(parsed)
@@ -50,6 +56,9 @@ module.exports.prototype.fetchLeasedDHCPClients = function(done){
   var self = this
   if(!self.chan) return done([])
   self.chan.write('/ip/dhcp-server/lease/getall',function() {
+    self.chan.on('error', function(err){
+      console.error(err)
+    })
      self.chan.on('done',function(data) {
         var parsed = api.parseItems(data);
         done(parsed)
