@@ -7,6 +7,7 @@ module.exports.byFullUrl = function(req, res, next) {
   var slug = req.params.slug
   BlogPost.getBlogpostByDateAndSlug(year, month, date, slug, function(err, blog){
     if(err) return next(err);
+    if(!blog) return res.send('blog not found', 404)
     res.locals.blog = blog;
     next();
   })
