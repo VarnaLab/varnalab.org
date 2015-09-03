@@ -22,7 +22,8 @@ module.exports = function(plasma, dna){
   if(dna.auth && dna.auth.host) {
     var self = this
     this.dhcpRouter = new Mikrotek(dna.auth)
-    this.dhcpRouter.connect(function(){
+    this.dhcpRouter.connect(function(err){
+      if (err) return console.error('failed to initially connect whoisatvarnalab due ', err)
       self.update({}, function(){
         if(dna.emitReady)
           plasma.emit({type: dna.emitReady})
@@ -65,7 +66,6 @@ module.exports.prototype.kill = function(c, next) {
     clearInterval(this.poolIntervalID)
 
   if(this.dhcpRouter)
-    this.dhcpRouter.close(next)
-  else
-    next()
+    this.dhcpRouter.close()
+  next()
 }

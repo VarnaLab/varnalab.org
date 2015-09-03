@@ -23,6 +23,18 @@ describe("whoisatvarnalab", function(){
       next()
     })
   })
+  it('reconnects', function(next){
+    instance.dhcpRouter.close()
+    instance.update({}, function(){
+      expect(instance.peopleOnline.length).toBe(0)
+      setTimeout(function() {
+        instance.update({}, function(){
+          expect(instance.peopleOnline.length > 0).toBe(true)
+        })
+        next()
+      }, 1000)
+    })
+  })
   it("kills", function(next){
     instance.kill({}, next)
   })
