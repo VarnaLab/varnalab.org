@@ -1,6 +1,6 @@
 describe("members", function(){
   var helpers = require("../helpers");
-  var request = require("request").defaults({jar: true})
+  var request = require("request").defaults({jar: true, followRedirect: false})
 
   var currentUserData;
 
@@ -117,6 +117,16 @@ describe("members", function(){
     })
   })
 
+  it("logouts", function(next){
+    request.get({
+      uri: helpers.apiendpoint+"/members/logout"
+    }, function(err, res, body){
+      expect(err).toBeNull();
+      expect(res.statusCode).toBe(302);
+      next()
+    })
+  })
+
   it("does not login without email", function(next){
     request.post({
       uri: helpers.apiendpoint+"/members/login",
@@ -128,16 +138,6 @@ describe("members", function(){
     })
   })
 
-  it("logouts", function(next){
-    request.get({
-      uri: helpers.apiendpoint+"/members/logout",
-      json: {}
-    }, function(err, res, body){
-      expect(err).toBeNull();
-      expect(res.statusCode).toBe(200);
-      next()
-    })
-  })
 
   it('kill', function (next){
     helpers.kill(next);

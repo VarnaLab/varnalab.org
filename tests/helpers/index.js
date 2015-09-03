@@ -28,7 +28,7 @@ module.exports.boot = function(next){
 
 module.exports.kill = function(next){
   cell.stop(function(){
-    next();  
+    next();
   });
 }
 
@@ -50,7 +50,8 @@ Suspendisse in luctus lacus. Vivamus interdum sollicitudin arcu eu molestie. Cra
 module.exports.getValidMember = function(){
   return {
     'email':Faker.Internet.email(),
-    'password':'asdasd'
+    'password':'asdasd',
+    'accessToken': '1'
   }
 }
 
