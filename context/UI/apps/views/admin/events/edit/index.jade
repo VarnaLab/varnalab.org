@@ -1,20 +1,31 @@
-section Edit Event
-label title
-input#title(type="text", value= model.get("title"))
+section
+  h4 Event Details
 
-label starts
-#startDateTime.input-append.date
-  input(type="text", data-format="dd/MM/yyyy hh:mm")
-  span.add-on
-    i(data-time-icon="icon-time", data-date-icon="icon-calendar")
+  label title
+  input#title(type="text", value= model.get("title"))
 
-label ends
-#endDateTime.input-append.date
-  input(type="text", data-format="dd/MM/yyyy hh:mm")
-  span.add-on
-    i(data-time-icon="icon-time", data-date-icon="icon-calendar")
+  label starts
+  #startDateTime.input-append.date
+    input(type="text", data-format="dd/MM/yyyy hh:mm")
+    span.add-on
+      i(data-time-icon="icon-time", data-date-icon="icon-calendar")
 
-section Description
+  label ends
+  #endDateTime.input-append.date
+    input(type="text", data-format="dd/MM/yyyy hh:mm")
+    span.add-on
+      i(data-time-icon="icon-time", data-date-icon="icon-calendar")
+
+section
+  h4 Event Description
   #description
+
+section
+  h4 Broadcast
+  p
+    label(for="sendEmailCheckbox")
+      input#sendEmailCheckbox(type='checkbox')
+      |  notify varna-lab@googlegroups.com
+
 button#save save
 textarea#descriptionData(style="display: none")!= model.get('description')

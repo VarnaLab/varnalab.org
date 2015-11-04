@@ -1,4 +1,9 @@
 {
+  "plasma": {
+    "event-broadcaster": {
+      "targetEmail": "varna-lab@googlegroups.com"
+    }
+  },
   "membrane": {
     "organic-express-server": {
       "port": 5050

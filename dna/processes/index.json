@@ -4,6 +4,12 @@
       "source": "plasma/whoisatvarnalab",
       "auth": "@secrets.mikrotek-api"
     },
+    "event-broadcaster": {
+      "source": "plasma/event-broadcaster",
+      "gmailAuth": "@secrets.gmailAuth",
+      "fronturls": "@fronturls",
+      "targetEmail": "varnalab@mailinator.com"
+    },
     "Symlink": {
       "source": "node_modules/organic-symlink",
       "symlink": {

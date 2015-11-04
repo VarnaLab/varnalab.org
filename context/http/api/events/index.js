@@ -6,13 +6,19 @@ module.exports = function(plasma, dna, helpers){
     "GET": function(req, res){
       Event.find({}).populate("creator").sort({created: -1}).exec(function(err, events){
         if(err) return res.error(err);
-        res.result(events); 
+        res.result(events);
       })
     },
     "POST /add": function(req, res){
       req.body.creator = req.user;
       Event.create(req.body, function(err, event){
         if(err) return res.error(err);
+        if (req.body.sendEmail) {
+          plasma.emit({
+            type: 'broadcast/event',
+            event: event
+          })
+        }
         res.result(event);
       })
     },
@@ -28,8 +34,14 @@ module.exports = function(plasma, dna, helpers){
         _.extend(event,req.body);
         event.save(function(err, event){
           if(err) return res.error(err);
+          if (req.body.sendEmail) {
+            plasma.emit({
+              type: 'broadcast/event',
+              event: event
+            })
+          }
           res.result(event);
-        }); 
+        });
       });
     },
     "DELETE /:id": function(req, res){

@@ -10,6 +10,7 @@ var _ = require("underscore")
 
 var resolveReferences = require("organic-dna-resolvereferences")
 var foldAndMerge = require("organic-dna-fold")
+var replacePlaceholders = require('./lib/replace-placeholders')
 
 process.env.CELL_MODE = process.env.CELL_MODE || "_development";
 
@@ -34,6 +35,8 @@ module.exports.prototype.build = function(dna) {
   // resolve any referrences
   resolveReferences(dna)
 
+  replacePlaceholders(dna.fronturls, dna.fronturls)
+
   // # construct core
   var nucleus = new Nucleus(this.plasma, dna)
 
@@ -47,10 +50,10 @@ module.exports.prototype.build = function(dna) {
     if(err) throw err
     self.plasma.emit({type: "build", branch: "processes.index.membrane"}, function(err){
       if(err) throw err
-    })  
+    })
   })
-  
-  
+
+
   // # listen for external interruptions
   this.signintHandler = function(){
     self.stop(function(){
