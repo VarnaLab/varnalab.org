@@ -1,7 +1,8 @@
 Base = require "./Base"
 mongoose = require "mongoose"
-moment = require "moment"
+moment = require 'moment-timezone'
 marked = require("marked")
+
 
 schema = mongoose.Schema
   title: { type: String, required: true }
@@ -21,16 +22,16 @@ schema.static 'getByDateAndTitle', (year, month, date, title, callback) ->
   @findOne(pattern).populate("creator").exec callback
 
 schema.method 'startDate', () ->
-  moment(@startDateTime).format("MMMM Do YYYY")
+  moment(@startDateTime).locale('bg').format("MMMM Do YYYY")
 
 schema.method 'startDateNameOfDay', () ->
-  moment(@startDateTime).format("dddd")
+  moment(@startDateTime).locale('bg').format("dddd")
 
 schema.method 'startTime', () ->
-  moment(@startDateTime).format("h:mm:ss a")
+  moment(@startDateTime).tz("Europe/Sofia").format("h:mm:ss a")
 
 schema.method 'isUpcoming', () ->
-  moment(@startDateTime).isAfter(moment())
+  moment(@startDateTime).tz("Europe/Sofia").isAfter(moment())
 
 schema.method 'htmlContent', () ->
   marked @description

@@ -30,6 +30,7 @@
     "marked": "0.2.9",
     "mikronode": "^0.3.3",
     "moment": "2.0.0",
+    "moment-timezone": "^0.4.1",
     "mongoose": "3.6.20",
     "mongoose-createdmodified": "0.0.2",
     "mongoose-validate": "0.0.5",
