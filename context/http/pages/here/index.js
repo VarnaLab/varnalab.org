@@ -7,7 +7,7 @@ module.exports = function(plasma, dna, helpers){
       res.locals.currentAlias = ""
       res.sendPage("here/index")
     },
-    "POST": function(req, res) {
+    "POST": function(req, res, next) {
       req.body.mac = req.body.mac.toUpperCase()
       DHCPClient.findOne({mac: req.body.mac}, function(err, client){
         if(err) return next(err)
