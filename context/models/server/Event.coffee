@@ -28,7 +28,7 @@ schema.method 'startDateNameOfDay', () ->
   moment(@startDateTime).locale('bg').format("dddd")
 
 schema.method 'startTime', () ->
-  moment(@startDateTime).tz("Europe/Sofia").format("h:mm:ss a")
+  moment(@startDateTime).tz("Europe/Sofia").format("HH:mm:ss")
 
 schema.method 'isUpcoming', () ->
   moment(@startDateTime).tz("Europe/Sofia").isAfter(moment())
