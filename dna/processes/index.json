@@ -7,6 +7,7 @@
     "event-broadcaster": {
       "source": "plasma/event-broadcaster",
       "gmailAuth": "@secrets.gmailAuth",
+      "fbAuth": "@secrets.fbAuth",
       "fronturls": "@fronturls",
       "targetEmail": "varnalab@mailinator.com"
     },

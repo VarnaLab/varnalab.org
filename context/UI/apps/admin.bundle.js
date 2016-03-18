@@ -5,6 +5,8 @@ require("./vendor/bootstrap/bootstrap-datetimepicker.min")
 $(function(){
   app = {}; // WARNING -> global variable
 
+  var IndexView = require("views/admin/landing")
+
   var TransactionsView = require("views/admin/transactions")
   var TransactionsCollection = require("models/client/TransactionsCollection");
 
@@ -36,7 +38,8 @@ $(function(){
       "events/edit/:id": "editEvent"
     },
     showIndex: function(){
-
+      var view = new IndexView();
+      $(".currentView").empty().append(view.render().$el)
     },
     showTransactions: function(){
       var collection = new TransactionsCollection();
