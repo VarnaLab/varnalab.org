@@ -39,6 +39,9 @@ schema.method 'htmlContent', () ->
 schema.method "getUrl", () ->
   [@startDateTime.getFullYear(), @startDateTime.getMonth()+1, @startDateTime.getDate(), @title].join("/")
 
+schema.method "getUrlEncoded", () ->
+  [@startDateTime.getFullYear(), @startDateTime.getMonth()+1, @startDateTime.getDate(), encodeURIComponent(@title)].join("/")
+
 schema.method "getCreatorName", () ->
   if @get("creator") && @get("creator").name
     @get("creator").name

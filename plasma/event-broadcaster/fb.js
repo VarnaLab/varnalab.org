@@ -12,7 +12,7 @@ FB.prototype.exec = function (event, user) {
   notificationText += [
     event.title + ', ' + event.startDate() + ' ' + event.startTime(),
     '',
-    dna.fronturls.eventsPage + encodeURIComponent(event.getUrl()),
+    dna.fronturls.eventsPage + event.getUrlEncoded(),
     '----',
     '',
     'Автоматично съобщение изпратено от varnalab.org'
