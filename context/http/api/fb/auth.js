@@ -5,16 +5,16 @@ module.exports = function (plasma, dna, helpers) {
     "* *": helpers.allowLogged,
     "GET": function (req, res, next) {
       var redirect_uri = "redirect_uri="+dna.fronturls.endpoint+"/api/fb/auth/callback"
-      var client_id = "client_id=601608396658686"
+      var client_id = "client_id="+dna.fbAuth.client_id
       var scope = "scope=user_managed_groups,publish_actions"
       var uri = "https://www.facebook.com/dialog/oauth?" + [client_id, redirect_uri, scope].join('&')
       res.redirect(uri)
     },
     "GET /callback": function (req, res, next) {
       var code = "code=" + req.query.code
-      var client_id = "client_id=601608396658686"
+      var client_id = "client_id="+dna.fbAuth.client_id
       var redirect_uri = "redirect_uri="+dna.fronturls.endpoint+"/api/fb/auth/callback"
-      var client_secret = "client_secret=3f1106df3d4e545ac8529eb84d7717a8"
+      var client_secret = "client_secret="+dna.fbAuth.client_secret
       var uri = "https://graph.facebook.com/v2.5/oauth/access_token?" + [code, redirect_uri, client_id, client_secret].join("&")
       request.get({
         uri: uri,

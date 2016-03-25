@@ -68,7 +68,8 @@
         "uploadDir": "uploads/",
         "keepExtensions": true
       },
-      "fronturls": "@fronturls"
+      "fronturls": "@fronturls",
+      "fbAuth": "@secrets.fbAuth"
     },
     "organic-site-routes": {
       "source": "node_modules/organic-express-routes",
