@@ -8,9 +8,9 @@ module.exports = function(plasma, dna, helpers){
   } catch(e){
     // ignore
   }
-  
+
   return {
-    "GET": function(req, res){
+    "GET": [helpers.allowLogged, function(req, res){
       Member.find({}, function(err, members){
         if(err) return res.error(err);
         var publicMembers = _.map(members, function(mem){
@@ -18,7 +18,7 @@ module.exports = function(plasma, dna, helpers){
         })
         res.result(publicMembers);
       })
-    },
+    }],
     "POST /register": function(req, res){
       if(req.body.accessToken != accessToken)
         return res.error("invalid accesstoken")
@@ -30,23 +30,23 @@ module.exports = function(plasma, dna, helpers){
         });
       })
     },
-    "GET /me": function(req, res){
+    "GET /me": [helpers.allowLogged, function(req, res){
       Member.findById(req.user.id, function(err, member){
         if(err) return res.error(err);
         res.result(member.toPublicJSON());
       });
-    },
+    }],
     "GET /logout": function(req, res, next) {
       req.logout();
       res.redirect("/");
     },
-    "GET /:id": function(req, res){
+    "GET /:id": [helpers.allowLogged, function(req, res){
       Member.findById(req.params.id, function(err, member){
         if(err) return res.error(err);
         res.result(member.toPublicJSON());
       });
-    },
-    "PUT /:id": function(req, res){
+    }],
+    "PUT /:id": [helpers.allowLogged, function(req, res){
       Member.findById(req.params.id, function(err, member){
         if(err) return res.error(err);
         _.extend(member, req.body)
@@ -56,7 +56,7 @@ module.exports = function(plasma, dna, helpers){
         })
 
       });
-    },
+    }],
     "POST /login": function(req, res, next) {
       passport.authenticate('local', function(err, user, info){
         if (err) { return next(err); }

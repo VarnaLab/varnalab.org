@@ -6,7 +6,7 @@ $(function(){
 
   $('form').submit(function(e){
     e.preventDefault();
-    
+
 
     var newMember = new Member();
     newMember.login({
@@ -18,7 +18,7 @@ $(function(){
 
     }).error(function(res){
       var body = JSON.parse(res.responseText);
-      alert(body.result.message);
+      alert(body.result);
     });
 
     return false;

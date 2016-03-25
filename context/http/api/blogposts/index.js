@@ -2,6 +2,7 @@ var _ = require("underscore")
 module.exports = function (plasma, dna, helpers) {
   var BlogPost = require(process.cwd()+dna.models+'/BlogPost');
   return {
+    "* *": helpers.allowLogged,
     'GET' : function (req, res) {
       BlogPost.find({}).populate("creator").sort({created: -1}).exec(function(err, blogposts) {
         if (err) return res.error(err);

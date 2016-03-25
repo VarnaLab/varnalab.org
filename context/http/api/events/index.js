@@ -3,6 +3,7 @@ var _ = require('underscore');
 module.exports = function(plasma, dna, helpers){
   var Event = require(process.cwd()+dna.models+"/Event");
   return {
+    "* *": helpers.allowLogged,
     "GET": function(req, res){
       Event.find({}).populate("creator").sort({created: -1}).exec(function(err, events){
         if(err) return res.error(err);

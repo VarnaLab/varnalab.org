@@ -67,7 +67,8 @@
       "formidable": {
         "uploadDir": "uploads/",
         "keepExtensions": true
-      }
+      },
+      "fronturls": "@fronturls"
     },
     "organic-site-routes": {
       "source": "node_modules/organic-express-routes",
@@ -79,7 +80,8 @@
       "models": "/context/models/server",
       "disqus": {
         "shortname": "varnalab01"
-      }
+      },
+      "fronturls": "@fronturls"
     },
     "organic-express-response": {
       "source": "node_modules/organic-express-response",

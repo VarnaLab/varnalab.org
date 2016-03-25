@@ -3,10 +3,11 @@ var _ = require('underscore');
 module.exports = function(plasma, dna, helpers){
   var Transaction = require(process.cwd()+dna.models+"/Transaction");
   return {
+    "* *": helpers.allowLogged,
     "GET": function(req, res){
       Transaction.find({}, function(err, transactions){
         if(err) return res.error(err);
-        res.result(transactions); 
+        res.result(transactions);
       })
     },
     "POST /create": function(req, res){
@@ -29,9 +30,9 @@ module.exports = function(plasma, dna, helpers){
         transaction.save(function(err, transaction){
           if(err) return res.error(err);
           res.result(transaction);
-        }); 
+        });
       });
-      
+
     },
     "DELETE /:id": function(req, res){
       Transaction.findByIdAndRemove(req.params.id,req.body, function(err, transaction){
