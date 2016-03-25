@@ -1,4 +1,9 @@
 extends ../layout
+block meta
+  meta(property="og:url", content="#{fullEventUrl}")
+  meta(property="og:type", content="article")
+  meta(property="og:title", content="#{event.title}")
+
 block content
   section
     .section-item

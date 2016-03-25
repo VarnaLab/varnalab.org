@@ -6,6 +6,7 @@ module.exports = function(plasma, dna, helpers){
     }],
     "GET /:year/:month/:date/:title": [helpers.getEvents.byFullUrl, function(req, res) {
       res.locals.disqus = dna.disqus
+      res.locals.fullEventUrl = dna.fronturls.eventsPage + res.locals.event.getUrl()
       res.sendPage("events/event");
     }]
   }
