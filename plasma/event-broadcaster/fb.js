@@ -1,25 +1,27 @@
 var fb = require('facebook-node')
+fb.setApiVersion("v2.5")
 
 var FB = function (dna) {
   this.dna = dna
-  fb.setAccessToken(dna.fbAuth.token)
 }
 
-FB.prototype.exec = function (event) {
+FB.prototype.exec = function (event, user) {
   var dna = this.dna
 
   var notificationText = ''
   notificationText += [
     event.title + ', ' + event.startDate() + ' ' + event.startTime(),
     '',
-    '-------',
-    '<a href="' + dna.fronturls.eventsPage + event.getUrl() + '">повече информация</a>',
+    dna.fronturls.eventsPage + event.getUrl(),
+    '----',
     '',
     'Автоматично съобщение изпратено от varnalab.org'
   ].join('\n')
 
   fb.api("/121769877975286/feed", "POST", {
-    "message": notificationText
+    "message": notificationText,
+    "link": dna.fronturls.eventsPage + event.getUrl(),
+    "access_token": user.fbauth.access_token
   }, function (response) {
     console.info(response)
   })

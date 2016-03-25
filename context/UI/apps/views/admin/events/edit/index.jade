@@ -23,9 +23,9 @@ section
 section
   h4 Broadcast
   p
-    label(for="sendEmailCheckbox")
-      input#sendEmailCheckbox(type='checkbox')
-      |  notify varna-lab@googlegroups.com
+    label(for="broadcastEvent")
+      input#broadcastEvent(type='checkbox')
+      |  broadcast Event
 
 button#save save
 textarea#descriptionData(style="display: none")!= model.get('description')

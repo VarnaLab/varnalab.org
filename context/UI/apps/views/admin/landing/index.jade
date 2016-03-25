@@ -1,2 +1,11 @@
 section
-  a(href='/api/fb/auth') auth fb
+  h1 FB authentication
+
+  - if(!fbauthExpires)
+    p Authenticating with facebook stored a long lived access_token used for events broadcasting
+    p
+      strong not having such fb access token your events won't be send to
+        a(href='https://www.facebook.com/groups/varnalab/') https://www.facebook.com/groups/varnalab/
+    a(href='/api/fb/auth') authenticate with fb
+  - else
+    a(href='/api/fb/auth') re-authenticate with fb, current token expires #{fbauthExpires}

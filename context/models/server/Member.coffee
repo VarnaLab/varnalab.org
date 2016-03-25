@@ -13,6 +13,11 @@ schema = mongoose.Schema
   }
   name: {type: String }
   password: { type: String, required: true }
+  fbauth: {
+    access_token: { type: String },
+    generated: {type: Date},
+    expires_in: {type: Number}
+  }
 
 schema.pre "save", (next) ->
   if not @isModified('password') or @password is null
@@ -30,6 +35,8 @@ schema.method 'validPassword', (value) ->
 schema.method 'toPublicJSON', (extra) ->
   json = @toJSON()
   delete json.password
+  if json.fbauth
+    delete json.fbauth.access_token
   _.extend(json, extra || {})
 
 Base.timestampify schema

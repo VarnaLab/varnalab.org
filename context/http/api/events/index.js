@@ -14,10 +14,11 @@ module.exports = function(plasma, dna, helpers){
       req.body.creator = req.user;
       Event.create(req.body, function(err, event){
         if(err) return res.error(err);
-        if (req.body.sendEmail) {
+        if (req.body.broadcastEvent) {
           plasma.emit({
             type: 'broadcast/event',
-            event: event
+            event: event,
+            user: req.user
           })
         }
         res.result(event);
@@ -35,10 +36,11 @@ module.exports = function(plasma, dna, helpers){
         _.extend(event,req.body);
         event.save(function(err, event){
           if(err) return res.error(err);
-          if (req.body.sendEmail) {
+          if (req.body.broadcastEvent) {
             plasma.emit({
               type: 'broadcast/event',
-              event: event
+              event: event,
+              user: req.user
             })
           }
           res.result(event);

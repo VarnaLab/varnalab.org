@@ -5,6 +5,8 @@ html
     meta(name='viewport', content='width=device-width, initial-scale=1.0')
     title VarnaLab Admin
     link(href='/public/css/admin.bundle.css', rel='stylesheet', type='text/css')
+    script.
+      var user = !{JSON.stringify(user.toPublicJSON())}
   body
     .content
       .content-inner

@@ -20,7 +20,15 @@ module.exports = function (plasma, dna, helpers) {
         uri: uri,
         json: {}
       }, function (err, r, body) {
-        res.redirect('/admin?fb_success=true#')
+        if (err) return res.error(err.message)
+        if (!body.access_token) return res.error('access_token not found')
+        req.user.fbauth.access_token = body.access_token
+        req.user.fbauth.expires_in = body.expires_in
+        req.user.fbauth.generated = new Date()
+        req.user.save(function (err) {
+          if (err) return res.error(err.message)
+          res.redirect('/admin#')
+        })
       })
     }
   }

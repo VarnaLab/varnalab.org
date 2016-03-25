@@ -18,7 +18,7 @@ module.exports = Backbone.View.extend({
       description: this.description.exportFile(),
       startDateTime: this.$("#startDateTime").data("datetimepicker").getLocalDate(),
       endDateTime: this.$("#endDateTime").data("datetimepicker").getLocalDate(),
-      sendEmail: this.$el.find("#sendEmailCheckbox").is(':checked')
+      broadcastEvent: this.$el.find("#broadcastEvent").is(':checked')
     }, {
       success: function(){
         alert("done");

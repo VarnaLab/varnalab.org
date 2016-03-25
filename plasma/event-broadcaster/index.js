@@ -21,11 +21,16 @@ module.exports = function (plasma, dna) {
   plasma.on('broadcast/event', function (c) {
     /* invoked when event is created or updated */
     var event = c.event
-    if (maillist) {
-      //maillist.exec(event)
+    var user = c.user
+    if (maillist && dna.gmailAuth.enabled) {
+      maillist.exec(event, user)
+    } else {
+      console.info('dna.gmailAuth.enabled is false')
     }
-    if (fb) {
-      fb.exec(event)
+    if (fb && dna.fbAuth.enabled) {
+      fb.exec(event, user)
+    } else {
+      console.info('dna.fbAuth.enabled is false')
     }
   })
 }

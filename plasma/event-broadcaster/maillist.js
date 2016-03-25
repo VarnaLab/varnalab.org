@@ -8,7 +8,7 @@ var Maillist = function (dna) {
   });
 }
 
-Maillist.prototype.exec = function (event) {
+Maillist.prototype.exec = function (event, user) {
   var dna = this.dna
   var transporter = this.transporter
   var emailText = event.htmlContent()
