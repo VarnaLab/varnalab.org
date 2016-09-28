@@ -28,3 +28,7 @@ body {
     display: flex;
     flex-direction: row;
 }
+.vl-page-footer {
+  margin-top: auto;
+  color: #fff;
+}
