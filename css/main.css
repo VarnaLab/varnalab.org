@@ -29,6 +29,12 @@ body {
     display: flex;
     flex-direction: row;
 }
+.vl-page-content {
+  margin-top: 1rem;
+  background-image: url('images/content-inner.png');
+  background-repeat: no-repeat;
+  background-position: 50% 0;
+}
 .vl-page-footer {
   margin-top: auto;
   color: #fff;
