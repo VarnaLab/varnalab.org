@@ -32,3 +32,25 @@ body {
   margin-top: auto;
   color: #fff;
 }
+h1, h2, h3, h4, h5, h6, p {
+  margin-top: .1em;
+  margin-bottom: .3em;
+}
+h1 {
+  font-size: 2.8rem;
+}
+h2 {
+  font-size: 2.6rem;
+}
+h3 {
+  font-size: 2.4rem;
+}
+h4 {
+  font-size: 2.2rem;
+}
+h5 {
+  font-size: 2rem;
+}
+h6 {
+  font-size: 1.8rem;
+}
