@@ -54,3 +54,26 @@ h5 {
 h6 {
   font-size: 1.8rem;
 }
+blockquote {
+  position: relative;
+  padding: 2rem 3rem;
+  margin: 2rem;
+  background-color: #fefefe;
+}
+blockquote:before,
+blockquote:after {
+  position: absolute;
+  font-size: 6rem;
+  font-weight: bold;
+  color: #ccc;
+}
+blockquote:before {
+  content: '„';
+  bottom: 1rem;
+  left: 0;
+}
+blockquote:after {
+  content: '“';
+  top: 1rem;
+  right: 0;
+}
