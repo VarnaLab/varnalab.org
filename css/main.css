@@ -20,3 +20,11 @@ body {
   font-size: 1.4rem;
   height: 100vh;
 }
+.vl-rows {
+    display: flex;
+    flex-direction: column;
+}
+.vl-columns {
+    display: flex;
+    flex-direction: row;
+}
