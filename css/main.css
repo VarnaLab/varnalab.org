@@ -80,6 +80,10 @@ blockquote:after {
 .vl-ul-listing {
   list-style-type: disc;
 }
+.vl-ol-listing {
+  list-style-type: decimal;
+}
+.vl-ol-listing li,
 .vl-ul-listing li {
   margin-left: 2em;
 }
