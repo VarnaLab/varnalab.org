@@ -2,6 +2,11 @@ html {
   font-size: 10px;
   line-height: 1.2;
   height: 100vh;
+  background-image: url('images/ecailles.png');
+}
+body {
+  font-size: 1.6rem;
+  height: 100vh;
   background-image:
   linear-gradient(
       to right,
@@ -13,12 +18,8 @@ html {
       #4cb1e7 75%,
       #9f1110 75%,
       #9f1110 100%);
-  background-size: 50% .8rem;
+  background-size: 50% 1rem;
   background-repeat: repeat-x;
-}
-body {
-  font-size: 1.6rem;
-  height: 100vh;
 }
 .vl-rows {
     display: flex;
