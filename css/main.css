@@ -77,3 +77,9 @@ blockquote:after {
   top: 1rem;
   right: 0;
 }
+.vl-ul-listing {
+  list-style-type: disc;
+}
+.vl-ul-listing li {
+  margin-left: 2em;
+}
