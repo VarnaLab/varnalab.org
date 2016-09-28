@@ -83,3 +83,22 @@ blockquote:after {
 .vl-ul-listing li {
   margin-left: 2em;
 }
+img {
+  width: 100%;
+  max-width: 100%;
+}
+.vl-hackermaps {
+  position: relative;
+  overflow: hidden;
+}
+.vl-hackermaps a:last-child {
+  position: absolute;
+  bottom: 1rem;
+  left: 1rem;
+  width: 30%;
+  box-shadow: 0 0 5px #000;
+  filter: saturate(10%);
+}
+.vl-hackermaps a:hover {
+  filter: saturate(100%);
+}
