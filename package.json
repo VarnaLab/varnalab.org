@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "node index",
-    "test": "node ./node_modules/.bin/jasmine-node tests --verbose",
+    "test": "node ./node_modules/.bin/jasmine-node ./tests --captureExceptions",
     "release": "git checkout develop; grunt release; git checkout master; git merge develop; git push; git checkout develop;"
   },
   "dependencies": {

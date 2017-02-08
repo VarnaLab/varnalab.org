@@ -1,5 +1,8 @@
 {
   "plasma": {
+    "Whoisatvarnalab": {
+      "disabled": true
+    },
     "organic-site-routes": {
       "disqus": {
         "shortname": "varnalabtest"
@@ -9,7 +12,8 @@
       "formidable": {
         "uploadDir": "tests/uploads/",
         "keepExtensions": true
-      }
+      },
+      "testAccessToken": "1"
     }
   },
   "membrane": {
