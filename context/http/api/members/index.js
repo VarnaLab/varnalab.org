@@ -4,11 +4,11 @@ module.exports = function(plasma, dna, helpers){
   var accessToken;
   var passport = require("passport")
   try {
-   accessToken = require(process.cwd()+"/accesstoken.json").value
+   accessToken = dna.testAccessToken || require(process.cwd()+"/accesstoken.json").value
   } catch(e){
     // ignore
   }
-  
+
   return {
     "GET": function(req, res){
       Member.find({}, function(err, members){

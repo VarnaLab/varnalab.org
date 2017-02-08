@@ -1,8 +1,7 @@
 {
   "plasma": {
     "Whoisatvarnalab": {
-      "source": "plasma/whoisatvarnalab",
-      "auth": "@secrets.mikrotek-api"
+      "source": "plasma/whoisatvarnalab"
     },
     "event-broadcaster": {
       "source": "plasma/event-broadcaster",

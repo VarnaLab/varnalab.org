@@ -1,13 +1,12 @@
 var _ = require("underscore")
 var moment = require("moment")
 moment.lang("bg")
-
-var Mikrotek = require("./mikrotek")
+var request = require('request')
 
 var Person = module.exports.Person = function(data){
-  this.host = data["host-name"];
-  this.mac = data["mac-address"];
-  this.ip = data["address"];
+  this.host = data["host"];
+  this.mac = data["mac"];
+  this.ip = data["ip"];
 }
 
 module.exports = function(plasma, dna){
@@ -19,22 +18,15 @@ module.exports = function(plasma, dna){
   plasma.on("whoisatvarnalab", this.whoisatvarnalab, this)
   plasma.on("kill", this.kill, this)
 
-  if(dna.auth && dna.auth.host) {
+  dna.interval = dna.interval || 5*60*1000
+  if (!dna.disabled) {
     var self = this
-    this.dhcpRouter = new Mikrotek(dna.auth)
-    this.dhcpRouter.connect(function(err){
-      if (err) return console.error('failed to initially connect whoisatvarnalab due ', err)
-      self.update({}, function(){
-        if(dna.emitReady)
-          plasma.emit({type: dna.emitReady})
-      })
-    })
-
     this.poolIntervalID = setInterval(function(){
       self.update()
-    }, dna.interval || 5*60*1000)
-  } else
-    console.warn("whoisatvarnalab missing auth options")
+    }, dna.interval)
+    self.update()
+    console.info('refreshing whois on ', dna.interval, 'seconds')
+  }
 }
 
 module.exports.prototype.update = function(c, next) {
@@ -42,14 +34,28 @@ module.exports.prototype.update = function(c, next) {
     return next && next()
   var self = this
   this.updateInProgress = true
-  this.dhcpRouter.fetchDHCPClientsPopulated(function(items){
+  this.fetchWhoisData(function (err, result) {
+    if (err) {
+      self.updateInProgress = false
+      return console.error(err)
+    }
     self.updateInProgress = false
-    self.lastFetchTimestamp = new Date()
+    self.lastFetchTimestamp = new Date(result.timestamp * 1000)
 
-    self.peopleOnline = items.map(function(data){
+    self.peopleOnline = result.active.map(function(data){
       return new Person(data)
     })
     next && next()
+  })
+}
+
+module.exports.prototype.fetchWhoisData = function (next) {
+  request.get({
+    uri: 'https://json.varnalab.org/services/active.json',
+    json: {}
+  }, function (err, res, body) {
+    if (err) return next(err)
+    next(null, body)
   })
 }
 
@@ -64,8 +70,5 @@ module.exports.prototype.whoisatvarnalab = function(c, next){
 module.exports.prototype.kill = function(c, next) {
   if(this.poolIntervalID)
     clearInterval(this.poolIntervalID)
-
-  if(this.dhcpRouter)
-    this.dhcpRouter.close()
   next()
 }
