@@ -33,3 +33,16 @@ block content
         .section-nav
           a.btn.pull-left(href='/events/#{pastEvents[i].getUrl()}') Прочети повече
           br.clear
+  - if(pageNumber > 0)
+    a(href="/events/#{pageNumber-1}").btn previous
+  - else
+    a.btn.disabled previous
+  - for(var page = 0; page<pastEventsCount/pastEventsLimit; page++)
+    - if(pageNumber != page)
+      a.btn(href="/events/#{page}") #{page}
+    - else
+      a.btn.disabled #{page}
+  - if(pastEventsCount > pastEvents.length+pageNumber*pastEventsLimit)
+    a(href="/events/#{pageNumber+1}").btn next
+  - else
+    a.btn.disabled next
