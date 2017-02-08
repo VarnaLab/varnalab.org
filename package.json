@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node index",
     "test": "node ./node_modules/.bin/jasmine-node ./tests --captureExceptions",
-    "release": "git checkout develop; grunt release; git checkout master; git merge develop; git push; git checkout develop;"
+    "release": "git checkout develop && grunt release && git checkout master && git merge develop && git push && git checkout develop && node ./node_modules/.bin/angel cell upgrade ./dna/_production/cell.json"
   },
   "dependencies": {
     "angelscripts-nodeapps": "0.0.6",
