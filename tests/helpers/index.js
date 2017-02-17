@@ -57,7 +57,7 @@ module.exports.getValidMember = function(){
 
 module.exports.getValidEvent = function(){
   return {
-    'title': 'happy birthday Varna Lab',
+    'title': 'happy birthday VarnaLab',
     'description': 'lets drink some beer',
     'startDateTime': new Date(),
     'endDateTime': new Date()
