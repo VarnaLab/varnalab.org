@@ -1,3 +1,14 @@
+@keyframes pulse {
+  0% { box-shadow: 0 0 .5em red; }
+  30% { box-shadow: 0 0 .1em red; }
+  70% { box-shadow: 0 0 .8em red; }
+  100% { box-shadow: 0 0 .5em red; }
+}
+:target {
+  animation-name: pulse;
+  animation-duration: 666ms;
+  animation-iteration-count: 3;
+}
 .content {
   width: 100%;
   background-image: ~"url(/images/content-background.jpg)";
