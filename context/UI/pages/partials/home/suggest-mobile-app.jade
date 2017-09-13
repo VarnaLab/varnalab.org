@@ -1,0 +1,11 @@
+script.
+  document.addEventListener('DOMContentLoaded', function () {
+    if ($(window).width() < 981) {
+      window.$('#mobileSuggestModal').modal('show')
+    }
+  })
+.modal.fade#mobileSuggestModal
+  .modal-header.text-center
+    button.close(type='button', data-dismiss='modal', aria-hidden='true') ×
+    h4
+      a(href='https://varnalab.github.io') Виж мобилната версия

@@ -1,5 +1,9 @@
 extends layout
 
+block scripts
+  script(src="/public/js/index.bundle.js")
+
 block content
   include ./partials/home/event-posts
   include ./partials/home/blog-posts
+  include ./partials/home/suggest-mobile-app
