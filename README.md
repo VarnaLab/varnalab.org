@@ -1,3 +1,6 @@
+
+# DEPRECATED in favor of https://github.com/VarnaLab/varnalab-static
+
 varnalab.org
 ===
 
